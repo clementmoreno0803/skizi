@@ -24,12 +24,12 @@ ActiveRecord::Schema.define(version: 2021_08_23_130049) do
   create_table "shifts", force: :cascade do |t|
     t.date "started_at"
     t.date "ended_at"
-    t.string "post"
+    t.string "job"
     t.string "status"
+    t.bigint "user_id"
     t.bigint "entity_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id", null: false
     t.index ["entity_id"], name: "index_shifts_on_entity_id"
     t.index ["user_id"], name: "index_shifts_on_user_id"
   end
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2021_08_23_130049) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "username", null: false
-    t.string "roles"
+    t.string "jobs"
     t.string "contract_hours_per_week"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -52,6 +52,5 @@ ActiveRecord::Schema.define(version: 2021_08_23_130049) do
   end
 
   add_foreign_key "shifts", "entities"
-  add_foreign_key "shifts", "users"
   add_foreign_key "users", "entities"
 end

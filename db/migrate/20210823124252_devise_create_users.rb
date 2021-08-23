@@ -7,7 +7,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
       t.string :username, null: false
-      t.string :roles
+      t.string :jobs
       t.string :contract_hours_per_week
 
       ## Recoverable
