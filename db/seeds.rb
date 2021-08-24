@@ -1,8 +1,7 @@
+UserShift.destroy_all
 Shift.destroy_all
 User.destroy_all
-Entity.destroy_all
 
-copain = Entity.create!(name: 'Le complexe du rire')
 
 user1 = User.create!(email: 'toto@gmail.com', password: 'tototo', password_confirmation: 'tototo',
                      username: 'toto toto', entity: copain)
