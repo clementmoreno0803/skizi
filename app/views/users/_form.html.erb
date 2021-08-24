@@ -1,0 +1,12 @@
+<%= simple_form_for(@user,
+                     html: { class: 'form-flex' } ) do |f| %>
+  <%= f.input :username, as: :string %>
+  <%= f.input :email, as: :string %>
+  <%= f.input :password, as: :string %>
+  <%= f.input :password_confirmation, as: :string %>
+  <%= f.input :jobs,
+              collection: User::JOBS %>
+  <%= f.input :contract_hours_per_week, as: :string,
+              label: "Number of hours work per week" %>
+  <%= f.button :submit, class: "btn btn-primary"  %>
+<% end %>
