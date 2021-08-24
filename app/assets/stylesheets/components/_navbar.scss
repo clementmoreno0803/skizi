@@ -13,11 +13,15 @@
   position: fixed;
   background: white;
   display: flex;
+  z-index: 999;
   height: 100vh;
   align-items: center;
   border-right: 2px solid rgba(177, 177, 177, 0.274);
   transition: all ease 0.5s ;
   width: 78px;
+}
+.sidebar li {
+  display:flex;
 }
 .sidebar.close li .link_name{
   opacity: 0;
@@ -26,7 +30,6 @@
   font-size: 25px;
   margin-right: 15px;
 }
-
 
 .sidebar.close .nav_links {
   padding :30%;
