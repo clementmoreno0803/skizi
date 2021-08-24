@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2021_08_23_123052) do
+=======
+ActiveRecord::Schema.define(version: 2021_08_23_130049) do
+>>>>>>> 93bf2f40284d06605e17ddbace0c922e74a06583
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +28,7 @@ ActiveRecord::Schema.define(version: 2021_08_23_123052) do
   create_table "shifts", force: :cascade do |t|
     t.date "started_at"
     t.date "ended_at"
+<<<<<<< HEAD
     t.string "post"
     t.string "status"
     t.bigint "entities_id", null: false
@@ -33,4 +38,35 @@ ActiveRecord::Schema.define(version: 2021_08_23_123052) do
   end
 
   add_foreign_key "shifts", "entities", column: "entities_id"
+=======
+    t.string "job"
+    t.string "status"
+    t.bigint "user_id"
+    t.bigint "entity_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["entity_id"], name: "index_shifts_on_entity_id"
+    t.index ["user_id"], name: "index_shifts_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "username", null: false
+    t.string "jobs"
+    t.string "contract_hours_per_week"
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "entity_id", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["entity_id"], name: "index_users_on_entity_id"
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  add_foreign_key "shifts", "entities"
+  add_foreign_key "users", "entities"
+>>>>>>> 93bf2f40284d06605e17ddbace0c922e74a06583
 end
