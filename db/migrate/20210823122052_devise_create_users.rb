@@ -8,7 +8,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       t.string :encrypted_password, null: false, default: ""
       t.string :username, null: false
       t.string :jobs
-      t.string :contract_hours_per_week
+      t.integer :contract_hours_per_week
 
       ## Recoverable
       t.string   :reset_password_token
