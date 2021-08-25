@@ -4,8 +4,9 @@
   <%= f.input :email, as: :email %>
   <%= f.input :password %>
   <%= f.input :password_confirmation %>
-  <%= f.input :jobs,
-              collection: User::JOBS %>
+  <%= f.association :user_jobs,
+          label_method: :job,
+          collection: Job.all %>
   <%= f.input :contract_hours_per_week, as: :string,
               label: "Number of hours work per week" %>
   <%= f.input :status,
