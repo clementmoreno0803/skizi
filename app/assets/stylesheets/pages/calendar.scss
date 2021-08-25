@@ -1,0 +1,14 @@
+.calendar{
+  display: flex;
+  justify-content: space-between;
+}
+
+#calendar-day{
+  width: 34%;
+  height: auto;
+  margin-right: 10px;
+}
+#calendar-month{
+  width:66%;
+  height: auto;
+}
