@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[home new create]
+  # skip_before_action :authenticate_user!, only: %i[index new create]
   before_action :find_dev, only: %i[show edit update]
+
   def index
     @users = User.all
   end
@@ -36,7 +37,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :jobs, :email, :contract_hours_per_week)
+    params.require(:user).permit(:username, :jobs, :email, :contract_hours_per_week, :password, :password_confirmation)
   end
 
   def find_user
