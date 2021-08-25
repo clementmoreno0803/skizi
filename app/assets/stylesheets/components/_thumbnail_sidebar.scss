@@ -1,3 +1,7 @@
+h4{
+  font-family: 'poppins';
+  font-size: 12px;
+}
 .modif_manuelle{
   width: 100px;
   position: fixed;
@@ -7,6 +11,9 @@
   transition: all ease 0.6s ;
   bottom: 0;
   overflow-y: scroll;
+  h4{
+    display: none;
+  }
 }
 
 .modif_manuelle::-webkit-scrollbar {
@@ -18,14 +25,19 @@
     transform: translateX(0%);
     transition: all 0.6s ease;
 }
+.modif_manuelle.open.active{
+    width: 250px;
+    transition: all 0.4s ease;
+}
 .modif_contenu{
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: rgba(177, 177, 177, 0.574);
+    background: #090c3517;
     border-left: 2px solid rgba(177, 177, 177, 0.274);
-    padding : 15% 0px;
+    padding: 15% 0px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
 .sidebar_pp{
   display: none;
@@ -36,5 +48,31 @@
   height: 60px;
   border-radius : 50%;
   object-fit: cover;
-  margin-bottom: 25px;
+}
+.modif_manuelle.open .thumbnail_perso  h4{
+      display: none;
+      transition: all ease 0.8s;
+}
+.modif_manuelle.open.active .thumbnail_perso {
+      display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    gap: 10px;
+    opacity: 1;
+
+}
+.modif_manuelle.open h4{
+display: none;
+}
+.modif_manuelle.open.active h4{
+  display: block;
+  margin-left: 5px;
+
+}
+.modif_manuelle.open.active .whole_profil_description{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    transition: all ease 1.8s;
 }

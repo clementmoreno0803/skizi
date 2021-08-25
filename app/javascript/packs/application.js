@@ -25,6 +25,8 @@ import "bootstrap";
 // import { initSelect2 } from '../components/init_select2';
 
 import "../components/sidebars";
+import "../components/notifications";
+import "../components/search_bar";
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:

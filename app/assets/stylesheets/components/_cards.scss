@@ -1,7 +1,20 @@
+h2{
+  font-size: 26px;
+  font-family: 'poppins';
+  text-align: center;
+}
+H3{
+    font-size: 16px;
+  font-family: 'poppins';
+  text-align: center;
+}
 .container_cards{
-  margin : 100px auto ;
+  margin : 30px auto ;
   width: 60%;
   min-width: 50%;
+}
+.titre_presentation{
+  margin-bottom: 25px;
 }
 .tableau-style{
   border-collapse: collapse;
@@ -11,6 +24,7 @@
   font-weight: 400;
   font-size : 12px;
   margin-bottom: 20px;
+  width: 100%;
 }
 
 th, td{
