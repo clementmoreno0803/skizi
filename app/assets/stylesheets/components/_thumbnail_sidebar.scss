@@ -1,0 +1,40 @@
+.modif_manuelle{
+  width: 100px;
+  position: fixed;
+  right: 0;
+  height: calc(100vh - 80px);
+  transform: translateX(100%);
+  transition: all ease 0.6s ;
+  bottom: 0;
+  overflow-y: scroll;
+}
+
+.modif_manuelle::-webkit-scrollbar {
+  display: none;
+}
+
+.modif_manuelle.open{
+    width: 100px;
+    transform: translateX(0%);
+    transition: all 0.6s ease;
+}
+.modif_contenu{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(177, 177, 177, 0.574);
+    border-left: 2px solid rgba(177, 177, 177, 0.274);
+    padding : 15% 0px;
+}
+.sidebar_pp{
+  display: none;
+}
+.sidebar_app{
+  display: block;
+  width: 60px;
+  height: 60px;
+  border-radius : 50%;
+  object-fit: cover;
+  margin-bottom: 25px;
+}
