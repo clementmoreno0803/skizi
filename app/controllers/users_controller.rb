@@ -1,7 +1,12 @@
 class UsersController < ApplicationController
-  before_action :find_dev, only: %i[show destroy edit update]
+  # skip_before_action :authenticate_user!, only: %i[index new create]
+  before_action :find_dev, only: %i[show edit update]
+
   def index
     @users = User.all
+  end
+
+  def show
   end
 
   def new
@@ -12,7 +17,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to users_path(@user)
+      redirect_to users_path
     else
       render :new
     end
@@ -29,15 +34,10 @@ class UsersController < ApplicationController
     end
   end
 
-  def destroy
-    @user.destroy
-    redirect_to users_path
-  end
-
   private
 
   def user_params
-    params.require(:user).permit(:username, :jobs, :email, :contract_hours_per_week)
+    params.require(:user).permit(:username, :jobs, :email, :contract_hours_per_week, :password, :password_confirmation)
   end
 
   def find_user

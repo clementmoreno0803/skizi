@@ -28,8 +28,13 @@ shift1 = Shift.create!(
   barman_needed: 1
 )
 
-shift2 = Shift.create!(started_at: "2021,09,03,18,00,00", ended_at: "2021,09,03,21,00,00", manager_id:
-                       manager.id, runner_needed: 2, padder_needed: 2, barman_needed: 1)
+shift2 = Shift.create!(
+  started_at: "2021,09,03,18,00,00",
+  ended_at: "2021,09,03,21,00,00",
+  manager_id: manager.id,
+  runner_needed: 2,
+  padder_needed: 2,
+  barman_needed: 1)
 
 puts 'shifts created'
 puts 'creating user_shifts'
