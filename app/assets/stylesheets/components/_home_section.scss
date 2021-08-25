@@ -1,0 +1,54 @@
+.home_section{
+    height: 80px;
+    position: relative;
+    background: rgb(236, 236, 236);
+    padding-left: 230px;
+    align-items: center;
+    transition: all ease 0.5s;
+
+}
+.sidebar.close ~ .home_section{
+    padding-left: 78px;
+    transition: all ease 0.5s ;
+}
+.home_content{
+    top: 4px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 25px;
+    align-items: center;
+    height: 100%;
+}
+.home_content i{
+  font-size : 25px;
+  color: rgb(172, 172, 172);
+}
+.home_content h3{
+    font-family: 'Poppins', sans-serif;
+    font-size : 12px;
+    color: rgb(172, 172, 172);
+}
+.bx-menu{
+  cursor: pointer;
+}
+.search_bar{
+    display: flex;
+    width: 250px;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    font-size : 12px;
+    color: rgb(172, 172, 172);
+}
+
+.profil_perso{
+  display: flex;
+  align-items: center;
+}
+.pp{
+  width: 40px;
+  height: 40px;
+  border-radius : 50%;
+  object-fit: cover;
+  margin: 0px 15px 0px 25px;
+  cursor: pointer;
+  }

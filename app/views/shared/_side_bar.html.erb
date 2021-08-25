@@ -1,0 +1,31 @@
+<div class="sidebar close">
+      <ul class="nav_links" style="width: min-content;">
+        <li>
+            <i class='bx bxs-dashboard'></i>
+            <%= link_to "Accueil",root_path, class: "link_name"%>
+        </li>
+        <li>
+          <a href="">
+            <i class='bx bxs-pencil'></i>
+            <span class="link_name">Planning de base</span>
+          </a>
+        </li>
+        <li>
+            <i class='bx bx-user-circle'></i>
+          <%= link_to "Votre équipe", users_path, class: "link_name"%>
+          </a>
+        </li>
+        <li>
+          <a class='foo' href="">
+            <i class='bx bxs-hand'></i>
+            <span class="link_name">Modifications manuelles</span>
+          </a>
+        </li>
+          <li>
+            <a href="">
+              <i class='bx bx-cog'></i>
+              <span class="link_name">Réglages</span>
+            </a>
+          </li>
+    </ul>
+  </div>

@@ -1,0 +1,30 @@
+.container_cards{
+  margin : 100px auto ;
+  width: 60%;
+  min-width: 50%;
+}
+.tableau-style{
+  border-collapse: collapse;
+  min-width: 400px;
+  width: auto;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size : 12px;
+  margin-bottom: 20px;
+}
+
+th, td{
+  padding : 15px 20px;
+
+}
+.pp{
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.tableau-style{
+  background: white;
+  box-shadow: 0px 5px 10px #efefef;
+  border-radius: 1em;
+}
