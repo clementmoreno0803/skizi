@@ -8,10 +8,10 @@ class User < ApplicationRecord
   has_many :shifts, through: :user_shifts
   has_many :user_shifts, foreign_key: 'employee_id'
   has_many :shifts, foreign_key: 'manager_id'
-  has_many :user_jobs
+  has_many :user_jobs, dependent: :destroy
   has_many :jobs, through: :user_jobs
 
-  validates :username, presence: true
+  validates :username, presence: true, uniqueness: true
   validates :email, presence: true
   validates :password, presence: true
   validates :password_confirmation, presence: true
