@@ -1,12 +1,16 @@
 class User < ApplicationRecord
-  JOBS = ['Runner', 'Padder', 'Barman', 'Manager']
   STATUS = ['Ongoing', 'Off']
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :recoverable, :rememberable,
          :validatable
+
   has_many :shifts, through: :user_shifts
-  validates :jobs, inclusion: { in: JOBS }, presence: true
+  has_many :user_shifts, foreign_key: 'employee_id'
+  has_many :shifts, foreign_key: 'manager_id'
+  has_many :user_jobs
+  has_many :jobs, through: :user_jobs
+
   validates :username, presence: true
   validates :email, presence: true
   validates :password, presence: true
