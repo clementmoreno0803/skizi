@@ -68,3 +68,7 @@ calendar2.createSchedules([
     end: '2021-08-25T22:31'
   }
 ]);
+
+
+export {calendar2}
+export {calendar}
