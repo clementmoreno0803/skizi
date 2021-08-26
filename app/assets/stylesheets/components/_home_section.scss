@@ -1,10 +1,9 @@
 .home_section{
     height: 80px;
+    display: flex;
     position: relative;
-    background: rgb(236, 236, 236);
-    padding-left: 230px;
     align-items: center;
-    transition: all ease 0.5s;
+    justify-content: flex-end;
 
 }
 .sidebar.close ~ .home_section{
@@ -21,23 +20,12 @@
 }
 .home_content i{
   font-size : 25px;
-  color: rgb(172, 172, 172);
+  color: $dark-blue;
 }
 .home_content h3{
     font-family: 'Poppins', sans-serif;
     font-size : 12px;
-    color: rgb(172, 172, 172);
-}
-.bx-menu{
-  cursor: pointer;
-}
-.search_bar{
-    display: flex;
-    width: 250px;
-    align-items: center;
-    font-family: 'Poppins', sans-serif;
-    font-size : 12px;
-    color: rgb(172, 172, 172);
+    color: $dark-blue;
 }
 
 .profil_perso{

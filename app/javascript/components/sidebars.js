@@ -1,5 +1,4 @@
 document.addEventListener('turbolinks:load', () => {
-  console.log(42)
 
   let sidebar = document.querySelector(".sidebar");
 
