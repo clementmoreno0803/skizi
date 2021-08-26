@@ -27,6 +27,7 @@ const calendar2 = new Calendar('#calendar-day', {
   }
 });
 
+
 calendar.createSchedules([
   {
     id: '1',

@@ -23,16 +23,15 @@ h4{
 .modif_manuelle.open{
     width: 100px;
     transform: translateX(0%);
-    transition: all 0.6s ease;
+    transition: all 0.3s ease;
 }
 .modif_manuelle.open.active{
     width: 250px;
-    transition: all 0.4s ease;
+    transition: all 0.3s ease;
 }
 .modif_contenu{
     display: flex;
-    background: #090c3517;
-    border-left: 2px solid rgba(177, 177, 177, 0.274);
+    background: $yellow;
     padding: 15% 0px;
     flex-direction: column;
     justify-content: center;
@@ -51,7 +50,7 @@ h4{
 }
 .modif_manuelle.open .thumbnail_perso  h4{
       display: none;
-      transition: all ease 0.8s;
+      transition: all ease 0.6s;
 }
 .modif_manuelle.open.active .thumbnail_perso {
       display: flex;
@@ -74,5 +73,5 @@ display: none;
     align-items: center;
     width: 100%;
     justify-content: center;
-    transition: all ease 1.8s;
+    transition: all ease 1s;
 }

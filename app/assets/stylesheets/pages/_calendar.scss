@@ -4,6 +4,12 @@
   font-family: 'Noto Sans', sans-serif;
   font-size: 12px;
 }
+.calendar.active{
+  width: calc( 100vw - 115px);
+}
+.calendar.open{
+  width: calc( 100vw - 255px);
+}
 #calendar-day{
   width: 34%;
   height: 100%;
