@@ -7,6 +7,8 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import "../plugins/calendar"
+import "../plugins/menu_calendar"
 
 Rails.start()
 Turbolinks.start()
