@@ -1,2 +1,6 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<div>
+  <div>
+    <%= render 'form', developer: @user %>
+  </div>
+  <%= link_to 'Back', users_path %>
+</div>

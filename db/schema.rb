@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_24_101036) do
+ActiveRecord::Schema.define(version: 2021_08_25_121421) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "jobs", force: :cascade do |t|
+    t.string "job"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "shifts", force: :cascade do |t|
     t.datetime "started_at"
@@ -25,6 +31,15 @@ ActiveRecord::Schema.define(version: 2021_08_24_101036) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["manager_id"], name: "index_shifts_on_manager_id"
+  end
+
+  create_table "user_jobs", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "job_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["job_id"], name: "index_user_jobs_on_job_id"
+    t.index ["user_id"], name: "index_user_jobs_on_user_id"
   end
 
   create_table "user_shifts", force: :cascade do |t|
@@ -42,18 +57,20 @@ ActiveRecord::Schema.define(version: 2021_08_24_101036) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "username", null: false
-    t.string "jobs"
     t.integer "contract_hours_per_week"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "status", default: "Ongoing"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "shifts", "users", column: "manager_id"
+  add_foreign_key "user_jobs", "jobs"
+  add_foreign_key "user_jobs", "users"
   add_foreign_key "user_shifts", "shifts"
   add_foreign_key "user_shifts", "users", column: "employee_id"
 end

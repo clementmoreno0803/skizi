@@ -1,2 +1,7 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+
+<div class='container-form'>
+  <div>
+    <%= render 'form', developer: @user %>
+  </div>
+  <%= link_to 'Back', users_path %>
+</div>
