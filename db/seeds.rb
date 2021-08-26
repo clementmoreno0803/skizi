@@ -46,8 +46,8 @@ puts 'user_jobs created'
 puts 'creating shifts'
 
 shift1 = Shift.create!(
-  started_at: "2021,09,05,18,00,00",
-  ended_at: "2021,09,05,21,00,00",
+  started_at: "03/09/2021 18:00",
+  ended_at: "03/09/2021 21:00",
   manager_id: user_manager.id,
   runner_needed: 2,
   padder_needed: 1,
@@ -55,11 +55,20 @@ shift1 = Shift.create!(
 )
 
 shift2 = Shift.create!(
-  started_at: "2021,09,03,18,00,00",
-  ended_at: "2021,09,03,21,00,00",
+  started_at: "05/09/2021 18:00",
+  ended_at: "05/09/2021 21:00",
   manager_id: user_manager.id,
   runner_needed: 2,
   padder_needed: 2,
+  barman_needed: 1
+)
+
+shift3 = Shift.create!(
+  started_at: "06/09/2021 18:00",
+  ended_at: "06/09/2021 21:00",
+  manager_id: user_manager.id,
+  runner_needed: 1,
+  padder_needed: 1,
   barman_needed: 1
 )
 
@@ -76,5 +85,9 @@ UserShift.create!(shift: shift2, employee: employee1, job: 'runner')
 UserShift.create!(shift: shift2, employee: employee4, job: 'padder')
 UserShift.create!(shift: shift2, employee: employee5, job: 'padder')
 UserShift.create!(shift: shift2, employee: employee3, job: 'barman')
+
+UserShift.create!(shift: shift3, employee: employee1, job: 'runner')
+UserShift.create!(shift: shift3, employee: employee2, job: 'padder')
+UserShift.create!(shift: shift3, employee: employee5, job: 'barman')
 
 puts 'user_shifts created'
