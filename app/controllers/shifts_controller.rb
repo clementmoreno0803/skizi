@@ -1,5 +1,5 @@
 class ShiftsController < ApplicationController
-  before_action :find_dev, only: %i[show destroy edit update]
+  before_action :find_shift, only: %i[show destroy edit update]
 
   def index
     @shifts = Shift.all
@@ -42,6 +42,6 @@ class ShiftsController < ApplicationController
   end
 
   def find_shift
-    @shift = shift.find(params[:id])
+    @shift = Shift.find(params[:id])
   end
 end
