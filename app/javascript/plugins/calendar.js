@@ -81,6 +81,5 @@ calendar2.createSchedules([
   }
 ]);
 
-
-export {calendar2}
-export {calendar}
+export {calendar2};
+export {calendar};
