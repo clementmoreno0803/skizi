@@ -15,7 +15,7 @@ class ShiftsController < ApplicationController
       {
         id: usershift.id,
         job: usershift.job,
-        title: usershift.user
+        title: usershift.employee.username
       }
     end
   end
