@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   # skip_before_action :authenticate_user!, only: %i[index new create]
-  before_action :find_dev, only: %i[show edit update]
+  before_action :find_user, only: %i[show edit update]
 
   def index
     @users = User.all
@@ -41,6 +41,6 @@ class UsersController < ApplicationController
   end
 
   def find_user
-    @user = user.find(params[:id])
+    @user = User.find(params[:id])
   end
 end
