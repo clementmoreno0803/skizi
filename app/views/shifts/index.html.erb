@@ -14,7 +14,9 @@
       <span id="renderRange" class="render-range"></span>
     </div>
   </div>
-<div id="calendar-month"><div id="menu">
+<div id="calendar-month"
+     data-user_shifts="<%= @user_shifts.to_json %>">
+  <div id="menu">
       <span id="menu-navi">
         <button type="button" class="btn btn-default btn-sm move-today" id="current-month">Current-month</button>
         <button type="button" class="btn btn-default btn-sm move-day" id="move-prev-month">

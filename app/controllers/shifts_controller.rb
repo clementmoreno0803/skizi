@@ -5,17 +5,13 @@ class ShiftsController < ApplicationController
     @shifts = Shift.all
     @usershifts = UserShift.all
 
-    @hourshifts = @shifts.map do |hourshift|
-      {
-        start: hourshift.started_at,
-        end: hourshift.ended_at
-      }
-    end
     @user_shifts = @usershifts.map do |usershift|
       {
         id: usershift.id,
         job: usershift.job,
-        title: usershift.user
+        title: usershift.employee.username,
+        start: usershift.shift.started_at,
+        end: usershift.shift.ended_at
       }
     end
   end
