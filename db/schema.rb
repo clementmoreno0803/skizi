@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_25_121421) do
+ActiveRecord::Schema.define(version: 2021_08_26_133708) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,16 @@ ActiveRecord::Schema.define(version: 2021_08_25_121421) do
     t.string "job"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "reclamations", force: :cascade do |t|
+    t.string "content"
+    t.bigint "employee_id", null: false
+    t.bigint "shift_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["employee_id"], name: "index_reclamations_on_employee_id"
+    t.index ["shift_id"], name: "index_reclamations_on_shift_id"
   end
 
   create_table "shifts", force: :cascade do |t|
@@ -68,6 +78,8 @@ ActiveRecord::Schema.define(version: 2021_08_25_121421) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "reclamations", "shifts"
+  add_foreign_key "reclamations", "users", column: "employee_id"
   add_foreign_key "shifts", "users", column: "manager_id"
   add_foreign_key "user_jobs", "jobs"
   add_foreign_key "user_jobs", "users"

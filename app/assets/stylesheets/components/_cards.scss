@@ -89,3 +89,24 @@ th, td{
   box-shadow: 0px 5px 10px #efefef;
   border-radius: 1em;
 }
+
+.display-jobs{
+  display: flex;
+  flex-direction: column;
+}
+
+.span-job{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+tr{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+td {
+  display: flex;
+}
