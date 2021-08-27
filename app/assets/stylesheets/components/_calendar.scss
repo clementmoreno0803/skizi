@@ -4,6 +4,12 @@
   font-family: 'Noto Sans', sans-serif;
   font-size: 12px;
 }
+.calendar.active{
+  width: calc( 100vw - 115px);
+}
+.calendar.open{
+  width: calc( 100vw - 255px);
+}
 #calendar-day{
   width: 34%;
   height: 100%;
@@ -169,11 +175,38 @@
   bottom: 12px;
   padding-left: 16px;
 }
-
-#menu {
-  padding: 16px;
+#menu-navi{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
+#left_arrow_day{
+  transform: rotate(90deg);
+  font-size: 25px;
+  color: $yellow;
+  cursor: pointer;
+}
+#right_arrow_day{
+    transform: rotate(270deg);
+    font-size: 25px;
+    color: $yellow;
+    cursor: pointer;
+}
+#left_arrow_month{
+  transform: rotate(90deg);
+  font-size: 25px;
+  color: $yellow;
+  cursor: pointer;
+}
+#right_arrow_month{
+    transform: rotate(270deg);
+    font-size: 25px;
+    color: $yellow;
+    cursor: pointer;
+}
+#menu-navi h2{
+  margin : 0 15px;
+}
 #dropdownMenu-calendarType {
   padding: 0 8px 0 11px;
 }

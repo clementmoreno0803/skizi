@@ -1,16 +1,14 @@
-<h1>Shifts#index</h1>
-<p>Find me in app/views/shifts/index.html.erb</p>
+<div class="calendar_sidebar">
 
+</div>
 <div class="calendar">
   <div id="calendar-day">
     <div id="menu">
-      <span id="menu-navi">
-        <button type="button" class="btn btn-default btn-sm move-today" id="current-day">Today</button>
-        <button type="button" class="btn btn-default btn-sm move-day" id="move-prev-day"><div class="calendar-icon ic-arrow-line-left"></div>
-        </button>
-        <button type="button" class="btn btn-default btn-sm move-day" id="move-next-day"><div class="calendar-icon ic-arrow-line-right" ></div>
-        </button>
-      </span>
+      <div id="menu-navi">
+        <i class='bx bxs-downvote' id="left_arrow_day"></i>
+          <h2 > Par jour </h2>
+        <i class='bx bxs-downvote' id="right_arrow_day"></i>
+      </div>
       <span id="renderRange" class="render-range"></span>
     </div>
   </div>
@@ -18,6 +16,9 @@
      data-user_shifts="<%= @user_shifts.to_json %>">
   <div id="menu">
       <span id="menu-navi">
+        <i class='bx bxs-downvote' id="left_arrow_month"></i>
+        <h2>Par mois</h2>
+        <i class='bx bxs-downvote' id="right_arrow_month"></i>
         <button type="button" class="btn btn-default btn-sm move-today" id="current-month">Current-month</button>
         <button type="button" class="btn btn-default btn-sm move-day" id="move-prev-month">
           <div class="calendar-icon ic-arrow-line-left"></div>
@@ -29,3 +30,74 @@
       <span id="renderRange" class="render-range"></span>
     </div>
 </div>
+<div class="modif_manuelle">
+    <div class="profil_container">
+        <div class="search_bar_container">
+          <div class="search_bar">
+            <div class="search_icon">
+                <i class='bx bx-search-alt'></i>
+            </div>
+            <div class="input">
+              <input type="text" placeholder="Un nom, un poste ?" id="my_search">
+            </div>
+          </div>
+        </div>
+      <div class="modif_contenu">
+        <div class="whole_profil_description">
+          <%= image_tag 'pp.jpeg', class: 'sidebar_app' %>
+          <h4>Clement Moreno</h4>
+        </div>
+        <div class="whole_profil_description">
+          <%= image_tag 'pp.jpeg', class: 'sidebar_app' %>
+          <h4>Clement Moreno</h4>
+        </div>
+        <div class="whole_profil_description">
+          <%= image_tag 'pp.jpeg', class: 'sidebar_app' %>
+          <h4>Clement Moreno</h4>
+        </div>
+        <div class="whole_profil_description">
+          <%= image_tag 'pp.jpeg', class: 'sidebar_app' %>
+          <h4>Clement Moreno</h4>
+        </div>
+        <div class="whole_profil_description">
+          <%= image_tag 'pp.jpeg', class: 'sidebar_app' %>
+          <h4>Clement Moreno</h4>
+        </div>
+        <div class="whole_profil_description">
+          <%= image_tag 'pp.jpeg', class: 'sidebar_app' %>
+          <h4>Clement Moreno</h4>
+        </div>
+        <div class="whole_profil_description">
+          <%= image_tag 'pp.jpeg', class: 'sidebar_app' %>
+          <h4>Clement Moreno</h4>
+        </div>
+        <div class="whole_profil_description">
+          <%= image_tag 'pp.jpeg', class: 'sidebar_app' %>
+          <h4>Clement Moreno</h4>
+        </div>
+        <div class="whole_profil_description">
+          <%= image_tag 'pp.jpeg', class: 'sidebar_app' %>
+          <h4>Clement Moreno</h4>
+        </div>
+        <div class="whole_profil_description">
+          <%= image_tag 'pp.jpeg', class: 'sidebar_app' %>
+          <h4>Clement Moreno</h4>
+        </div>
+        <div class="whole_profil_description">
+          <%= image_tag 'pp.jpeg', class: 'sidebar_app' %>
+          <h4>Clement Moreno</h4>
+        </div>
+        <div class="whole_profil_description">
+          <%= image_tag 'pp.jpeg', class: 'sidebar_app' %>
+          <h4>Clement Moreno</h4>
+        </div>
+        <div class="whole_profil_description">
+          <%= image_tag 'pp.jpeg', class: 'sidebar_app' %>
+          <h4>Clement Moreno</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"></script>
