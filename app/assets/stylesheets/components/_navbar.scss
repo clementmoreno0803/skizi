@@ -9,6 +9,27 @@
   align-items: center;
   transition: all ease 0.6s ;
 }
+#logo_main{
+  font-family: 'Titania';
+  display: flex;
+  position: absolute;
+  top: 25px;
+  color: $yellow;
+  font-size: 40px;
+  #logo_close{
+    display: none;
+  }
+}
+#logo_main.open{
+  font-family: 'Titania';
+  position: absolute;
+  top: 25px;
+  color: $yellow;
+  font-size: 40px;
+  #logo_close{
+    display: block ;
+  }
+}
 .sidebar.close{
   position: fixed;
   background: $dark-blue;

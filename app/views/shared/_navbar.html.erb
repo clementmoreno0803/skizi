@@ -1,18 +1,18 @@
   <div class="home_section">
     <div class="home_content">
         <div class="profil_perso">
+          <div>
+            <% if user_signed_in? %>
+              <%= button_to "Log out", destroy_user_session_path, method: :delete, class: 'sign_out' %>
+            <% else %>
+              <%= button_to "Sign in", new_user_session_path, class: 'sign_in' %>
+            <% end %>
+          </div>
           <div class="notification">
             <i class='bx bx-message-alt'></i>
           </div>
           <%= image_tag 'pp.jpeg', class: 'pp' %>
           <h3>Clément Moréno</h3>
-          <div>
-            <% if user_signed_in? %>
-              <%= button_to "Log out", destroy_user_session_path, method: :delete %>
-            <% else %>
-              <%= link_to "Sign in", new_user_session_path %>
-            <% end %>
-          </div>
       </div>
     </div>
   </div>

@@ -7,13 +7,10 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-import "../plugins/calendar"
-import "../plugins/menu_calendar"
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
-
 
 // ----------------------------------------------------
 // Note(lewagon): ABOVE IS RAILS DEFAULT CONFIGURATION
@@ -29,6 +26,8 @@ import "bootstrap";
 import "../components/sidebars";
 import "../components/notifications";
 import "../components/search_bar";
+import "../plugins/calendar"
+import "../plugins/menu_calendar"
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:

@@ -48,7 +48,6 @@ const calendar2 = new Calendar('#calendar-day', {
   }
 });
 
-
 // entries calendar
 const call = document.getElementById("calendar-month")
 const user_shifts = JSON.parse(call.dataset.user_shifts);
@@ -84,5 +83,6 @@ user_shifts.forEach((i) => {
 });
 
 
-export {calendar2};
-export {calendar};
+
+export {calendar2}
+export {calendar}
