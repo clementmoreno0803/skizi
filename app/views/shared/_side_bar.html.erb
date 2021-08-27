@@ -1,15 +1,16 @@
 <div class="sidebar close">
+    <h3 id="logo_main">S<span id="logo_close">kizi</span></h3>
       <ul class="nav_links" style="width: min-content;">
         <li>
             <i class='bx bxs-dashboard'></i>
             <%= link_to "Accueil",root_path, class: "link_name"%>
         </li>
-        <li>
+        <li id="equipe">
             <i class='bx bxs-user-circle'></i>
           <%= link_to "Votre équipe", users_path, class: "link_name"%>
           </a>
         </li>
-        <li>
+        <li id="modif_sidebar">
           <a class='foo' href="">
             <i class='bx bxs-hand'></i>
             <%= link_to "Modifications manuelles",root_path, class: "link_name"%>
