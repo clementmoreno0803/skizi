@@ -67,7 +67,6 @@ user_shifts.forEach((i) => {
 });
 
 user_shifts.forEach((i) => {
-  console.log(i.id.string), console.log(i.title), console.log(i.job), console.log(i.start), console.log(i.end), console.log('1')
   calendar2.createSchedules([
     {
       id: `${i.id}`,
