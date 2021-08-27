@@ -20,16 +20,17 @@
             <tr>
               <td><%= image_tag "pp.jpeg", class:"pp" %></td>
               <td><strong><%= user.username %></strong></td>
-              <% user.jobs.each do |job| %>
-              <td><%= job.job %></td>
-              <% end %>
+              <td class="display-jobs">
+                <% user.jobs.each do |job| %>
+                  <div class='span-job'><%= job.job %></div>
+                <% end %>
+              </td>
               <td><%= user.contract_hours_per_week %> Heures</td>
               <td>22heures / <span style="color:green">25 heures</span></td>
               <td>
               <img src="images/216514_warning_icon.svg" alt=""></td>
               <td>
               <%= image_tag "edit.png", style:'width:30px' %></td>
-              <td><%= image_tag "bin.png", style:'width:30px' %></td>
             </tr>
           </tbody>
         </table>
