@@ -175,11 +175,11 @@
 //   bottom: 12px;
 //   padding-left: 16px;
 // }
-// #menu-navi{
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// }
+#menu-navi{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 #left_arrow_day{
   transform: rotate(90deg);
   font-size: 25px;
@@ -325,16 +325,6 @@
 // .ic_view_day {
 //   background: url('../images/ic-view-day.png') no-repeat;
 // }
-
-.ic-arrow-line-left {
-  background-image: image-url('go-previous-5.png');
-  background-size: cover;
-}
-
-.ic-arrow-line-right {
-  background-image: image-url('go-next-5.png');
-  background-size: cover;
-}
 
 // .ic-travel-time {
 //   background: url('../images/ic-traveltime-w.png') no-repeat;
