@@ -12,7 +12,9 @@
       <span id="renderRange" class="render-range"></span>
     </div>
   </div>
-<div id="calendar-month"><div id="menu">
+<div id="calendar-month"
+     data-user_shifts="<%= @user_shifts.to_json %>">
+  <div id="menu">
       <span id="menu-navi">
         <i class='bx bxs-downvote' id="left_arrow_month"></i>
         <h2>Par mois</h2>
