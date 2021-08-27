@@ -37,8 +37,8 @@ const calendar2 = new Calendar('#calendar-day', {
   useDetailPopup: true,
   scheduleView: ['time'],
   week:{
-    hourStart: 18,
-    hourEnd: 21
+    hourStart: 9,
+    hourEnd: 22
   },
   template: {
     Dayname: function (dayname) {
