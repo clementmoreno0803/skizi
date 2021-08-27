@@ -3,6 +3,17 @@ class ShiftsController < ApplicationController
 
   def index
     @shifts = Shift.all
+    @usershifts = UserShift.all
+
+    @user_shifts = @usershifts.map do |usershift|
+      {
+        id: usershift.id,
+        job: usershift.job,
+        title: usershift.employee.username,
+        start: usershift.shift.started_at,
+        end: usershift.shift.ended_at
+      }
+    end
   end
 
   def new
