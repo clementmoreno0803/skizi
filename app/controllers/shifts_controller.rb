@@ -4,7 +4,7 @@ class ShiftsController < ApplicationController
   def index
     @shifts = Shift.all
     @usershifts = UserShift.all
-    @users = User.all
+    @users = User.where(:category["Ongoing"])
     @user_shifts = @usershifts.map do |usershift|
       {
         id: usershift.id,

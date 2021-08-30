@@ -32,11 +32,11 @@
               <div class="search_bar">
                 <div class="input">
                   <%= form_with(url: search_employee_shifts_path, method: :get, local: false) do |f| %>
-                  <%= f.text_field :query, placeholder: "Find a user",
+                  <%= f.text_field :query, placeholder: "Find an employee",
                               label: false,
+                              autocomplete: :off,
                               input_html: { name: :query,
-                              value: params.dig(:query),
-                              id: 'my_search' } %>
+                              value: params.dig(:query) } %>
                   <% end %>
                 </div>
               </div>

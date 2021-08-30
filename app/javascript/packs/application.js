@@ -34,6 +34,6 @@ import "../components/alerts";
 import initDrapEmployeeOnCalendar from "../plugins/drag_drop";
 
 document.addEventListener('turbolinks:load', () => {
-  initSearchBar()
+  initSearchBar(Rails)
   initDrapEmployeeOnCalendar()
 });
