@@ -8,6 +8,7 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
@@ -25,11 +26,13 @@ import "bootstrap";
 
 import "../components/sidebars";
 import "../components/notifications";
-import "../components/search_bar";
-import "../plugins/calendar"
-import "../plugins/menu_calendar"
+import initSearchBar from "../components/search_bar";
+import "../plugins/_calendar";
+import "../plugins/menu_calendar";
+import "../components/alerts";
+import initDrapEmployeeOnCalendar from "../plugins/drag_drop";
 
 document.addEventListener('turbolinks:load', () => {
-  // Call your functions here, e.g:
-  // initSelect2();
+  initSearchBar()
+  initDrapEmployeeOnCalendar()
 });

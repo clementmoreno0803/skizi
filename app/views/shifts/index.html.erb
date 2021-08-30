@@ -1,3 +1,4 @@
+<%# <%= render :calendar if current_page?(root_path) %> %>
 <div class="calendar">
   <div id="calendar-day">
     <div id="menu">
@@ -10,7 +11,7 @@
     </div>
   </div>
 <div id="calendar-month"
-     data-user_shifts="<%= @user_shifts.to_json %>">
+    data-user_shifts="<%= @user_shifts.to_json %>">
   <div id="menu">
       <span id="menu-navi">
         <i class='bx bxs-downvote' id="left_arrow_month"></i>
@@ -21,73 +22,32 @@
     </div>
 </div>
 <div class="modif_manuelle">
-    <div class="profil_container">
-        <div class="search_bar_container">
-          <div class="search_bar">
-            <div class="search_icon">
-                <i class='bx bx-search-alt'></i>
-            </div>
-            <div class="input">
-              <input type="text" placeholder="Un nom, un poste ?" id="my_search">
-            </div>
-          </div>
+  <div class="profil_container">
+    <div class="search_bar_container">
+      <div class="search_bar">
+        <div class="search_icon">
+            <i class='bx bx-search-alt'></i>
         </div>
-      <div class="modif_contenu">
-        <div class="whole_profil_description">
-          <%= image_tag 'pp.jpeg', class: 'sidebar_app' %>
-          <h4>Clement Moreno</h4>
-        </div>
-        <div class="whole_profil_description">
-          <%= image_tag 'pp.jpeg', class: 'sidebar_app' %>
-          <h4>Clement Moreno</h4>
-        </div>
-        <div class="whole_profil_description">
-          <%= image_tag 'pp.jpeg', class: 'sidebar_app' %>
-          <h4>Clement Moreno</h4>
-        </div>
-        <div class="whole_profil_description">
-          <%= image_tag 'pp.jpeg', class: 'sidebar_app' %>
-          <h4>Clement Moreno</h4>
-        </div>
-        <div class="whole_profil_description">
-          <%= image_tag 'pp.jpeg', class: 'sidebar_app' %>
-          <h4>Clement Moreno</h4>
-        </div>
-        <div class="whole_profil_description">
-          <%= image_tag 'pp.jpeg', class: 'sidebar_app' %>
-          <h4>Clement Moreno</h4>
-        </div>
-        <div class="whole_profil_description">
-          <%= image_tag 'pp.jpeg', class: 'sidebar_app' %>
-          <h4>Clement Moreno</h4>
-        </div>
-        <div class="whole_profil_description">
-          <%= image_tag 'pp.jpeg', class: 'sidebar_app' %>
-          <h4>Clement Moreno</h4>
-        </div>
-        <div class="whole_profil_description">
-          <%= image_tag 'pp.jpeg', class: 'sidebar_app' %>
-          <h4>Clement Moreno</h4>
-        </div>
-        <div class="whole_profil_description">
-          <%= image_tag 'pp.jpeg', class: 'sidebar_app' %>
-          <h4>Clement Moreno</h4>
-        </div>
-        <div class="whole_profil_description">
-          <%= image_tag 'pp.jpeg', class: 'sidebar_app' %>
-          <h4>Clement Moreno</h4>
-        </div>
-        <div class="whole_profil_description">
-          <%= image_tag 'pp.jpeg', class: 'sidebar_app' %>
-          <h4>Clement Moreno</h4>
-        </div>
-        <div class="whole_profil_description">
-          <%= image_tag 'pp.jpeg', class: 'sidebar_app' %>
-          <h4>Clement Moreno</h4>
+        <div class="input">
+          <input type="text" placeholder="Un nom, un poste ?" id="my_search">
         </div>
       </div>
     </div>
+    <ul id="thumbnail_dragdrop">
+      <% @users.each do |user|  %>
+        <li class="modif_contenu">
+          <div class="whole_profil_description">
+            <%= image_tag "pp.jpeg", class:"pp" %>
+            <%= user.username %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+    <ul id="test" style='background: red; padding: 50px'>
+    </ul>
   </div>
+</div>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-      crossorigin="anonymous"></script>
+      crossorigin="anonymous">
+</script>

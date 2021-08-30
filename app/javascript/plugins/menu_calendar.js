@@ -1,15 +1,12 @@
 
-import {calendar2} from "../plugins/calendar"
-import {calendar} from "../plugins/calendar"
+import {calendar2} from "./_calendar"
+import {calendar} from "./_calendar"
 
 // // fonction previous next today
-document.addEventListener('turbolinks:load', () => {
 const next_month = document.getElementById("right_arrow_month");
 const next_day = document.getElementById("right_arrow_day");
 const prev_month = document.getElementById("left_arrow_month");
   const prev_day = document.getElementById("left_arrow_day");
-const current_month = document.getElementById("current-month");
-const current_day = document.getElementById("current-day");
 
 next_month.addEventListener("click", () => {
   calendar.next()
@@ -22,6 +19,5 @@ prev_month.addEventListener("click", () => {
 });
 prev_day.addEventListener("click", () => {
   calendar2.prev()
-});
 });
 // //___________________________________________________

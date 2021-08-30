@@ -83,6 +83,7 @@ th, td{
     height: 50px;
     object-fit: cover;
     border-radius: 50%;
+    list-style: none;
 }
 .tableau-style{
   background: white;
@@ -109,4 +110,12 @@ tr{
 
 td {
   display: flex;
+}
+#almost{
+    font-size: 24px;
+    color: orange;
+}
+#danger{
+    font-size: 24px;
+    color: red;
 }
