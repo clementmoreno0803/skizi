@@ -5,9 +5,6 @@ import 'tui-time-picker/dist/tui-time-picker.css';
 import {MONTHLY_CUSTOM_THEME } from './templates';
 import {templates} from './templates';
 
-console.log('coucou')
-
-
 const calendar = new Calendar('#calendar-month', {
   defaultView: 'month',
   useCreationPopup: true,
