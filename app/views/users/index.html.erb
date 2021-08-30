@@ -6,11 +6,14 @@
   </div>
     <div class="search_bar_container">
           <div class="search_bar">
-            <div class="search_icon">
-                <i class='bx bx-search-alt'></i>
-            </div>
             <div class="input">
-              <input type="text" placeholder="Votre recherche ici " id="my_search_index">
+              <%= simple_form_for :search, method: :get do |f| %>
+              <%= f.input :query, placeholder: "Find a user",
+                          label: false,
+                          input_html: { name: :query,
+                          value: params.dig(:query),
+                          id: 'my-search' } %>
+              <% end %>
             </div>
           </div>
         </div>
@@ -18,7 +21,7 @@
       <table class="tableau-style">
         <tbody>
             <tr>
-              <td><%= image_tag "images/pp.jpeg", class:"pp" %></td>
+              <td><%= image_tag "pp.jpg", class:"pp" %></td>
               <td><strong><%= user.username %></strong></td>
               <td class="display-jobs">
                 <% user.jobs.each do |job| %>
