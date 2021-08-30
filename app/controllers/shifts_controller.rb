@@ -5,6 +5,7 @@ class ShiftsController < ApplicationController
     @shifts = Shift.all
     @usershifts = UserShift.all
     @users = User.all
+    search_bar
     @user_shifts = @usershifts.map do |usershift|
       {
         id: usershift.id,
@@ -58,5 +59,12 @@ class ShiftsController < ApplicationController
 
   def find_shift
     @shift = Shift.find(params[:id])
+  end
+
+  def search_bar
+    if params[:query].present?
+      sql_query = "\ users.username @@ :query \ OR jobs.job @@ :query"
+      @users = User.joins(:jobs).where(sql_query, query: "%#{params[:query]}%").distinct
+    end
   end
 end
