@@ -5,7 +5,7 @@ import 'tui-time-picker/dist/tui-time-picker.css';
 import {MONTHLY_CUSTOM_THEME} from './templates';
 import {templates} from './templates';
 import CustomEvents from 'tui-code-snippet/customEvents/customEvents';
-
+import { templates_month } from './templates';
 function RandomColor() {
   var letters = '0123456789ABCDEF';
   var color = '#';
@@ -20,13 +20,14 @@ const calendar = new Calendar('#calendar-month', {
   defaultView: 'month',
   useCreationPopup: true,
   useDetailPopup: true,
-  scheduleView: ['time'],
+  scheduleView: ['allday'],
+  scheduleCategory: 'allday',
   theme: MONTHLY_CUSTOM_THEME,
   template: {
     monthDayname: function (dayname) {
       return '<span class="calendar-month-dayname-name">' + dayname.label + '</span>';
     },
-    templates
+    templates_month
   }
 });
 
@@ -37,8 +38,8 @@ const calendar2 = new Calendar('#calendar-day', {
   useDetailPopup: true,
   scheduleView: ['time'],
   week:{
-    hourStart: 18,
-    hourEnd: 21
+    hourStart: 9,
+    hourEnd: 22
   },
   template: {
     Dayname: function (dayname) {
@@ -67,12 +68,11 @@ user_shifts.forEach((i) => {
 });
 
 user_shifts.forEach((i) => {
-  console.log(i.id.string), console.log(i.title), console.log(i.job), console.log(i.start), console.log(i.end), console.log('1')
   calendar2.createSchedules([
     {
-      id: i.id,
+      id: `${i.id}`,
       calendarId: '1',
-      title: i.title,
+      title: `${i.title}`,
       category: 'time',
       dueDateClass: '',
       start: `${i.start}`,
@@ -82,7 +82,45 @@ user_shifts.forEach((i) => {
   ])
 });
 
+calendar.on({
+  'clickSchedule': function (e) {
+    console.log('clickSchedule', e);
+  },
+  'beforeCreateSchedule': function (e) {
+    console.log('beforeCreateSchedule', e);
+    // open a creation popup
+  },
+  'beforeUpdateSchedule': function (e) {
+    console.log('beforeUpdateSchedule', e);
+    e.schedule.start = e.start;
+    e.schedule.end = e.end;
+    calendar.updateSchedule(e.schedule.id, e.schedule.calendarId, e.schedule);
+  },
+  'beforeDeleteSchedule': function (e) {
+    console.log('beforeDeleteSchedule', e);
+    calendar.deleteSchedule(e.schedule.id, e.schedule.calendarId);
+  }
+});
 
+calendar2.on({
+  'clickSchedule': function (e) {
+    console.log('clickSchedule', e);
+  },
+  'beforeCreateSchedule': function (e) {
+    console.log('beforeCreateSchedule', e);
+    // open a creation popup
+  },
+  'beforeUpdateSchedule': function (e) {
+    console.log('beforeUpdateSchedule', e);
+    e.schedule.start = e.start;
+    e.schedule.end = e.end;
+    calendar2.updateSchedule(e.schedule.id, e.schedule.calendarId, e.schedule);
+  },
+  'beforeDeleteSchedule': function (e) {
+    console.log('beforeDeleteSchedule', e);
+    calendar2.deleteSchedule(e.schedule.id, e.schedule.calendarId);
+  }
+});
 
 export {calendar2}
 export {calendar}
