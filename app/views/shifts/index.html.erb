@@ -22,15 +22,34 @@
     </div>
 </div>
 <div class="modif_manuelle">
-  <div class="profil_container">
-    <div class="search_bar_container">
-      <div class="search_bar">
-        <div class="search_icon">
-            <i class='bx bx-search-alt'></i>
+    <div class="profil_container">
+        <div class="search_bar_container">
+          <div class="search_bar">
+            <div class="search_icon">
+                <i class='bx bx-search-alt'></i>
+            </div>
+            <div class="search_bar_container">
+              <div class="search_bar">
+                <div class="input">
+                  <%= simple_form_for :search, method: :get do |f| %>
+                  <%= f.input :query, placeholder: "Find a user",
+                              label: false,
+                              input_html: { name: :query,
+                              value: params.dig(:query),
+                              id: 'my_search' } %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="input">
-          <input type="text" placeholder="Un nom, un poste ?" id="my_search">
+      <div class="modif_contenu">
+        <% @users.each do |user| %>
+        <div class="whole_profil_description">
+          <%= image_tag 'pp.jpg', class: 'sidebar_app' %>
+          <h4><%= user.username %></h4>
         </div>
+        <% end %>
       </div>
     </div>
     <ul id="thumbnail_dragdrop">
