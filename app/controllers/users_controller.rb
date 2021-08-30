@@ -1,13 +1,9 @@
 class UsersController < ApplicationController
-  # skip_before_action :authenticate_user!, only: %i[index new create]
-  before_action :find_user, only: %i[show edit update]
+  before_action :find_user, only: %i[edit update]
 
   def index
     @users = User.all
     search_bar
-  end
-
-  def show
   end
 
   def new
@@ -29,7 +25,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to user_path(@user)
+      redirect_to users_path
     else
       render :edit
     end

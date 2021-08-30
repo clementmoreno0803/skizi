@@ -4,7 +4,6 @@ document.addEventListener('turbolinks:load', () => {
   let search_bar = document.querySelector(".search_bar")
   let scaling_calendar = document.querySelector(".calendar");
 const scaled_sidebar = document.querySelector(".modif_manuelle")
-console.log(scaled_sidebar)
 
 icon.addEventListener("click", (event) => {
   scaled_sidebar.classList.toggle('active');
@@ -15,10 +14,9 @@ icon.addEventListener("click", (event) => {
 
 document.addEventListener('turbolinks:load', () => {
 
-  let input = document.querySelector("#my_search_index")
-  let search_bar_index = document.querySelector(".search_bar")
+  let input = document.querySelector("#my_search")
 
-  input.addEventListener("click", () =>{
-    search_bar_index.classList.toggle('active')
-  })
+  input.addEventListener("submit", function (e) {
+    e.preventDefault();
+  }, true)
 });
