@@ -60,7 +60,7 @@ class ShiftsController < ApplicationController
   def search_bar
     if params[:query].present?
       sql_query = "\ users.username @@ :query \ OR jobs.job @@ :query"
-      @users = User.joins(:jobs).where(sql_query, query: "%#{params[:query]}%")
+      @users = User.joins(:jobs).where(sql_query, query: "%#{params[:query]}%").distinct
     end
   end
 end

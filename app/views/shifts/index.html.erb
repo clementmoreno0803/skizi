@@ -34,7 +34,8 @@
                   <%= f.input :query, placeholder: "Find a user",
                               label: false,
                               input_html: { name: :query,
-                              value: params.dig(:query) } %>
+                              value: params.dig(:query),
+                              id: 'my_search' } %>
                   <% end %>
                 </div>
               </div>
