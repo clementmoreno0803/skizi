@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    search_bar
   end
 
   def show
@@ -42,5 +43,16 @@ class UsersController < ApplicationController
 
   def find_user
     @user = User.find(params[:id])
+  end
+
+  def search_bar
+    if params[:query].present?
+      sql_query = "\ users.username @@ :query"
+      @users = @users.where(sql_query, query: "%#{params[:query]}%")
+    end
+    if params[:job].present?
+      sql_query2 = "\ jobs.job @@ :job"
+      @users = User.joins(:jobs).where(jobs: { job: params[:job] }).distinct
+    end
   end
 end

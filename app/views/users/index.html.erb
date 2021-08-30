@@ -6,11 +6,20 @@
   </div>
     <div class="search_bar_container">
           <div class="search_bar">
-            <div class="search_icon">
-                <i class='bx bx-search-alt'></i>
-            </div>
             <div class="input">
-              <input type="text" placeholder="Votre recherche ici " id="my_search_index">
+              <%= simple_form_for :search, method: :get do |f| %>
+              <%= f.input :query, placeholder: "Find a user",
+                          label: false,
+                          input_html: { name: :query,
+                          value: params.dig(:query) } %>
+               <%= f.input :job, collection: Job.all,
+                            selected: params.dig(:job),
+                            include_blank: true,
+                            label_method: :job,
+                            label: false,
+                            input_html: { name: :job } %>
+              <%= f.submit "Search", class: "btn btn-primary"  %>
+              <% end %>
             </div>
           </div>
         </div>
