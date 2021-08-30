@@ -12,12 +12,6 @@
                           label: false,
                           input_html: { name: :query,
                           value: params.dig(:query) } %>
-               <%= f.input :job, collection: Job.all,
-                            selected: params.dig(:job),
-                            include_blank: true,
-                            label_method: :job,
-                            label: false,
-                            input_html: { name: :job } %>
               <%= f.submit "Search", class: "btn btn-primary"  %>
               <% end %>
             </div>
@@ -27,7 +21,7 @@
       <table class="tableau-style">
         <tbody>
             <tr>
-              <td><%= image_tag "images/pp.jpeg", class:"pp" %></td>
+              <td><%= image_tag "pp.jpg", class:"pp" %></td>
               <td><strong><%= user.username %></strong></td>
               <td class="display-jobs">
                 <% user.jobs.each do |job| %>

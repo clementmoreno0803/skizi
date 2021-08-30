@@ -47,12 +47,8 @@ class UsersController < ApplicationController
 
   def search_bar
     if params[:query].present?
-      sql_query = "\ users.username @@ :query"
-      @users = @users.where(sql_query, query: "%#{params[:query]}%")
-    end
-    if params[:job].present?
-      sql_query2 = "\ jobs.job @@ :job"
-      @users = User.joins(:jobs).where(jobs: { job: params[:job] }).distinct
+      sql_query = "\ users.username @@ :query \ OR jobs.job @@ :query"
+      @users = User.joins(:jobs).where(sql_query, query: "%#{params[:query]}%")
     end
   end
 end
