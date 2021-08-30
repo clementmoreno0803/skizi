@@ -1,24 +1,23 @@
-document.addEventListener('turbolinks:load', () => {
-
+const initSearchBar = () => {
+  // right sidebar
   let icon = document.querySelector(".search_icon")
   let search_bar = document.querySelector(".search_bar")
   let scaling_calendar = document.querySelector(".calendar");
-const scaled_sidebar = document.querySelector(".modif_manuelle")
-console.log(scaled_sidebar)
+  const scaled_sidebar = document.querySelector(".modif_manuelle")
 
-icon.addEventListener("click", (event) => {
-  scaled_sidebar.classList.toggle('active');
-  search_bar.classList.toggle('active');
-  scaling_calendar.classList.toggle('open')
-});
-});
+  // // search bar user index
+  // let input = document.querySelector("#my_search")
+  // let search_bar_index = document.querySelector(".search_bar")
 
-document.addEventListener('turbolinks:load', () => {
+  // return if we are not on the shift index
+  if (!icon)
+    return
 
-  let input = document.querySelector("#my_search_index")
-  let search_bar_index = document.querySelector(".search_bar")
+  icon.addEventListener("click", (event) => {
+    scaled_sidebar.classList.toggle('active');
+    search_bar.classList.toggle('active');
+    scaling_calendar.classList.toggle('open')
+  });
+}
 
-  input.addEventListener("click", () =>{
-    search_bar_index.classList.toggle('active')
-  })
-});
+export default initSearchBar;
