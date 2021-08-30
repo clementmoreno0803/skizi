@@ -7,9 +7,6 @@ const initSearchBar = (Rails) => {
   const scaled_sidebar = document.querySelector(".modif_manuelle")
   const form = document.querySelector(".search_bar form")
 
-  // // search bar user index
-  // let search_bar_index = document.querySelector(".search_bar")
-
   // return if we are not on the shift index
   if (!icon)
     return

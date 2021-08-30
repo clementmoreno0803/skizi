@@ -1,7 +1,3 @@
-// This file is automatically compiled by Webpack, along with any other files
-// present in this directory. You're encouraged to place your actual application logic in
-// a relevant structure within app/javascript and only use these pack files to reference
-// that code so it'll be compiled.
 
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
@@ -30,10 +26,11 @@ import initSearchBar from "../components/search_bar";
 import "../plugins/calendar";
 import "../plugins/menu_calendar";
 import "../components/alerts";
-
 import initDrapEmployeeOnCalendar from "../plugins/drag_drop";
+import initAlertOfWorkingTime from "../components/alerts";
 
 document.addEventListener('turbolinks:load', () => {
-  initSearchBar(Rails)
-  initDrapEmployeeOnCalendar()
+  initSearchBar(Rails);
+  initDrapEmployeeOnCalendar();
+  initAlertOfWorkingTime();
 });
