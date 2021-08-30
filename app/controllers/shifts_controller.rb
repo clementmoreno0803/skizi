@@ -5,21 +5,28 @@ class ShiftsController < ApplicationController
     @shifts = Shift.all
     @usershifts = UserShift.all
     @users = User.all
-    search_bar
     @user_shifts = @usershifts.map do |usershift|
-    {
-      id: usershift.id,
-      job: usershift.job,
-      title: usershift.employee.username,
-      start: usershift.shift.started_at,
-      end: usershift.shift.ended_at
-    }
-  end
+      {
+        id: usershift.id,
+        job: usershift.job,
+        title: usershift.employee.username,
+        start: usershift.shift.started_at,
+        end: usershift.shift.ended_at
+      }
+    end
   # @calendar = true
   # if @calendar = true
   #   render :calendar => 'display:block'
   # end
   end
+
+  def search_employee
+    sql_query = "\ users.username iLIKE :query \ OR jobs.job iLIKE :query"
+    @users = User.joins(:jobs).where(sql_query, query: "%#{params[:query]}%").distinct
+    p "je suis la"
+    p @users
+  end
+
 
   def new
     @shift = Shift.new
@@ -59,12 +66,5 @@ class ShiftsController < ApplicationController
 
   def find_shift
     @shift = Shift.find(params[:id])
-  end
-
-  def search_bar
-    if params[:query].present?
-      sql_query = "\ users.username @@ :query \ OR jobs.job @@ :query"
-      @users = User.joins(:jobs).where(sql_query, query: "%#{params[:query]}%").distinct
-    end
   end
 end

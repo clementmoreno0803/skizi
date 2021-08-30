@@ -27,7 +27,7 @@ import "bootstrap";
 import "../components/sidebars";
 import "../components/notifications";
 import initSearchBar from "../components/search_bar";
-import "../plugins/_calendar";
+import "../plugins/calendar";
 import "../plugins/menu_calendar";
 import "../components/alerts";
 
