@@ -12,7 +12,9 @@
             <i class='bx bx-message-alt'></i>
           </div>
           <%= image_tag 'pp.jpg', class: 'pp' %>
+          <% if user_signed_in? %>
           <h3><%= current_user.username %></h3>
+          <% end %>
       </div>
     </div>
   </div>
