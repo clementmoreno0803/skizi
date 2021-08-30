@@ -28,14 +28,13 @@
               <td><%= user.contract_hours_per_week %> Heures</td>
               <td>22heures / <span style="color:green">25 heures</span></td>
               <td>
-              <i class='bx bxs-error' id="nothing"></i>
-              <i class='bx bxs-error' id="almost"></i>
-              <i class='bx bxs-error' id="danger"></i>
+              <%= image_tag "alert.png", class:"almost", style: "width: 30px"%>
+              <%= image_tag "DANGER.png", class:"danger" %>
               </td>
               <td>
               <%= image_tag "edit.png", style:'width:30px' %></td>
             </tr>
           </tbody>
         </table>
-      <% end %>
+    <% end %>
 </div>
