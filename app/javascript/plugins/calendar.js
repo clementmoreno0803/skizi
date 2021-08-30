@@ -5,29 +5,6 @@
 // import {MONTHLY_CUSTOM_THEME } from './templates';
 // import {templates} from './templates';
 
-  const calendar = new Calendar('#calendar-month', {
-    defaultView: 'month',
-    useCreationPopup: true,
-    useDetailPopup: true,
-    scheduleView: ['time'],
-    theme: MONTHLY_CUSTOM_THEME,
-    template: {
-      monthDayname: function (dayname) {
-        return '<span class="calendar-month-dayname-name">' + dayname.label + '</span>';
-      },
-      templates
-    }
-  });
-
-function RandomColor() {
-  var letters = '0123456789ABCDEF';
-  var color = '#';
-  for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-}
-
 const calendar = new Calendar('#calendar-month', {
   defaultView: 'month',
   useCreationPopup: true,

@@ -24,6 +24,7 @@ employee4 = User.create!(email: 'tutu@gmail.com', password: 'tututu', password_c
                          username: 'tutu tutu', contract_hours_per_week: 12)
 employee5 = User.create!(email: 'tete@gmail.com', password: 'tetete', password_confirmation: 'tetete',
                          username: 'tete tete', contract_hours_per_week: 15)
+employee6 = User.create!(email: "michael@gmail.com")
 user_manager = User.create!(email: 'charlie@gmail.com', password: 'charlie', password_confirmation:
                             'charlie', username: 'Charlie Morizot', contract_hours_per_week: 90)
 

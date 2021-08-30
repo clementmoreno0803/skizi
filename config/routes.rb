@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   resources :shifts do
     resources :user_shifts
     resources :reclamations, only: %i[new create]
+    get :search_employee, on: :collection
   end
 end

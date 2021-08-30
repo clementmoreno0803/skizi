@@ -8,7 +8,7 @@
           <div class="search_bar">
             <div class="input">
               <%= simple_form_for :search, method: :get do |f| %>
-              <%= f.input :query, placeholder: "Find a user",
+              <%= f.input :query, placeholder: "Find an employee",
                           label: false,
                           input_html: { name: :query,
                           value: params.dig(:query),
@@ -35,7 +35,7 @@
               <%= image_tag "DANGER.png", class:"danger" %>
               </td>
               <td>
-              <%= image_tag "edit.png", style:'width:30px' %></td>
+              <%= link_to image_tag("edit.png"), edit_user_path(user), style:'width:30px' %></td>
             </tr>
           </tbody>
         </table>
