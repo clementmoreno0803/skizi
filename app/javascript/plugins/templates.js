@@ -1,4 +1,4 @@
-const templates_month = {
+const templates= {
   popupIsAllDay: function () {
     return 'All Day';
   },
@@ -113,25 +113,71 @@ const templates_month = {
   monthDayname: function(model) {
     return String(model.label).toLocaleUpperCase();
   },
-  dayGridTitle: function(viewName) {
-    /*
-     * use another functions instead of 'dayGridTitle'
-     * milestoneTitle: function() {...}
-     * taskTitle: function() {...}
-     * alldayTitle: function() {...}
-    */
+  weekDayname: function (model) {
+    return '<span class="tui-full-calendar-dayname-date">' + model.date + '</span>&nbsp;&nbsp;<span class="tui-full-calendar-dayname-name">' + model.dayName + '</span>';
+  },
+  weekGridFooterExceed: function (hiddenSchedules) {
+    return '+' + hiddenSchedules;
+  },
+  dayGridTitle: function (viewName) {
 
     return getGridTitleTemplate(viewName);
   },
-  schedule: function(schedule) {
-    /*
-     * use another functions instead of 'schedule'
-     * milestone: function() {...}
-     * task: function() {...}
-     * allday: function() {...}
-    */
+  schedule: function (schedule) {
 
     return getGridCategoryTemplate(schedule.category, schedule);
+  },
+  collapseBtnTitle: function () { // ??? 어떤 템플릿인가요??
+    return '<span class="tui-full-calendar-icon tui-full-calendar-ic-arrow-solid-top"></span>';
+  },
+  timezoneDisplayLabel: function (timezoneOffset, displayLabel) {
+    var gmt, hour, minutes;
+
+    if (!displayLabel) {
+      gmt = timezoneOffset < 0 ? '-' : '+';
+      hour = Math.abs(parseInt(timezoneOffset / 60, 10));
+      minutes = Math.abs(timezoneOffset % 60);
+      displayLabel = gmt + getPadStart(hour) + ':' + getPadStart(minutes);
+    }
+    return displayLabel;
+  },
+  timegridDisplayPrimayTime: function (time) {
+    /* will be deprecated. use 'timegridDisplayPrimaryTime' */
+    const hour = time.hour;
+    const meridiem = hour >= 12 ? 'pm' : 'am';
+
+    if (hour > 12) {
+      hour = hour - 12;
+    }
+
+    return hour + ' ' + meridiem;
+  },
+  timegridDisplayPrimaryTime: function (time) {
+    const hour = time.hour;
+    const meridiem = hour >= 12 ? 'pm' : 'am';
+
+    if (hour > 12) {
+      hour = hour - 12;
+    }
+
+    return hour + ' ' + meridiem;
+  },
+  timegridDisplayTime: function (time) {
+    return getPadStart(time.hour) + ':' + getPadStart(time.hour);
+  },
+  timegridCurrentTime: function (timezone) {
+    const templates = [];
+
+    if (!timezone) {
+      return '';
+    }
+
+    if (timezone.dateDifference !== 0) {
+      templates.push('[' + timezone.dateDifferenceSign + timezone.dateDifference + ']<br>');
+    }
+
+    templates.push(moment(timezone.hourmarker.toUTCString()).format('HH:mm'));
+    return templates.join('');
   }
 };
 
@@ -216,7 +262,7 @@ function getGridTitleTemplate(type) {
 }
 
 function getGridCategoryTemplate(category, schedule) {
-  const tpl;
+  var tpl;
 
   switch (category) {
     case 'milestone':
@@ -237,89 +283,5 @@ function getPadStart(value) {
 
     return padStart.call(value, 2, '0');
   }
-
-  // register templates
-  const templates = {
-    weekDayname: function(model) {
-      return '<span class="tui-full-calendar-dayname-date">' + model.date + '</span>&nbsp;&nbsp;<span class="tui-full-calendar-dayname-name">' + model.dayName + '</span>';
-    },
-    weekGridFooterExceed: function(hiddenSchedules) {
-      return '+' + hiddenSchedules;
-    },
-    dayGridTitle: function(viewName) {
-      /*
-       * use another functions instead of 'dayGridTitle'
-       * milestoneTitle: function() {...}
-       * taskTitle: function() {...}
-       * alldayTitle: function() {...}
-      */
-
-      return getGridTitleTemplate(viewName);
-    },
-    schedule: function(schedule) {
-      /*
-       * use another functions instead of 'schedule'
-       * milestone: function() {...}
-       * task: function() {...}
-       * allday: function() {...}
-      */
-
-      return getGridCategoryTemplate(schedule.category, schedule);
-    },
-    collapseBtnTitle: function() { // ??? 어떤 템플릿인가요??
-      return '<span class="tui-full-calendar-icon tui-full-calendar-ic-arrow-solid-top"></span>';
-    },
-    timezoneDisplayLabel: function(timezoneOffset, displayLabel) {
-      const gmt, hour, minutes;
-
-      if (!displayLabel) {
-        gmt = timezoneOffset < 0 ? '-' : '+';
-        hour = Math.abs(parseInt(timezoneOffset / 60, 10));
-        minutes = Math.abs(timezoneOffset % 60);
-        displayLabel = gmt + getPadStart(hour) + ':' + getPadStart(minutes);
-      }
-      return displayLabel;
-    },
-    timegridDisplayPrimayTime: function(time) {
-      /* will be deprecated. use 'timegridDisplayPrimaryTime' */
-      const hour = time.hour;
-      const meridiem = hour >= 12 ? 'pm' : 'am';
-
-      if (hour > 12) {
-        hour = hour - 12;
-      }
-
-      return hour + ' ' + meridiem;
-    },
-    timegridDisplayPrimaryTime: function(time) {
-      const hour = time.hour;
-      const meridiem = hour >= 12 ? 'pm' : 'am';
-
-      if (hour > 12) {
-        hour = hour - 12;
-      }
-
-      return hour + ' ' + meridiem;
-    },
-    timegridDisplayTime: function(time) {
-      return getPadStart(time.hour) + ':' + getPadStart(time.hour);
-    },
-    timegridCurrentTime: function(timezone) {
-      const templates = [];
-
-      if (!timezone) {
-          return '';
-      }
-
-      if (timezone.dateDifference !== 0) {
-          templates.push('[' + timezone.dateDifferenceSign + timezone.dateDifference + ']<br>');
-      }
-
-      templates.push(moment(timezone.hourmarker.toUTCString()).format('HH:mm'));
-      return templates.join('');
-    }
-  };
 export {MONTHLY_CUSTOM_THEME}
-export {templates_month}
-export {templates_week}
 export {templates}
