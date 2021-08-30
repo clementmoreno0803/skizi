@@ -9,6 +9,7 @@
     "bootstrap": "4.6",
     "jquery": "^3.6.0",
     "popper.js": "^1.16.1",
+    "sortablejs": "^1.14.0",
     "tui-calendar": "^1.13.1",
     "tui-code-snippet": "^2.3.3",
     "turbolinks": "^5.2.0",
@@ -17,6 +18,7 @@
   },
   "version": "0.1.0",
   "devDependencies": {
-    "webpack-dev-server": "^4.0.0"
+    "@webpack-cli/serve": "^1.5.2",
+    "webpack-dev-server": "3.11.2"
   }
 }

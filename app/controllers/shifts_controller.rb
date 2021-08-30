@@ -7,14 +7,18 @@ class ShiftsController < ApplicationController
     @users = User.all
     search_bar
     @user_shifts = @usershifts.map do |usershift|
-      {
-        id: usershift.id,
-        job: usershift.job,
-        title: usershift.employee.username,
-        start: usershift.shift.started_at,
-        end: usershift.shift.ended_at
-      }
-    end
+    {
+      id: usershift.id,
+      job: usershift.job,
+      title: usershift.employee.username,
+      start: usershift.shift.started_at,
+      end: usershift.shift.ended_at
+    }
+  end
+  # @calendar = true
+  # if @calendar = true
+  #   render :calendar => 'display:block'
+  # end
   end
 
   def new

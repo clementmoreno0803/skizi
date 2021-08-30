@@ -32,11 +32,10 @@ h4{
 .modif_contenu{
     display: flex;
     background: $yellow;
-    padding: 15% 0px;
+    padding: 10px 0px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 10px;
 }
 .sidebar_pp{
   display: none;
@@ -64,14 +63,15 @@ h4{
 display: none;
 }
 .modif_manuelle.open.active h4{
-  display: block;
-  margin-left: 5px;
+    display: block;
+    margin-left: 5px;
+    width: 80px;
 
 }
 .modif_manuelle.open.active .whole_profil_description{
     display: flex;
     align-items: center;
-    width: 100%;
-    justify-content: center;
+    width: 92%;
     transition: all ease 1s;
+    justify-content: center;
 }
