@@ -5,39 +5,39 @@
 // import {MONTHLY_CUSTOM_THEME } from './templates';
 // import {templates} from './templates';
 
-const calendar = new Calendar('#calendar-month', {
-  defaultView: 'month',
-  useCreationPopup: true,
-  useDetailPopup: true,
-  scheduleView: ['time'],
-  taskView: ['task'],
-  theme: MONTHLY_CUSTOM_THEME,
-  template: {
-    monthDayname: function (dayname) {
-      return '<span class="calendar-month-dayname-name">' + dayname.label + '</span>';
-    },
-    templates
-  }
-});
-calendar.on({
-  'clickSchedule': function (e) {
-    console.log('clickSchedule', e);
-  },
-  'beforeCreateSchedule': function (e) {
-    console.log('beforeCreateSchedule', e);
-    calendar2.createSchedules([
-      {
-        id: `${e.id}`,
-        calendarId: '1',
-        title: `${e.title}`,
-        category: 'time',
-        dueDateClass: '',
-        start: `${e.start._date}`,
-        end: `${e.end._date}`,
-        bgColor: RandomColor
-      }
-    ])
-  },
+// const calendar = new Calendar('#calendar-month', {
+//   defaultView: 'month',
+//   useCreationPopup: true,
+//   useDetailPopup: true,
+//   scheduleView: ['time'],
+//   taskView: ['task'],
+//   theme: MONTHLY_CUSTOM_THEME,
+//   template: {
+//     monthDayname: function (dayname) {
+//       return '<span class="calendar-month-dayname-name">' + dayname.label + '</span>';
+//     },
+//     templates
+//   }
+// });
+// calendar.on({
+//   'clickSchedule': function (e) {
+//     console.log('clickSchedule', e);
+//   },
+//   'beforeCreateSchedule': function (e) {
+//     console.log('beforeCreateSchedule', e);
+//     calendar2.createSchedules([
+//       {
+//         id: `${e.id}`,
+//         calendarId: '1',
+//         title: `${e.title}`,
+//         category: 'time',
+//         dueDateClass: '',
+//         start: `${e.start._date}`,
+//         end: `${e.end._date}`,
+//         bgColor: RandomColor
+//       }
+//     ])
+//   },
   'beforeUpdateSchedule': function (e) {
     console.log('beforeUpdateSchedule', e);
     e.schedule.start = e.start;

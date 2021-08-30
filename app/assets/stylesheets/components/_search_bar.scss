@@ -43,13 +43,13 @@
     justify-content: center;
     transition: all ease-in-out 1s;
 
-    #my_search{
+    #query{
       opacity: 1;
       border:hidden;
       outline: none;
       transition: all ease-in-out 1s;
     }
 }
-.search_bar .input #my_search{
+.search_bar .input #query{
     opacity: 0;
 }
