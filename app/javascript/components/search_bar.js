@@ -5,9 +5,9 @@ const initSearchBar = () => {
   let scaling_calendar = document.querySelector(".calendar");
   const scaled_sidebar = document.querySelector(".modif_manuelle")
 
-  // // search bar user index
-  // let input = document.querySelector("#my_search")
-  // let search_bar_index = document.querySelector(".search_bar")
+  // search bar user index
+  let input = document.querySelector("#my_search")
+  let search_bar_index = document.querySelector(".search_bar")
 
   // return if we are not on the shift index
   if (!icon)
