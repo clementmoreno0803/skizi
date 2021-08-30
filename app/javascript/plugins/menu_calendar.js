@@ -1,6 +1,6 @@
 
-import {calendar2} from "./_calendar"
-import {calendar} from "./_calendar"
+import {calendar2} from "./calendar"
+import {calendar} from "./calendar"
 
 // // fonction previous next today
 const next_month = document.getElementById("right_arrow_month");

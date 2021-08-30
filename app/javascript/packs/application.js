@@ -30,6 +30,7 @@ import initSearchBar from "../components/search_bar";
 import "../plugins/_calendar";
 import "../plugins/menu_calendar";
 import "../components/alerts";
+
 import initDrapEmployeeOnCalendar from "../plugins/drag_drop";
 
 document.addEventListener('turbolinks:load', () => {

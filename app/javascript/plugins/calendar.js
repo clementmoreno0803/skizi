@@ -5,19 +5,21 @@ import 'tui-time-picker/dist/tui-time-picker.css';
 import {MONTHLY_CUSTOM_THEME } from './templates';
 import {templates} from './templates';
 
-const calendar = new Calendar('#calendar-month', {
-  defaultView: 'month',
-  useCreationPopup: true,
-  useDetailPopup: true,
-  scheduleView: ['time'],
-  theme: MONTHLY_CUSTOM_THEME,
-  template: {
-    monthDayname: function (dayname) {
-      return '<span class="calendar-month-dayname-name">' + dayname.label + '</span>';
-    },
-    templates
-  }
-});
+const initCalendarDayAndMonth = () => {
+  const calendar = new Calendar('#calendar-month', {
+    defaultView: 'month',
+    useCreationPopup: true,
+    useDetailPopup: true,
+    scheduleView: ['time'],
+    theme: MONTHLY_CUSTOM_THEME,
+    template: {
+      monthDayname: function (dayname) {
+        return '<span class="calendar-month-dayname-name">' + dayname.label + '</span>';
+      },
+      templates
+    }
+  });
+};
 
 const calendar2 = new Calendar('#calendar-day', {
   defaultView: 'day',
@@ -36,6 +38,8 @@ const calendar2 = new Calendar('#calendar-day', {
     templates
   }
 });
+
+
 function RandomColor() {
   var letters = '0123456789ABCDEF';
   var color = '#';
@@ -83,3 +87,4 @@ user_shifts.forEach((i) => {
 
 export {calendar2}
 export {calendar}
+export {initCalendarDayAndMonth}
