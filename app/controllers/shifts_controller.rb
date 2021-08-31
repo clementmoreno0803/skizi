@@ -1,5 +1,5 @@
 class ShiftsController < ApplicationController
-  before_action :find_shift, only: %i[show destroy edit update]
+  before_action :find_shift, only: %i[edit update]
 
   def index
     @shifts = Shift.all
@@ -48,11 +48,6 @@ class ShiftsController < ApplicationController
     else
       render :edit
     end
-  end
-
-  def destroy
-    @shift.destroy
-    redirect_to shifts_path
   end
 
   private
