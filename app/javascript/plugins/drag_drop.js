@@ -2,7 +2,7 @@ import Sortable from 'sortablejs';
 
 
 const initDrapEmployeeOnCalendar = () => {
-  const list_employees = document.getElementById('thumbnail_dragdrop');
+  const list_employees = document.querySelector('.thumbnail_dragdrop');
   const test = document.getElementById('test');
 
   if (list_employees && test){

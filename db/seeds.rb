@@ -24,7 +24,10 @@ employee4 = User.create!(email: 'tutu@gmail.com', password: 'tututu', password_c
                          username: 'tutu tutu', contract_hours_per_week: 12)
 employee5 = User.create!(email: 'tete@gmail.com', password: 'tetete', password_confirmation: 'tetete',
                          username: 'tete tete', contract_hours_per_week: 15)
-employee6 = User.create!(email: "michael@gmail.com")
+employee6 = User.create!(email: "michael@gmail.com", password: 'michael', password_confirmation:
+                        'michael', username: 'Michael Grosheny', contract_hours_per_week: 78, status: "Off")
+nathan = User.create!(email: "nathan@gmail.com", password: 'nathan', password_confirmation:
+                        'nathan', username: 'Nathan Berthier', contract_hours_per_week: 800, status: "Ongoing")
 user_manager = User.create!(email: 'charlie@gmail.com', password: 'charlie', password_confirmation:
                             'charlie', username: 'Charlie Morizot', contract_hours_per_week: 90)
 
@@ -41,6 +44,11 @@ UserJob.create!(user: employee4, job: padder)
 UserJob.create!(user: employee4, job: barman)
 UserJob.create!(user: employee5, job: padder)
 UserJob.create!(user: employee5, job: barman)
+UserJob.create!(user: employee6, job: runner)
+UserJob.create!(user: employee6, job: manager)
+UserJob.create!(user: nathan, job: padder)
+UserJob.create!(user: nathan, job: runner)
+UserJob.create!(user: nathan, job: barman)
 UserJob.create!(user: user_manager, job: manager)
 
 puts 'user_jobs created'
@@ -49,28 +57,19 @@ puts 'creating shifts'
 shift1 = Shift.create!(
   started_at: "03/09/2021 18:00",
   ended_at: "03/09/2021 21:00",
-  manager_id: user_manager.id,
-  runner_needed: 2,
-  padder_needed: 1,
-  barman_needed: 1
+  manager_id: user_manager.id
 )
 
 shift2 = Shift.create!(
   started_at: "05/09/2021 18:00",
   ended_at: "05/09/2021 21:00",
-  manager_id: user_manager.id,
-  runner_needed: 2,
-  padder_needed: 2,
-  barman_needed: 1
+  manager_id: user_manager.id
 )
 
 shift3 = Shift.create!(
   started_at: "06/09/2021 18:00",
   ended_at: "06/09/2021 21:00",
-  manager_id: user_manager.id,
-  runner_needed: 1,
-  padder_needed: 1,
-  barman_needed: 1
+  manager_id: user_manager.id
 )
 
 puts 'shifts created'

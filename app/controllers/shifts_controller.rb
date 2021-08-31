@@ -3,8 +3,8 @@ class ShiftsController < ApplicationController
 
   def index
     @shifts = Shift.all
+    @users = User.where("status = 'Ongoing'")
     @usershifts = UserShift.all
-    @users = User.where(:category["Ongoing"])
     @user_shifts = @usershifts.map do |usershift|
       {
         id: usershift.id,
@@ -14,19 +14,16 @@ class ShiftsController < ApplicationController
         end: usershift.shift.ended_at
       }
     end
-  # @calendar = true
-  # if @calendar = true
-  #   render :calendar => 'display:block'
-  # end
   end
 
   def search_employee
-    sql_query = "\ users.username iLIKE :query \ OR jobs.job iLIKE :query"
-    @users = User.joins(:jobs).where(sql_query, query: "%#{params[:query]}%").distinct
-    p "je suis la"
-    p @users
+    if params[:query].present?
+      sql_query = "\ users.username iLIKE :query \ OR jobs.job iLIKE :query"
+      @users = User.joins(:jobs).where(sql_query, query: "%#{params[:query]}%").where("status = 'Ongoing'").distinct
+    else
+      @users = User.where("status = 'Ongoing'")
+    end
   end
-
 
   def new
     @shift = Shift.new
