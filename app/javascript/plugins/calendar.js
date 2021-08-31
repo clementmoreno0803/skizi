@@ -4,12 +4,36 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
 import interactionPlugin, { Draggable } from '@fullcalendar/interaction';
-import {jobs} from "../plugins/events";
 
-let calendarEl = document.getElementById('calendar');
-const containerEl = document.getElementById('thumbnail_dragdrop');
+const JobColors = {
+  runner: '#036375',
+  barman: '#F46036',
+  padder: '#947EB0'
+}
 
-document.addEventListener('DOMContentLoaded', function () {
+const shiftToEvent = (shit) => {
+  return {
+    title: `${shit.title}`,
+    start: `${shit.start}`,
+    end: `${shit.end}`,
+    color: `${JobColors[shit.job]}`,
+    resourceEditable: true,
+  }
+}
+
+const jobs = () => {
+  const call = document.getElementById("calendar")
+  const user_shifts = JSON.parse(call.dataset.user_shifts);
+  return user_shifts.map(shiftToEvent);
+}
+
+const initCalendar = () => {
+  let calendarEl = document.getElementById('calendar');
+  const containerEl = document.getElementById('thumbnail_dragdrop');
+
+  if (!calendarEl)
+    return
+
   const calendar = new Calendar(calendarEl, {
     plugins: [dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin],
     droppable: true,
@@ -30,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function () {
       center: 'title',
       right: 'dayGridMonth,timeGridWeek,listWeek'
     },
-    events:jobs,
+    events: jobs(),
     businessHours: {
       startTime: '18:00',
       endTime: '21:00',
@@ -52,4 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   calendar.render()
 
-});
+}
+;
+
+export default initCalendar;

@@ -9,7 +9,7 @@ const initDrapEmployeeOnCalendar = () => {
     new Sortable(list_employees, {
       group: {
         name: 'shared',
-        pull: 'clone' // To clone: set pull to 'clone'
+        pull: 'clone'
       },
       animation: 150
     });
