@@ -29,16 +29,6 @@
         <%= render 'shared/user_cards', users: @users %>
       </div>
     </div>
-    <ul id="thumbnail_dragdrop">
-      <% @users.each do |user|  %>
-        <li class="modif_contenu">
-          <div class="whole_profil_description">
-            <%= image_tag "pp.jpeg", class:"pp" %>
-            <%= user.username %>
-          </div>
-        </li>
-      <% end %>
-    </ul>
     <ul id="test" style='background: red; padding: 50px'>
     </ul>
   </div>
