@@ -1,6 +1,11 @@
-<div>
-  <div>
-    <%= render 'form', developer: @user %>
+<div class="bg">
+  <div class="form_title">
+    <h2>Modifiez votre collaborateur</h2>
+    <h3>Ici vous pouvez modifier l'ensemble des critères de votre employé(e)</h3>
   </div>
-  <%= link_to 'Back', users_path %>
+  <div class="scene">
+    <div class="flipping_card">
+        <%= render 'form', developer: @user %>
+    </div>
+  </div>
 </div>
