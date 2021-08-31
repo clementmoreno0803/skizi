@@ -2,6 +2,13 @@
   "name": "skizi",
   "private": true,
   "dependencies": {
+    "@fullcalendar/bootstrap": "^5.9.0",
+    "@fullcalendar/core": "^5.9.0",
+    "@fullcalendar/daygrid": "^5.9.0",
+    "@fullcalendar/interaction": "^5.9.0",
+    "@fullcalendar/list": "^5.9.0",
+    "@fullcalendar/scrollgrid": "^5.9.0",
+    "@fullcalendar/timegrid": "^5.9.0",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",

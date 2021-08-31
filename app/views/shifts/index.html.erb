@@ -1,25 +1,7 @@
-<%# <%= render :calendar if current_page?(root_path) %> %>
-<div class="calendar">
-  <div id="calendar-day">
-    <div id="menu">
-      <div id="menu-navi">
-        <i class='bx bxs-downvote' id="left_arrow_day"></i>
-          <h2 > Par jour </h2>
-        <i class='bx bxs-downvote' id="right_arrow_day"></i>
-      </div>
-      <span id="renderRange" class="render-range"></span>
-    </div>
-  </div>
-<div id="calendar-month"
-    data-user_shifts="<%= @user_shifts.to_json %>">
-  <div id="menu">
-      <span id="menu-navi">
-        <i class='bx bxs-downvote' id="left_arrow_month"></i>
-        <h2>Par mois</h2>
-        <i class='bx bxs-downvote' id="right_arrow_month"></i>
-      </span>
-      <span id="renderRange" class="render-range"></span>
-    </div>
+
+<div id="calendar"
+    data-user_shifts="<%= @user_shifts.to_json %>" >
+
 </div>
 <div class="modif_manuelle">
     <div class="profil_container">
