@@ -23,7 +23,6 @@ const initDrapEmployeeOnCalendar = () => {
     });
 
     setTimeout(() => {
-      console.log(document.querySelectorAll('.tui-full-calendar-weekday-grid-line'))
     }, 3000);
   }
 }
