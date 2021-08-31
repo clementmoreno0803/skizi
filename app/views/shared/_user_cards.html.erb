@@ -1,6 +1,7 @@
+<div id="thumbnail_dragdrop" >
 <ul>
   <% users.each do |user|  %>
-    <div class="whole_profil_description">
+    <div class=fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event>
       <li class="modif_contenu thumbnail_dragdrop">
         <%= image_tag "pp.jpeg", class:"pp" %>
         <%= user.username %>
@@ -8,3 +9,4 @@
     </div>
   <% end %>
 </ul>
+</div>
