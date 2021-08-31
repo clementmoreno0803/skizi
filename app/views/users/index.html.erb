@@ -14,6 +14,9 @@
             </div>
           </div>
         </div>
+        <%= link_to new_user_path(@user), class:"bx bxs-plus-square" do %>
+        <h3>Ajoutez un employé ici</h3>
+        <% end %>
     <% @users.each do |user| %>
       <table class="tableau-style">
         <tbody>
