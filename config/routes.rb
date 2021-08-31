@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'shifts#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :users, except: %i[destroy show]
+  get '/search_user', to: 'users#search_user'
 
   resources :shifts do
     resources :user_shifts

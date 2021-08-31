@@ -3,7 +3,8 @@ const initSearchBar = (Rails) => {
   const icon = document.querySelector(".search_icon")
   const search_bar = document.querySelector(".search_bar")
   const scaling_calendar = document.querySelector(".calendar");
-  const text_field = document.querySelector("#query")
+  const text_field_shift = document.querySelector("#query")
+  const text_field_user = document.querySelector("#test")
   const scaled_sidebar = document.querySelector(".modif_manuelle")
   const form = document.querySelector(".search_bar form")
 
@@ -17,7 +18,10 @@ const initSearchBar = (Rails) => {
     scaling_calendar.classList.toggle('open')
   });
 
-  text_field.addEventListener("input", function(e) {
+  text_field_shift.addEventListener("input", function(e) {
+    Rails.fire(form, 'submit')
+  })
+  text_field_user.addEventListener("input", function(e) {
     Rails.fire(form, 'submit')
   })
 }

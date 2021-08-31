@@ -6,6 +6,15 @@ class UsersController < ApplicationController
     search_bar
   end
 
+  def search_user
+    if params[:test].present?
+      sql_query = "\ users.username iLIKE :test \ OR jobs.job iLIKE :test"
+      @users = User.joins(:jobs).where(sql_query, test: "%#{params[:test]}%").distinct
+    else
+      @users = User.all
+    end
+  end
+
   def new
     @user = User.new
   end
@@ -42,9 +51,9 @@ class UsersController < ApplicationController
   end
 
   def search_bar
-    if params[:query].present?
-      sql_query = "\ users.username iLIKE :query \ OR jobs.job iLIKE :query"
-      @users = User.joins(:jobs).where(sql_query, query: "%#{params[:query]}%").distinct
+    if params[:test].present?
+      sql_query = "\ users.username iLIKE :test \ OR jobs.job iLIKE :test"
+      @users = User.joins(:jobs).where(sql_query, test: "%#{params[:test]}%").distinct
     end
   end
 end
