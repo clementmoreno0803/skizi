@@ -1,5 +1,6 @@
 // Entries Calendar ..
 const call = document.getElementById("calendar")
+
 const user_shifts = JSON.parse(call.dataset.user_shifts);
 const jobs = []
 user_shifts.forEach((i) => {
