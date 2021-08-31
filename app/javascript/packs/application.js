@@ -23,11 +23,11 @@ import "bootstrap";
 import "../components/sidebars";
 import "../components/notifications";
 import initSearchBar from "../components/search_bar";
-// import "../plugins/calendar";
-// import "../plugins/menu_calendar";
+import "../plugins/calendar";
 import "../components/alerts";
 import initDrapEmployeeOnCalendar from "../plugins/drag_drop";
 import initAlertOfWorkingTime from "../components/alerts";
+import { Calendar } from "@fullcalendar/core"
 
 document.addEventListener('turbolinks:load', () => {
   initSearchBar(Rails);
