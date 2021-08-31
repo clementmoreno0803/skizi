@@ -14,10 +14,10 @@ manager = Job.create!(job: 'Manager')
 puts 'jobs created'
 puts 'creating users'
 
-employee1 = User.create!(email: 'toto@gmail.com', password: 'tototo', password_confirmation: 'tototo',
-                         username: 'toto toto', contract_hours_per_week: 15)
-employee2 = User.create!(email: 'tata@gmail.com', password: 'tatata', password_confirmation: 'tatata',
-                         username: 'tata tata', contract_hours_per_week: 20)
+employee1 = User.create!(email: 'bruno@gmail.com', password: 'bruno', password_confirmation: 'bruno',
+                         username: 'Bruno Latourelle', contract_hours_per_week: 15)
+employee2 = User.create!(email: 'martine@gmail.com', password: 'martine', password_confirmation: 'martine',
+                         username: 'Martine Charbonneau', contract_hours_per_week: 20)
 employee3 = User.create!(email: 'titi@gmail.com', password: 'tititi', password_confirmation: 'tititi',
                          username: 'titi titi', contract_hours_per_week: 21)
 employee4 = User.create!(email: 'tutu@gmail.com', password: 'tututu', password_confirmation: 'tututu',
