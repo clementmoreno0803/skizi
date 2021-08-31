@@ -3,6 +3,9 @@ const initAlertOfWorkingTime = () => {
   const almost_finish = document.querySelector('.almost');
   const finish = document.querySelector('.danger');
 
+  if (!almost_finish)
+    return
+
     const alerts = function (num1, num2) {
       if (num1 >= 0.75 * num2 && num1 < 0.9 * num2) {
         almost_finish.style.display = "block";

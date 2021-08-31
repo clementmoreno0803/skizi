@@ -1,7 +1,7 @@
 
+
 <div id="calendar"
     data-user_shifts="<%= @user_shifts.to_json %>" >
-
 </div>
 <div class="modif_manuelle">
     <div class="profil_container">
@@ -31,7 +31,7 @@
     </div>
     <ul id="thumbnail_dragdrop">
       <% @users.each do |user|  %>
-        <li class="modif_contenu">
+        <li class="modif_contenu fc-event" style="background: blue, padding: 20px;">
           <div class="whole_profil_description">
             <%= image_tag "pp.jpeg", class:"pp" %>
             <%= user.username %>
