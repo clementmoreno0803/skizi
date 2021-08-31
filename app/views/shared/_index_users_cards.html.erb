@@ -1,0 +1,23 @@
+<% users.each do |user| %>
+  <table class="tableau-style">
+    <tbody>
+      <tr>
+        <td><%= image_tag "pp.jpg", class:"pp" %></td>
+        <td><strong><%= user.username %></strong></td>
+        <td class="display-jobs">
+          <% user.jobs.each do |job| %>
+            <div class='span-job'><%= job.job %></div>
+          <% end %>
+        </td>
+        <td><%= user.contract_hours_per_week %> Heures</td>
+        <td>22heures / <span style="color:green"><%= user.contract_hours_per_week%></span></td>
+        <td>
+        <%= image_tag "alert.png", class:"almost", style: "width: 30px"%>
+        <%= image_tag "DANGER.png", class:"danger" %>
+        </td>
+        <td>
+        <%= link_to image_tag("edit.png"), edit_user_path(user), style:'width:30px' %></td>
+      </tr>
+    </tbody>
+  </table>
+<% end %>

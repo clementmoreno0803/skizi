@@ -1,43 +1,23 @@
 
 <div class="container_cards">
   <div class="titre_presentation">
-  <h2>Suivez la progression des votre équipe jour après jour</h2>
-  <h3>Vous trouverez ici chaque employé, son nombre d'heures, triés par postes respectifs</h3>
+    <h2>Suivez la progression des votre équipe jour après jour</h2>
+    <h3>Vous trouverez ici chaque employé, son nombre d'heures, triés par postes respectifs</h3>
   </div>
-    <div class="search_bar_container">
-          <div class="search_bar">
-            <div class="input">
-              <%= form_with(url: search_user_path, method: :get, local: false) do |f| %>
-                  <%= f.text_field :test, placeholder: "Find an employee",
-                              label: false,
-                              autocomplete: :off,
-                              input_html: { name: :test,
-                              value: params.dig(:test) } %>
-                  <% end %>
-            </div>
-          </div>
-        </div>
-    <% @users.each do |user| %>
-      <table class="tableau-style">
-        <tbody>
-            <tr>
-              <td><%= image_tag "pp.jpg", class:"pp" %></td>
-              <td><strong><%= user.username %></strong></td>
-              <td class="display-jobs">
-                <% user.jobs.each do |job| %>
-                  <div class='span-job'><%= job.job %></div>
-                <% end %>
-              </td>
-              <td><%= user.contract_hours_per_week %> Heures</td>
-              <td>22heures / <span style="color:green"><%= user.contract_hours_per_week%></span></td>
-              <td>
-              <%= image_tag "alert.png", class:"almost", style: "width: 30px"%>
-              <%= image_tag "DANGER.png", class:"danger" %>
-              </td>
-              <td>
-              <%= link_to image_tag("edit.png"), edit_user_path(user), style:'width:30px' %></td>
-            </tr>
-          </tbody>
-        </table>
-    <% end %>
+  <div class="search_bar_container">
+    <div class="search_bar">
+      <div class="input">
+        <%= form_with(url: search_user_path, method: :get, local: false) do |f| %>
+          <%= f.text_field :name, placeholder: "Find an employee",
+                                  label: false,
+                                  autocomplete: :off,
+                                  input_html: { name: :name,
+                                  value: params.dig(:name) } %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="index_user_cards">
+    <%= render 'shared/index_users_cards', users: @users %>
+  </div>
 </div>

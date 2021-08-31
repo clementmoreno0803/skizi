@@ -3,16 +3,18 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    search_bar
   end
 
   def search_user
-    if params[:test].present?
-      sql_query = "\ users.username iLIKE :test \ OR jobs.job iLIKE :test"
-      @users = User.joins(:jobs).where(sql_query, test: "%#{params[:test]}%").distinct
+    if params[:name].present?
+      sql_query = "\ users.username iLIKE :name \ OR jobs.job iLIKE :name"
+      @users = User.joins(:jobs).where(sql_query, name: "%#{params[:name]}%").distinct
     else
       @users = User.all
     end
+
+    ap "je sui sla"
+    ap @users.all
   end
 
   def new
@@ -48,12 +50,5 @@ class UsersController < ApplicationController
 
   def find_user
     @user = User.find(params[:id])
-  end
-
-  def search_bar
-    if params[:test].present?
-      sql_query = "\ users.username iLIKE :test \ OR jobs.job iLIKE :test"
-      @users = User.joins(:jobs).where(sql_query, test: "%#{params[:test]}%").distinct
-    end
   end
 end
