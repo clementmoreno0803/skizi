@@ -15,23 +15,23 @@ puts 'jobs created'
 puts 'creating users'
 
 employee1 = User.create!(email: 'bruno@gmail.com', password: 'bruno1', password_confirmation: 'bruno1',
-                         username: 'Bruno Latourelle', contract_hours_per_week: 15)
+                         username: 'Bruno Latourelle', contract_hours_per_week: 15, work_time: 12)
 employee2 = User.create!(email: 'martine@gmail.com', password: 'martine', password_confirmation: 'martine',
-                         username: 'Martine Charbonneau', contract_hours_per_week: 20)
+                         username: 'Martine Charbonneau', contract_hours_per_week: 20, work_time: 14)
 employee3 = User.create!(email: 'elodie@gmail.com', password: 'elodie', password_confirmation: 'elodie',
-                         username: 'Elodie Therriault', contract_hours_per_week: 21)
+                         username: 'Elodie Therriault', contract_hours_per_week: 21, work_time: 17)
 employee4 = User.create!(email: 'julien@gmail.com', password: 'julien', password_confirmation: 'julien',
-                         username: 'Julien Blanc', contract_hours_per_week: 12)
+                         username: 'Julien Blanc', contract_hours_per_week: 12, work_time: 7)
 employee5 = User.create!(email: 'marie@gmail.com', password: 'marie1', password_confirmation: 'marie1',
-                         username: 'Marie Etoile', contract_hours_per_week: 15)
+                         username: 'Marie Etoile', contract_hours_per_week: 15, work_time: 13)
 employee6 = User.create!(email: "michael@gmail.com", password: 'michael', password_confirmation:
-                        'michael', username: 'Michael Grosheny', contract_hours_per_week: 78, status: "Off")
+                        'michael', username: 'Michael Grosheny', contract_hours_per_week: 78, status: "Off", work_time: 0)
 nathan = User.create!(email: "nathan@gmail.com", password: 'nathan', password_confirmation:
-                        'nathan', username: 'Nathan Berthier', contract_hours_per_week: 800, status: "Ongoing")
+                        'nathan', username: 'Nathan Berthier', contract_hours_per_week: 800, work_time: 724)
 user_manager = User.create!(email: 'charlie@gmail.com', password: 'charlie', password_confirmation:
-                            'charlie', username: 'Charlie Morizot', contract_hours_per_week: 90)
+                            'charlie', username: 'Charlie Morizot', contract_hours_per_week: 90, work_time: 78)
 clement = User.create!(email: 'clement@gmail.com', password: 'clement', password_confirmation:
-                            'clement', username: 'Clement Moreno', contract_hours_per_week: 35)
+                            'clement', username: 'Clement Moreno', contract_hours_per_week: 35, work_time: 35)
 
 puts 'users created'
 puts 'creating user_jobs'

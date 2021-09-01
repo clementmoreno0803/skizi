@@ -10,7 +10,7 @@
           <% end %>
         </td>
         <td><%= user.contract_hours_per_week %> Heures</td>
-        <td><%= rand(1..15) %> / <span style="color:green"><%= user.contract_hours_per_week%></span></td>
+        <td><%= user.work_time %> / <span style="color:green"><%= user.contract_hours_per_week%></span></td>
         <td>
         <%= image_tag "alert.png", class:"almost", style: "width: 30px;"%>
         <%= image_tag "DANGER.png", class:"danger", style: "width: 30px;" %>
