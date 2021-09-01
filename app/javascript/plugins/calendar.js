@@ -16,6 +16,28 @@ const updateUserShift = (id, start, end) => {
   })
 }
 
+const createShift = (start, end, callback) => {
+  console.log(start),
+    console.log(end);
+  console.log('coucou')
+  fetch(`/shifts`, {
+    method: "POST",
+    headers: {
+      "X-CSRF-Token": document.querySelector("[name='csrf-token']").content,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      start: start,
+      end: end
+    })
+    }).then(response => response.json())
+      .then((data) => {
+        console.log(data);
+        callback();
+        console.log('coucou')
+  })
+}
+
 const JobColors = {
   runner: '#036375',
   barman: '#F46036',
@@ -73,9 +95,6 @@ const initCalendar = () => {
   if (!calendarEl)
     return
 
-  console.log("je usis la")
-  console.log(events())
-
   const calendar = new Calendar(calendarEl, {
     plugins: [dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin],
     droppable: true,
@@ -101,15 +120,18 @@ const initCalendar = () => {
         text: 'add shift',
         click: function () {
           const dateStr = prompt('Enter a date in YYYY-MM-DD format');
-          const date = new Date(dateStr + 'T00:00:00'); // will be in local time
-          const namestr = prompt('Enter the employee name ');
+          const starthour = prompt('Enter a start hour HH:MM:SS format');
+          const start = new Date(dateStr + `T${starthour}`);
+          const endhour = prompt('Enter a end hour HH: MM: SS format');
+          const end = new Date(dateStr + `T${endhour}`);
 
-          if (!isNaN(date.valueOf())) { // valid?
-            calendar.addEvent({
-              title: namestr,
-              start: date,
-              allDay: true
-            });
+          console.log(`${start}`)
+          console.log(`${end}`)
+          if (!isNaN(start.valueOf())) {
+            createShift(
+              start,
+              end,
+            );
             alert('Great. Now, update your database...');
           } else {
             alert('Invalid date.');

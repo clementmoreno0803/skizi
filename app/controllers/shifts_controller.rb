@@ -26,16 +26,21 @@ class ShiftsController < ApplicationController
   end
 
   def new
-    @shift = Shift.new
+    @shift = Shift.new(shift_params)
   end
 
   def create
-    @shift = Shift.new(shift_params)
+    shift_start = params[:start]
+    shift_end = params[:end]
+
+    @shift = Shift.new(started_at: shift_start, ended_at: shift_end)
 
     if @shift.save
       redirect_to shifts_path(@shift)
     else
-      render :new
+      puts "je suis la"
+      format.html { redirect_to shifts_path(@shift) }
+      format.json
     end
   end
 
@@ -58,7 +63,7 @@ class ShiftsController < ApplicationController
   private
 
   def shift_params
-    params.require(:shift).permit(:started_at, :ended_at, :job, :status)
+    params.require(:shift).permit(:started_at, :ended_at)
   end
 
   def find_shift
