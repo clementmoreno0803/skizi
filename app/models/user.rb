@@ -18,4 +18,6 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true
   validates :contract_hours_per_week, presence: true
   validates :status, presence: true, inclusion: { in: STATUS }
+
+  accepts_nested_attributes_for :user_jobs
 end
