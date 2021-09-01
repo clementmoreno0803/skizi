@@ -110,7 +110,7 @@ const initCalendar = () => {
     navLinks: true,
     eventStartEditable:true,
     eventDurationEditable:true,
-    initialView: 'timeGridWeek',
+    initialView: 'dayGridMonth',
     eventDrop: eventDrop,
     selectable: true,
     select: selectInterval,
