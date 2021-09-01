@@ -16,6 +16,9 @@
       </div>
     </div>
   </div>
+  <%= link_to new_user_path(@user), :class => 'bx bxs-plus-square' do  %>
+    <h3>Ajoutez un employé</h3>
+  <% end %>
   <div class="index_user_cards">
     <%= render 'shared/index_users_cards', users: @users %>
   </div>
