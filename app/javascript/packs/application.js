@@ -23,7 +23,6 @@ import "bootstrap";
 import "../components/sidebars";
 import "../components/notifications";
 import initSearchBar from "../components/search_bar";
-=======
 import initCalendar from "../plugins/calendar";
 import "../components/alerts";
 import initDrapEmployeeOnCalendar from "../plugins/drag_drop";
