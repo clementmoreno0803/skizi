@@ -58,10 +58,22 @@ H3{
     border: white;
     outline: none;
     }
+  }
+  .titre_presentation{
+  margin-bottom: 25px;
+  }
+  .bxs-plus-square{
+  display: flex;
+  font-size: 40px;
+  color: $dark-blue;
+  position: relative;
+  bottom: 25px;
+  align-items: center;
+  text-decoration: none;
+    h3 {
+      margin-left: 15px;
     }
-    .titre_presentation{
-    margin-bottom: 25px;
-    }
+  }
 
     .tableau-style{
     border-collapse: collapse;
@@ -76,8 +88,8 @@ H3{
 
     th, td{
     padding : 15px 20px;
-
     }
+
     .pp{
     width: 50px;
     height: 50px;
@@ -85,6 +97,7 @@ H3{
     border-radius: 50%;
     list-style: none;
     }
+
     .tableau-style{
     background: white;
     box-shadow: 0px 5px 10px #efefef;
@@ -119,4 +132,4 @@ H3{
     font-size: 24px;
     color: red;
     }
-}
+  }
