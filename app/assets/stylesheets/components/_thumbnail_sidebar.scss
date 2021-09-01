@@ -22,11 +22,13 @@ h4{
 
 .modif_manuelle.open{
     width: 100px;
+    z-index : 99;
     transform: translateX(0%);
     transition: all 0.3s ease;
 }
 .modif_manuelle.open.active{
     width: 250px;
+    z-index : 99;
     transition: all 0.3s ease;
 }
 .modif_contenu{

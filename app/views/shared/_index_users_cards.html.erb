@@ -16,7 +16,11 @@
         <%= image_tag "DANGER.png", class:"danger", style: "width: 30px;" %>
         </td>
         <td>
-        <%= link_to image_tag("edit.png"), edit_user_path(user), style:'width:15px;' %></td>
+        <%= link_to edit_user_path(user) do %>
+          <%= image_tag "edit.png", style:'width:25px;' %>
+        <% end %>
+
+        </td>
       </tr>
     </tbody>
   </table>
