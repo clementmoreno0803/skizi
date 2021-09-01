@@ -12,9 +12,6 @@ class UsersController < ApplicationController
     else
       @users = User.all
     end
-
-    ap "je sui sla"
-    ap @users.all
   end
 
   def new

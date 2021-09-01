@@ -1,4 +1,122 @@
-.container-form{
-  width: 60%;
-  margin: 0% auto;
+.bg {
+background: linear-gradient(223deg, rgba(254,170,11,1) 0%, rgba(255,243,220,1) 100%);    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.form_title{
+  padding: 55px;
+}
+.scene {
+  width: 20vw;
+  height: 65vh;
+  perspective: 600px;
+}
+.flipping_card {
+  width: 100%;
+  height: 100%;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+.card__face {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  backface-visibility: hidden;
+}
+.front_card {
+    display: flex;
+    background: white;
+    border-radius: 20px;
+    padding: 15px;
+    flex-direction: column;
+    justify-content: space-around;
+    font-size: 18px;
+    font-family: 'poppins';
+    box-shadow: 0px 10px 15px rgb(255,198,90);
+}
+
+.form_group{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  font-size : 18px;
+
+}
+input{
+  width: 100%;
+  border : 1px solid $dark-blue;
+  outline:none;
+  border-top-style: none;
+  border-left-style: none;
+  border-right-style: none;
+  border-bottom-style:solid;
+}
+.back_card {
+  display: flex;
+  background: white;
+  border-radius: 20px;
+  padding: 15px;
+  flex-direction: column;
+  justify-content: space-around;
+  font-size: 18px;
+  font-family: 'poppins';
+  transform: rotateY( 180deg );
+}
+
+.flipping_card.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.sliding_button {
+  margin: 0 auto;
+    padding: 10px;
+    text-align: center;
+    background: $dark-blue;
+    width: 90%;
+    color: white;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(to right, $yellow 50% , $dark-blue 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    cursor: pointer;
+  }
+
+.sliding_button:hover {
+  background-position: left bottom;
+  transition: all ease 0.7s;
+  color: $dark-blue;
+}
+
+///// Back- card
+
+.bx-left-arrow-alt{
+  font-size: 50px;
+  position: absolute;
+  top: 10px;
+  color: $yellow;
+}
+.submit_button{
+  margin: 0 auto;
+    padding: 10px;
+    text-align: center;
+    border-radius: 0px;
+    background: $dark-blue;
+    width: 90%;
+    color: white;
+    font-size: 18px;
+    font-family: 'poppins';
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(to right, $yellow 50% , $dark-blue 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    cursor: pointer;
+}
+.submit_button:hover{
+  background-position: left bottom;
+  transition: all ease 0.7s;
+  color: $dark-blue;
 }

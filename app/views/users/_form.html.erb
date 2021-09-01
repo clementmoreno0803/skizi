@@ -1,15 +1,22 @@
-<%= simple_form_for(@user,
-                     html: { class: 'form-flex' } ) do |f| %>
-  <%= f.input :username, as: :string %>
-  <%= f.input :email, as: :email %>
-  <%= f.input :password %>
-  <%= f.input :password_confirmation %>
-  <%= f.association :user_jobs,
-          label_method: :job,
-          collection: Job.all %>
-  <%= f.input :contract_hours_per_week, as: :string,
-              label: "Number of hours work per week" %>
-  <%= f.input :status,
-              collection: User::STATUS%>
-  <%= f.button :submit, class: "btn btn-primary"  %>
-<% end %>
+    <%= simple_form_for(@user,
+                    html: { class: 'form-flex' } ) do |f| %>
+    <div class="card__face front_card">
+      <%= f.input :username, as: :string %>
+      <%= f.input :email, as: :email %>
+      <%= f.input :password %>
+      <%= f.input :password_confirmation %>
+      <div class="sliding_button">Finissez le formulaire</div>
+    </div>
+    <div class="card__face back_card ">
+    <i class='bx bx-left-arrow-alt'></i>
+      <h2>Modifiez votre collaborateur</h2>
+        <h3>Ici vous pouvez modifier l'ensemble des critères de votre employé(e)</h3>
+      <%= f.association :user_jobs,
+              label_method: :job,
+              collection: Job.all %>
+      <%= f.input :contract_hours_per_week, as: :string,
+                  label: "Number of hours work per week" %>
+      <%= f.input :status,
+                  collection: User::STATUS%>
+      <%= f.button :submit, class: "submit_button"  %>
+  <% end %>
