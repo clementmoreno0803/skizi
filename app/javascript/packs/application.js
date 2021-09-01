@@ -32,8 +32,7 @@ import InitSwitchingForm from "../components/switching_form"
 document.addEventListener('turbolinks:load', () => {
   initSearchBar(Rails);
   initDrapEmployeeOnCalendar();
-  // initAlertOfWorkingTime() });
   InitSwitchingForm();
-  initAlertOfWorkingTime();
+  // initAlertOfWorkingTime();
   initCalendar();
 });
