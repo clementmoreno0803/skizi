@@ -14,18 +14,24 @@ manager = Job.create!(job: 'Manager')
 puts 'jobs created'
 puts 'creating users'
 
-employee1 = User.create!(email: 'toto@gmail.com', password: 'tototo', password_confirmation: 'tototo',
-                         username: 'toto toto', contract_hours_per_week: 15)
-employee2 = User.create!(email: 'tata@gmail.com', password: 'tatata', password_confirmation: 'tatata',
-                         username: 'tata tata', contract_hours_per_week: 20)
-employee3 = User.create!(email: 'titi@gmail.com', password: 'tititi', password_confirmation: 'tititi',
-                         username: 'titi titi', contract_hours_per_week: 21)
-employee4 = User.create!(email: 'tutu@gmail.com', password: 'tututu', password_confirmation: 'tututu',
-                         username: 'tutu tutu', contract_hours_per_week: 12)
-employee5 = User.create!(email: 'tete@gmail.com', password: 'tetete', password_confirmation: 'tetete',
-                         username: 'tete tete', contract_hours_per_week: 15)
+employee1 = User.create!(email: 'bruno@gmail.com', password: 'bruno1', password_confirmation: 'bruno1',
+                         username: 'Bruno Latourelle', contract_hours_per_week: 15)
+employee2 = User.create!(email: 'martine@gmail.com', password: 'martine', password_confirmation: 'martine',
+                         username: 'Martine Charbonneau', contract_hours_per_week: 20)
+employee3 = User.create!(email: 'elodie@gmail.com', password: 'elodie', password_confirmation: 'elodie',
+                         username: 'Elodie Therriault', contract_hours_per_week: 21)
+employee4 = User.create!(email: 'julien@gmail.com', password: 'julien', password_confirmation: 'julien',
+                         username: 'Julien Blanc', contract_hours_per_week: 12)
+employee5 = User.create!(email: 'marie@gmail.com', password: 'marie1', password_confirmation: 'marie1',
+                         username: 'Marie Etoile', contract_hours_per_week: 15)
+employee6 = User.create!(email: "michael@gmail.com", password: 'michael', password_confirmation:
+                        'michael', username: 'Michael Grosheny', contract_hours_per_week: 78, status: "Off")
+nathan = User.create!(email: "nathan@gmail.com", password: 'nathan', password_confirmation:
+                        'nathan', username: 'Nathan Berthier', contract_hours_per_week: 800, status: "Ongoing")
 user_manager = User.create!(email: 'charlie@gmail.com', password: 'charlie', password_confirmation:
                             'charlie', username: 'Charlie Morizot', contract_hours_per_week: 90)
+clement = User.create!(email: 'clement@gmail.com', password: 'clement', password_confirmation:
+                            'clement', username: 'Clement Moreno', contract_hours_per_week: 35)
 
 puts 'users created'
 puts 'creating user_jobs'
@@ -40,7 +46,13 @@ UserJob.create!(user: employee4, job: padder)
 UserJob.create!(user: employee4, job: barman)
 UserJob.create!(user: employee5, job: padder)
 UserJob.create!(user: employee5, job: barman)
+UserJob.create!(user: employee6, job: runner)
+UserJob.create!(user: employee6, job: manager)
+UserJob.create!(user: nathan, job: padder)
+UserJob.create!(user: nathan, job: runner)
+UserJob.create!(user: nathan, job: barman)
 UserJob.create!(user: user_manager, job: manager)
+UserJob.create!(user: clement, job: manager)
 
 puts 'user_jobs created'
 puts 'creating shifts'
@@ -48,28 +60,19 @@ puts 'creating shifts'
 shift1 = Shift.create!(
   started_at: "03/09/2021 18:00",
   ended_at: "03/09/2021 21:00",
-  manager_id: user_manager.id,
-  runner_needed: 2,
-  padder_needed: 1,
-  barman_needed: 1
+  manager_id: user_manager.id
 )
 
 shift2 = Shift.create!(
   started_at: "05/09/2021 18:00",
   ended_at: "05/09/2021 21:00",
-  manager_id: user_manager.id,
-  runner_needed: 2,
-  padder_needed: 2,
-  barman_needed: 1
+  manager_id: user_manager.id
 )
 
 shift3 = Shift.create!(
   started_at: "06/09/2021 18:00",
   ended_at: "06/09/2021 21:00",
-  manager_id: user_manager.id,
-  runner_needed: 1,
-  padder_needed: 1,
-  barman_needed: 1
+  manager_id: user_manager.id
 )
 
 puts 'shifts created'

@@ -11,15 +11,17 @@
           <div class="notification">
             <i class='bx bx-message-alt'></i>
           </div>
-          <%= image_tag 'pp.jpeg', class: 'pp' %>
-          <h3>Clément Moréno</h3>
+          <%= image_tag 'pp.jpg', class: 'pp' %>
+          <% if user_signed_in? %>
+          <h3><%= current_user.username %></h3>
+          <% end %>
       </div>
     </div>
   </div>
   <div class="asking_modifications">
     <div class="asking_profil">
       <div class="profil">
-      <%= image_tag 'pp.jpeg', class: 'pp' %>
+      <%= image_tag 'pp.jpg', class: 'pp' %>
       <div class="nom_et_statut">
         <h3>Clément Moréno</h3>
         <h4>CDI - 20heures</h4>

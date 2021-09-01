@@ -1,13 +1,9 @@
 class UsersController < ApplicationController
-  # skip_before_action :authenticate_user!, only: %i[index new create]
-  before_action :find_user, only: %i[show edit update]
+  before_action :find_user, only: %i[edit update]
 
   def index
     @users = User.all
-
-  end
-
-  def show
+    search_bar
   end
 
   def new
@@ -29,7 +25,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to user_path(@user)
+      redirect_to users_path
     else
       render :edit
     end
@@ -43,5 +39,12 @@ class UsersController < ApplicationController
 
   def find_user
     @user = User.find(params[:id])
+  end
+
+  def search_bar
+    if params[:query].present?
+      sql_query = "\ users.username iLIKE :query \ OR jobs.job iLIKE :query"
+      @users = User.joins(:jobs).where(sql_query, query: "%#{params[:query]}%").distinct
+    end
   end
 end

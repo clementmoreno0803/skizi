@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_26_133708) do
+ActiveRecord::Schema.define(version: 2021_08_31_125640) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,15 @@ ActiveRecord::Schema.define(version: 2021_08_26_133708) do
     t.string "job"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "pg_search_documents", force: :cascade do |t|
+    t.text "content"
+    t.string "searchable_type"
+    t.bigint "searchable_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable"
   end
 
   create_table "reclamations", force: :cascade do |t|
@@ -35,9 +44,6 @@ ActiveRecord::Schema.define(version: 2021_08_26_133708) do
     t.datetime "started_at"
     t.datetime "ended_at"
     t.bigint "manager_id", null: false
-    t.integer "runner_needed"
-    t.integer "padder_needed"
-    t.integer "barman_needed"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["manager_id"], name: "index_shifts_on_manager_id"

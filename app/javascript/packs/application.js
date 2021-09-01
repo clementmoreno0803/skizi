@@ -23,14 +23,18 @@ import "bootstrap";
 import "../components/sidebars";
 import "../components/notifications";
 import initSearchBar from "../components/search_bar";
+=======
+import initCalendar from "../plugins/calendar";
 import "../components/alerts";
 import initDrapEmployeeOnCalendar from "../plugins/drag_drop";
 // import initAlertOfWorkingTime from "../components/alerts";
 import InitSwitchingForm from "../components/switching_form"
 
 document.addEventListener('turbolinks:load', () => {
-  initSearchBar();
+  initSearchBar(Rails);
   initDrapEmployeeOnCalendar();
   // initAlertOfWorkingTime() });
   InitSwitchingForm();
+  initAlertOfWorkingTime();
+  initCalendar();
 });

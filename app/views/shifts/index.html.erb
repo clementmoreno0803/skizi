@@ -1,48 +1,34 @@
-<%# <%= render :calendar if current_page?(root_path) %> %>
-<div class="calendar">
-  <div id="calendar-day">
-    <div id="menu">
-      <div id="menu-navi">
-        <i class='bx bxs-downvote' id="left_arrow_day"></i>
-          <h2 > Par jour </h2>
-        <i class='bx bxs-downvote' id="right_arrow_day"></i>
-      </div>
-      <span id="renderRange" class="render-range"></span>
-    </div>
-  </div>
-<div id="calendar-month"
-    data-user_shifts="<%= @user_shifts.to_json %>">
-  <div id="menu">
-      <span id="menu-navi">
-        <i class='bx bxs-downvote' id="left_arrow_month"></i>
-        <h2>Par mois</h2>
-        <i class='bx bxs-downvote' id="right_arrow_month"></i>
-      </span>
-      <span id="renderRange" class="render-range"></span>
-    </div>
+
+
+<div id="calendar"
+    data-user_shifts="<%= @user_shifts.to_json %>" >
 </div>
 <div class="modif_manuelle">
-  <div class="profil_container">
-    <div class="search_bar_container">
-      <div class="search_bar">
-        <div class="search_icon">
-            <i class='bx bx-search-alt'></i>
+    <div class="profil_container">
+        <div class="search_bar_container">
+          <div class="search_bar">
+            <div class="search_icon">
+                <i class='bx bx-search-alt'></i>
+            </div>
+            <div class="search_bar_container">
+              <div class="search_bar">
+                <div class="input">
+                  <%= form_with(url: search_employee_shifts_path, method: :get, local: false) do |f| %>
+                  <%= f.text_field :query, placeholder: "Find an employee",
+                              label: false,
+                              autocomplete: :off,
+                              input_html: { name: :query,
+                              value: params.dig(:query) } %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="input">
-          <input type="text" placeholder="Un nom, un poste ?" id="my_search">
-        </div>
+      <div class="modif_contenu">
+        <%= render 'shared/user_cards', users: @users %>
       </div>
     </div>
-    <ul id="thumbnail_dragdrop">
-      <% @users.each do |user|  %>
-        <li class="modif_contenu">
-          <div class="whole_profil_description">
-            <%= image_tag "pp.jpeg", class:"pp" %>
-            <%= user.username %>
-          </div>
-        </li>
-      <% end %>
-    </ul>
     <ul id="test" style='background: red; padding: 50px'>
     </ul>
   </div>

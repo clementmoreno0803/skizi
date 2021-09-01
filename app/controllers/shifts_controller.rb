@@ -1,23 +1,28 @@
 class ShiftsController < ApplicationController
-  before_action :find_shift, only: %i[show destroy edit update]
+  before_action :find_shift, only: %i[edit update]
 
   def index
     @shifts = Shift.all
+    @users = User.where("status = 'Ongoing'")
     @usershifts = UserShift.all
-    @users = User.all
     @user_shifts = @usershifts.map do |usershift|
       {
         id: usershift.id,
         job: usershift.job,
         title: usershift.employee.username,
         start: usershift.shift.started_at,
-      end: usershift.shift.ended_at
-    }
+        end: usershift.shift.ended_at
+      }
+    end
   end
-  # @calendar = true
-  # if @calendar = true
-  #   render :calendar => 'display:block'
-  # end
+
+  def search_employee
+    if params[:query].present?
+      sql_query = "\ users.username iLIKE :query \ OR jobs.job iLIKE :query"
+      @users = User.joins(:jobs).where(sql_query, query: "%#{params[:query]}%").where("status = 'Ongoing'").distinct
+    else
+      @users = User.where("status = 'Ongoing'")
+    end
   end
 
   def new
@@ -43,11 +48,6 @@ class ShiftsController < ApplicationController
     else
       render :edit
     end
-  end
-
-  def destroy
-    @shift.destroy
-    redirect_to shifts_path
   end
 
   private

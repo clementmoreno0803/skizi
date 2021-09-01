@@ -2,14 +2,14 @@ import Sortable from 'sortablejs';
 
 
 const initDrapEmployeeOnCalendar = () => {
-  const list_employees = document.getElementById('thumbnail_dragdrop');
+  const list_employees = document.querySelector('.thumbnail_dragdrop');
   const test = document.getElementById('test');
 
   if (list_employees && test){
     new Sortable(list_employees, {
       group: {
         name: 'shared',
-        pull: 'clone' // To clone: set pull to 'clone'
+        pull: 'clone'
       },
       animation: 150
     });
@@ -23,7 +23,6 @@ const initDrapEmployeeOnCalendar = () => {
     });
 
     setTimeout(() => {
-      console.log(document.querySelectorAll('.tui-full-calendar-weekday-grid-line'))
     }, 3000);
   }
 }
