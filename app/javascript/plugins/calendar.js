@@ -11,12 +11,13 @@ const JobColors = {
   padder: '#947EB0'
 }
 
-const shiftToEvent = (shit) => {
+const shiftToEvent = (shift) => {
   return {
-    title: `${shit.title}`,
-    start: `${shit.start}`,
-    end: `${shit.end}`,
-    color: `${JobColors[shit.job]}`,
+    id:`${shift.id}`,
+    title: `${shift.title}`,
+    start: `${shift.start}`,
+    end: `${shift.end}`,
+    color: `${JobColors[shift.job]}`,
     resourceEditable: true,
   }
 }
@@ -90,7 +91,7 @@ const initCalendar = () => {
     itemSelector: '.fc-event',
     eventData: function (eventEl) {
       return {
-        title: eventEl.innerText.toUpperCase(),
+        title: eventEl.innerText,
       };
     }
   });
