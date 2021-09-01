@@ -12,7 +12,6 @@ const InitSwitchingForm = () => {
   arrowToGoBackward.addEventListener('click', function () {
     card.classList.toggle('is-flipped');
     boutton.style.display = 'block'
-
   });
 
 }
