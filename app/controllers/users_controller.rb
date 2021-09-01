@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   def search_user
     if params[:name].present?
-      sql_query = "\ users.username iLIKE :name \ OR jobs.job iLIKE :name"
+      sql_query = "users.username iLIKE :name \ OR jobs.job iLIKE :name"
       @users = User.joins(:jobs).where(sql_query, name: "%#{params[:name]}%").distinct
     else
       @users = User.all
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-
+    @user.jobs << Job.where(id: params[:user][:user_job_ids])
     if @user.save
       redirect_to users_path
     else
@@ -33,6 +33,10 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
+      if params[:user][:user_job_ids]
+        @user.user_jobs.destroy_all
+        @user.jobs << Job.where(id: params[:user][:user_job_ids])
+      end
       redirect_to users_path
     else
       render :edit
@@ -42,7 +46,8 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :email, :contract_hours_per_week, :password, :password_confirmation, user_job_ids: [])
+    params.require(:user).permit(:username, :email, :contract_hours_per_week,
+                                 :password, :password_confirmation)
   end
 
   def find_user
