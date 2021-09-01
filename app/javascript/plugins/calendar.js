@@ -5,6 +5,17 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
 import interactionPlugin, { Draggable } from '@fullcalendar/interaction';
 
+let calendar;
+
+const addShiftToCalendar = (shift) => {
+  const event = shiftToEvent(shift)
+  calendar.addEvent(event)
+}
+
+const selectInterval = (info) => {
+  createShift(info.startStr, info.endStr)
+}
+
 const updateUserShift = (id, start, end) => {
   fetch(`/user_shifts/${id}`, {
     method: "PATCH",
@@ -16,7 +27,7 @@ const updateUserShift = (id, start, end) => {
   })
 }
 
-const createShift = (start, end, callback) => {
+const createShift = (start, end) => {
   console.log(start),
     console.log(end);
   console.log('coucou')
@@ -31,11 +42,7 @@ const createShift = (start, end, callback) => {
       end: end
     })
     }).then(response => response.json())
-      .then((data) => {
-        console.log(data);
-        callback();
-        console.log('coucou')
-  })
+      .then(addShiftToCalendar)
 }
 
 const JobColors = {
@@ -95,7 +102,7 @@ const initCalendar = () => {
   if (!calendarEl)
     return
 
-  const calendar = new Calendar(calendarEl, {
+  calendar = new Calendar(calendarEl, {
     plugins: [dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin],
     droppable: true,
     editable: true,
@@ -105,6 +112,8 @@ const initCalendar = () => {
     eventDurationEditable:true,
     initialView: 'timeGridWeek',
     eventDrop: eventDrop,
+    selectable: true,
+    select: selectInterval,
     views: {
       timeGrid: {
         dayMaxEventRows: 6
