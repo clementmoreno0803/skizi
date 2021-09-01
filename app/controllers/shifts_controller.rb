@@ -1,6 +1,7 @@
 class ShiftsController < ApplicationController
   before_action :find_shift, only: %i[edit update]
 
+
   def index
     @shifts = Shift.all
     @users = User.where("status = 'Ongoing'")
@@ -26,18 +27,24 @@ class ShiftsController < ApplicationController
   end
 
   def new
-    @shift = Shift.new
+    @shift = Shift.new(shift_params)
   end
 
   def create
-    @shift = Shift.new(shift_params)
+    shift_start = params[:start]
+    shift_end = params[:end]
 
-    if @shift.save
-      redirect_to shifts_path(@shift)
-    else
-      render :new
-    end
+    @shift = Shift.create!(started_at: shift_start, ended_at: shift_end, manager: current_user)
+    render json: @shift.to_json
+    # Shift.new(started_at: shift_start, ended_at: shift_end)
   end
+    # if @shift.save
+    #   redirect_to shifts_path(@shift)
+    # else
+    #   puts "je suis la"
+    #   format.html { redirect_to shifts_path(@shift) }
+    #   format.json
+    # end
 
   def edit
   end
@@ -52,8 +59,8 @@ class ShiftsController < ApplicationController
 
   private
 
-  def shift_params
-    params.require(:shift).permit(:started_at, :ended_at, :job, :status)
+  def set_shift
+    params.require(:shift).permit(params[:started_at], params[:ended_at])
   end
 
   def find_shift

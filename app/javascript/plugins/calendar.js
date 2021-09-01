@@ -5,27 +5,95 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
 import interactionPlugin, { Draggable } from '@fullcalendar/interaction';
 
+let calendar;
+
+const addShiftToCalendar = (shift) => {
+  const event = shiftToEvent(shift)
+  calendar.addEvent(event)
+}
+
+const selectInterval = (info) => {
+  createShift(info.startStr, info.endStr)
+}
+
+const updateUserShift = (id, start, end) => {
+  fetch(`/user_shifts/${id}`, {
+    method: "PATCH",
+    headers: {
+      "X-CSRF-Token": document.querySelector("[name='csrf-token']").content,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ start: start, end: end})
+  })
+}
+
+const createShift = (start, end) => {
+  console.log(start),
+    console.log(end);
+  console.log('coucou')
+  fetch(`/shifts`, {
+    method: "POST",
+    headers: {
+      "X-CSRF-Token": document.querySelector("[name='csrf-token']").content,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      start: start,
+      end: end
+    })
+    }).then(response => response.json())
+      .then(addShiftToCalendar)
+}
+
 const JobColors = {
   runner: '#036375',
   barman: '#F46036',
   padder: '#947EB0'
 }
 
-const shiftToEvent = (shit) => {
+const userShiftToEvent = (userShift) => {
   return {
-    title: `${shit.title}`,
-    start: `${shit.start}`,
-    end: `${shit.end}`,
-    color: `${JobColors[shit.job]}`,
+    id: `${userShift.id}`,
+    title: `${userShift.title}`,
+    start: `${userShift.start}`,
+    end: `${userShift.end}`,
+    color: `${JobColors[userShift.job]}`,
     resourceEditable: true,
   }
 }
+const shiftToEvent = (shift) => {
+  return {
+    id: `${shift.id}`,
+    start: `${shift.started_at}`,
+    end: `${shift.ended_at}`,
+    display: 'background',
+    color: 'red'
+  }
+}
 
-const jobs = () => {
+const events = () => {
   const call = document.getElementById("calendar")
   const user_shifts = JSON.parse(call.dataset.user_shifts);
-  return user_shifts.map(shiftToEvent);
+  const shifts = JSON.parse(call.dataset.shifts);
+
+  const eventUserShifts = user_shifts.map(userShiftToEvent)
+  const eventShifts = shifts.map(shiftToEvent)
+
+  return (eventUserShifts.concat(eventShifts));
 }
+
+const eventDrop = (info) => {
+  updateUserShift(info.event.id, info.event.start, info.event.end)
+
+  // alert(info.event.title + " was dropped on " + info.event.start.toISOString());
+
+  // if (!confirm("Are you sure about this change?")) {
+  //   info.revert();
+  // }
+}
+
+
+
 
 const initCalendar = () => {
   let calendarEl = document.getElementById('calendar');
@@ -34,7 +102,7 @@ const initCalendar = () => {
   if (!calendarEl)
     return
 
-  const calendar = new Calendar(calendarEl, {
+  calendar = new Calendar(calendarEl, {
     plugins: [dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin],
     droppable: true,
     editable: true,
@@ -42,8 +110,10 @@ const initCalendar = () => {
     navLinks: true,
     eventStartEditable:true,
     eventDurationEditable:true,
-    businessHours:true,
-    initialView: 'dayGridMonth',
+    initialView: 'timeGridWeek',
+    eventDrop: eventDrop,
+    selectable: true,
+    select: selectInterval,
     views: {
       timeGrid: {
         dayMaxEventRows: 6
@@ -52,13 +122,33 @@ const initCalendar = () => {
     headerToolbar: {
       left: 'prev,next today',
       center: 'title',
-      right: 'dayGridMonth,timeGridWeek,listWeek'
+      right: 'addEventButton dayGridMonth,timeGridWeek,listWeek'
     },
-    events: jobs(),
-    businessHours: {
-      startTime: '18:00',
-      endTime: '21:00',
+    customButtons: {
+      addEventButton: {
+        text: 'add shift',
+        click: function () {
+          const dateStr = prompt('Enter a date in YYYY-MM-DD format');
+          const starthour = prompt('Enter a start hour HH:MM:SS format');
+          const start = new Date(dateStr + `T${starthour}`);
+          const endhour = prompt('Enter a end hour HH: MM: SS format');
+          const end = new Date(dateStr + `T${endhour}`);
+
+          console.log(`${start}`)
+          console.log(`${end}`)
+          if (!isNaN(start.valueOf())) {
+            createShift(
+              start,
+              end,
+            );
+            alert('Great. Now, update your database...');
+          } else {
+            alert('Invalid date.');
+          }
+        }
+      }
     },
+    events: events(),
     navLinkDayClick: function (date, jsEvent) {
       console.log('day', date.toISOString());
       console.log('coords', jsEvent.pageX, jsEvent.pageY);
@@ -68,8 +158,11 @@ const initCalendar = () => {
   new Draggable(containerEl, {
     itemSelector: '.fc-event',
     eventData: function (eventEl) {
+
+      // TOTO get an user_shit id by user + shit
+
       return {
-        title: eventEl.innerText.toUpperCase(),
+        title: eventEl.innerText,
       };
     }
   });

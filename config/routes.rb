@@ -10,4 +10,5 @@ Rails.application.routes.draw do
     resources :reclamations, only: %i[new create]
     get :search_employee, on: :collection
   end
+  resources :user_shifts, only: [:update]
 end
