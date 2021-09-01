@@ -4,11 +4,12 @@
     <h3>Vous trouverez ici chaque employé, son nombre d'heures, triés par postes respectifs</h3>
   </div>
   <div class="search_bar_container">
-    <div class="search_bar">
-    <div class="search_icon">
+            <div class="search_bar_container">
+              <div class="search_bar">
+            <div class="search_icon">
                 <i class='bx bx-search-alt'></i>
             </div>
-      <div class="input">
+                <div class="input">
         <%= form_with(url: search_user_path, method: :get, local: false) do |f| %>
           <%= f.text_field :name, placeholder: "Trouvez par Nom ou Poste",
                                   label: false,
@@ -16,9 +17,9 @@
                                   input_html: { name: :name,
                                   value: params.dig(:name) } %>
         <% end %>
-      </div>
-    </div>
-  </div>
+                </div>
+              </div>
+            </div>
   <%= link_to new_user_path(@user), :class => 'bx bxs-plus-square' do  %>
     <h3>Ajoutez un employé</h3>
   <% end %>
