@@ -12,11 +12,11 @@
         <td><%= user.contract_hours_per_week %> Heures</td>
         <td>22heures / <span style="color:green"><%= user.contract_hours_per_week%></span></td>
         <td>
-        <%= image_tag "alert.png", class:"almost", style: "width: 30px"%>
-        <%= image_tag "DANGER.png", class:"danger" %>
+        <%= image_tag "alert.png", class:"almost", style: "width: 30px;"%>
+        <%= image_tag "DANGER.png", class:"danger", style: "width: 30px;" %>
         </td>
         <td>
-        <%= link_to image_tag("edit.png"), edit_user_path(user), style:'width:30px' %></td>
+        <%= link_to image_tag("edit.png"), edit_user_path(user), style:'width:15px;' %></td>
       </tr>
     </tbody>
   </table>
