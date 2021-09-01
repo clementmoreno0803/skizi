@@ -13,11 +13,6 @@ class User < ApplicationRecord
   has_many :jobs, through: :user_jobs
 
   validates :username, presence: true, uniqueness: true
-  validates :email, presence: true
-  validates :password, presence: true
-  validates :password_confirmation, presence: true
   validates :contract_hours_per_week, presence: true
   validates :status, presence: true, inclusion: { in: STATUS }
-
-  accepts_nested_attributes_for :user_jobs
 end
