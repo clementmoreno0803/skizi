@@ -52,7 +52,28 @@ const initCalendar = () => {
     headerToolbar: {
       left: 'prev,next today',
       center: 'title',
-      right: 'dayGridMonth,timeGridWeek,listWeek'
+      right: 'addEventButton dayGridMonth,timeGridWeek,listWeek'
+    },
+    customButtons: {
+      addEventButton: {
+        text: 'add shift',
+        click: function () {
+          const dateStr = prompt('Enter a date in YYYY-MM-DD format');
+          const date = new Date(dateStr + 'T00:00:00'); // will be in local time
+          const namestr = prompt('Enter the employee name ');
+
+          if (!isNaN(date.valueOf())) { // valid?
+            calendar.addEvent({
+              title: namestr,
+              start: date,
+              allDay: true
+            });
+            alert('Great. Now, update your database...');
+          } else {
+            alert('Invalid date.');
+          }
+        }
+      }
     },
     events: jobs(),
     businessHours: {

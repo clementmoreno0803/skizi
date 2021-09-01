@@ -1,65 +1,7 @@
 #calendar{
-  width: 80% ;
-  text-align: center;
+  width: 85vw;
+  margin-left:13%;
   font-family: 'Noto Sans', sans-serif;
   font-size: 1rem;
-  margin-left: 13%;
+  height: calc(100vh - 80px);
 }
-// .calendar.active{
-//   width: calc( 100vw - 115px);
-// }
-// .calendar.open{
-//   width: calc( 100vw - 255px);
-// }
-// #calendar-day{
-//   width: 34%;
-//   height: 100%;
-//   margin-right: 10px;
-//   margin-left: 5rem;
-// }
-// #calendar-month{
-//   width:66%;
-//   height: 100%;
-// }
-
-// #menu-navi{
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// }
-// #left_arrow_day{
-//   transform: rotate(90deg);
-//   font-size: 25px;
-//   color: $yellow;
-//   cursor: pointer;
-// }
-// #right_arrow_day{
-//     transform: rotate(270deg);
-//     font-size: 25px;
-//     color: $yellow;
-//     cursor: pointer;
-// }
-// #left_arrow_month{
-//   transform: rotate(90deg);
-//   font-size: 25px;
-//   color: $yellow;
-//   cursor: pointer;
-// }
-// #right_arrow_month{
-//     transform: rotate(270deg);
-//     font-size: 25px;
-//     color: $yellow;
-//     cursor: pointer;
-// }
-// #menu-navi h2{
-//   margin : 0 15px;
-// }
-// #renderRange {
-//   padding-left: 12px;
-//   font-size: 19px;
-//   vertical-align: middle;
-// }
-
-// .schedule-time {
-//     color: #005aff;
-// }
