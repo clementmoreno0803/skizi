@@ -5,28 +5,66 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
 import interactionPlugin, { Draggable } from '@fullcalendar/interaction';
 
+const updateUserShift = (id, start, end) => {
+  fetch(`/user_shifts/${id}`, {
+    method: "PATCH",
+    headers: {
+      "X-CSRF-Token": document.querySelector("[name='csrf-token']").content,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ start: start, end: end})
+  })
+}
+
 const JobColors = {
   runner: '#036375',
   barman: '#F46036',
   padder: '#947EB0'
 }
 
-const shiftToEvent = (shift) => {
+const userShiftToEvent = (userShift) => {
   return {
-    id:`${shift.id}`,
-    title: `${shift.title}`,
-    start: `${shift.start}`,
-    end: `${shift.end}`,
-    color: `${JobColors[shift.job]}`,
+    id: `${userShift.id}`,
+    title: `${userShift.title}`,
+    start: `${userShift.start}`,
+    end: `${userShift.end}`,
+    color: `${JobColors[userShift.job]}`,
     resourceEditable: true,
   }
 }
+const shiftToEvent = (shift) => {
+  return {
+    id: `${shift.id}`,
+    start: `${shift.started_at}`,
+    end: `${shift.ended_at}`,
+    display: 'background',
+    color: 'red'
+  }
+}
 
-const jobs = () => {
+const events = () => {
   const call = document.getElementById("calendar")
   const user_shifts = JSON.parse(call.dataset.user_shifts);
-  return user_shifts.map(shiftToEvent);
+  const shifts = JSON.parse(call.dataset.shifts);
+
+  const eventUserShifts = user_shifts.map(userShiftToEvent)
+  const eventShifts = shifts.map(shiftToEvent)
+
+  return (eventUserShifts.concat(eventShifts));
 }
+
+const eventDrop = (info) => {
+  updateUserShift(info.event.id, info.event.start, info.event.end)
+
+  // alert(info.event.title + " was dropped on " + info.event.start.toISOString());
+
+  // if (!confirm("Are you sure about this change?")) {
+  //   info.revert();
+  // }
+}
+
+
+
 
 const initCalendar = () => {
   let calendarEl = document.getElementById('calendar');
@@ -34,6 +72,9 @@ const initCalendar = () => {
 
   if (!calendarEl)
     return
+
+  console.log("je usis la")
+  console.log(events())
 
   const calendar = new Calendar(calendarEl, {
     plugins: [dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin],
@@ -43,8 +84,8 @@ const initCalendar = () => {
     navLinks: true,
     eventStartEditable:true,
     eventDurationEditable:true,
-    businessHours:true,
-    initialView: 'dayGridMonth',
+    initialView: 'timeGridWeek',
+    eventDrop: eventDrop,
     views: {
       timeGrid: {
         dayMaxEventRows: 6
@@ -76,11 +117,7 @@ const initCalendar = () => {
         }
       }
     },
-    events: jobs(),
-    businessHours: {
-      startTime: '18:00',
-      endTime: '21:00',
-    },
+    events: events(),
     navLinkDayClick: function (date, jsEvent) {
       console.log('day', date.toISOString());
       console.log('coords', jsEvent.pageX, jsEvent.pageY);
@@ -90,6 +127,9 @@ const initCalendar = () => {
   new Draggable(containerEl, {
     itemSelector: '.fc-event',
     eventData: function (eventEl) {
+
+      // TOTO get an user_shit id by user + shit
+
       return {
         title: eventEl.innerText,
       };

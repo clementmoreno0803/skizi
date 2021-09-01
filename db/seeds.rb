@@ -72,6 +72,24 @@ shift3 = Shift.create!(
   manager_id: user_manager.id
 )
 
+shift11 = Shift.create!(
+  started_at: "03/09/2021 09:00",
+  ended_at: "03/09/2021 12:00",
+  manager_id: user_manager.id
+)
+
+shift21 = Shift.create!(
+  started_at: "05/09/2021 09:00",
+  ended_at: "05/09/2021 12:00",
+  manager_id: user_manager.id
+)
+
+shift31 = Shift.create!(
+  started_at: "06/09/2021 09:00",
+  ended_at: "06/09/2021 12:00",
+  manager_id: user_manager.id
+)
+
 puts 'shifts created'
 puts 'creating user_shifts'
 
