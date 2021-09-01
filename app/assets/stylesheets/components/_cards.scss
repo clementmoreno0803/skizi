@@ -20,13 +20,14 @@ H3{
     }
     .search_bar_container .search_bar{
     width: 200px;
-    height: 40px;
+    height: 100%;
     border-radius: 25px;
     background-color: #ffffff;
     margin: 0 auto;
     display: flex;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-    justify-content: space-evenly;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.2);
+    justify-content: space-between;
+    padding: 10px;
     }
     .search_bar_container .search_bar.active{
     width: 400px;
@@ -75,6 +76,14 @@ H3{
     }
   }
 
+  .input {
+    display: flex;
+    align-items: center;
+  }
+
+  .search_bar > form{
+    height: 100%;
+  }
     .tableau-style{
     border-collapse: collapse;
     min-width: 400px;

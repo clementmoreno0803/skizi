@@ -37,16 +37,6 @@ h4{
     justify-content: center;
     align-items: center;
 }
-.sidebar_pp{
-  display: none;
-}
-.sidebar_app{
-  display: block;
-  width: 60px;
-  height: 60px;
-  border-radius : 50%;
-  object-fit: cover;
-}
 .modif_manuelle.open .thumbnail_perso  h4{
       display: none;
       transition: all ease 0.6s;
@@ -57,7 +47,9 @@ h4{
     margin-bottom: 25px;
     gap: 10px;
     opacity: 1;
-
+  #username{
+    display:none;
+  }
 }
 .modif_manuelle.open h4{
 display: none;
@@ -74,4 +66,19 @@ display: none;
     width: 92%;
     transition: all ease 1s;
     justify-content: center;
+}
+.modif_contenu .thumbnail_dragdrop .pp{
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+  object-fit: cover;
+
+  cursor: pointer;
+}
+.modif_contenu .thumbnail_dragdrop #username{
+  display: none;
+}
+.modif_manuelle.open.active .modif_contenu .thumbnail_dragdrop #username{
+  display: block;
 }

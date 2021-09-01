@@ -18,10 +18,10 @@
     display: flex;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
     transition: all ease-in-out 0.3s;
-}
+  }
 
-.search_bar.active {
-  width: 220px;
+  .search_bar.active {
+    width: 220px;
     height: 40px;
     border-radius: 25px;
     background-color: #ffffff;
@@ -29,8 +29,8 @@
     display: flex;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
     justify-content: space-evenly;
-     transition: all ease-in-out 0.2s;
-}
+    transition: all ease-in-out 0.2s;
+  }
 .search_icon{
   font-size: 23px;
     position: relative;
