@@ -5,18 +5,18 @@
   </div>
   <div class="search_bar_container">
             <div class="search_bar_container">
-              <div class="search_bar">
-            <div class="search_icon">
-                <i class='bx bx-search-alt'></i>
-            </div>
-                <div class="input">
-        <%= form_with(url: search_user_path, method: :get, local: false) do |f| %>
-          <%= f.text_field :name, placeholder: "Trouvez par Nom ou Poste",
-                                  label: false,
-                                  autocomplete: :off,
-                                  input_html: { name: :name,
-                                  value: params.dig(:name) } %>
-        <% end %>
+              <div class="search_bar" >
+                <div class="search_icon" id="user_icon_searchbar">
+                    <i class='bx bx-search-alt'></i>
+                </div>
+                <div class="input" id="user_input">
+                  <%= form_with(url: search_user_path, method: :get, local: false,) do |f| %>
+                    <%= f.text_field :name, placeholder: "Trouvez un employé",
+                                            label: false,
+                                            autocomplete: :off,
+                                            input_html: { name: :name,
+                                            value: params.dig(:name) } %>
+                  <% end %>
                 </div>
               </div>
             </div>

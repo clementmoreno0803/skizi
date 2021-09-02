@@ -19,7 +19,9 @@
         <h3>Ici vous pouvez modifier l'ensemble des critères de votre employé(e)</h3>
         <%= f.association :user_jobs, as: :check_boxes,
                           label_method: :job,
-                          collection: Job.all, checked: @user.jobs.ids %>
+                          collection: Job.all,
+                          class: 'michel',
+                          checked: @user.jobs.ids %>
         <%= f.input :contract_hours_per_week, as: :string,
                     label: "Number of hours work per week" %>
         <%= f.input :status,
