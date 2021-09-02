@@ -1,13 +1,14 @@
 ap "je suis l"
 
 
-ap Job.all
+ap Shift.destroy_all
 
-UserJob.destroy_all
-u = User.find(150)
-
-u.update!(user_jobs_attributes: [{job_id: 62}, {job_id: 63}])
-u.update!(user_jobs_attributes: [{job_id: 64}, {job_id: 63}])
+user = User.find_by(email: 'charlie@gmail.com')
 
 
-ap u.jobs
+100.times do |i|
+  started_at = Date.today + 18.hours + i.days
+  ended_at = Date.today + 21.hours + i.days
+
+  Shift.create!(started_at: started_at, ended_at: ended_at, manager_id: user.id) if started_at.wday != 0
+end

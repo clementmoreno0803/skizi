@@ -77,7 +77,6 @@ UserJob.create!(user: simon, job: runner)
 UserJob.create!(user: simon, job: barman)
 
 puts 'user_jobs created'
-puts 'creating shifts'
 
 shiftm2 = Shift.create!(
   started_at: "30/08/2021 18:00",
