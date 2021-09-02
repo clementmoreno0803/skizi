@@ -170,35 +170,21 @@ const initCalendar = () => {
     eventDrop: eventDrop,
     selectable: true,
     select: selectInterval,
-    views: {
-      timeGrid: {
-        dayMaxEventRows: 6
-      }
-    },
     headerToolbar: {
       left: 'prev,next today',
       center: 'title',
       right: 'dayGridMonth,timeGridWeek,listWeek'
     },
     events: events(),
-    eventClick: function (info) {
+    eventClick: onclick = (info) => {
         info.jsEvent.preventDefault();
-        console.log(info)
-        if (info.event.id) {
-          const event = calendar.getEventById(info.event.id);
+        const event = calendar.getEventById(info.event.id);
+      if (confirm("Are you sure to remove " + info.event.title + " ?" )){
           event.remove();
-          alert('Remove Shift:')
           deleteUserShift(info.event.id)
-
-      }
-      if (info.shift) {
-        alert('Shift:')
       }
     },
-     });
-
-
-
+  });
   initDragAndDrop();
 
   calendar.render()
