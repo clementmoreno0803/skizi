@@ -36,15 +36,7 @@ class ShiftsController < ApplicationController
 
     @shift = Shift.create!(started_at: shift_start, ended_at: shift_end, manager: current_user)
     render json: @shift.to_json
-    # Shift.new(started_at: shift_start, ended_at: shift_end)
   end
-    # if @shift.save
-    #   redirect_to shifts_path(@shift)
-    # else
-    #   puts "je suis la"
-    #   format.html { redirect_to shifts_path(@shift) }
-    #   format.json
-    # end
 
   def edit
   end
