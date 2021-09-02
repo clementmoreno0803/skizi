@@ -422,10 +422,32 @@ UserShift.create!(shift: shiftp3, employee: leo, job: 'padder')
 UserShift.create!(shift: shiftp3, employee: marie, job: 'padder')
 UserShift.create!(shift: shiftp3, employee: simon, job: 'barman')
 
-UserShift.create!(shift: shiftp3, employee: nathan, job: 'runner')
-UserShift.create!(shift: shiftp3, employee: leo, job: 'padder')
-UserShift.create!(shift: shiftp3, employee: marie, job: 'padder')
-UserShift.create!(shift: shiftp3, employee: simon, job: 'barman')
+UserShift.create!(shift: shiftp4, employee: bruno, job: 'runner')
+UserShift.create!(shift: shiftp4, employee: leo, job: 'padder')
+UserShift.create!(shift: shiftp4, employee: marie, job: 'padder')
+UserShift.create!(shift: shiftp4, employee: simon, job: 'barman')
+
+UserShift.create!(shift: shiftp5, employee: nathan, job: 'runner')
+UserShift.create!(shift: shiftp5, employee: leo, job: 'padder')
+UserShift.create!(shift: shiftp5, employee: marie, job: 'padder')
+UserShift.create!(shift: shiftp5, employee: elodie, job: 'barman')
+
+UserShift.create!(shift: shiftp6, employee: nathan, job: 'runner')
+UserShift.create!(shift: shiftp6, employee: leo, job: 'padder')
+UserShift.create!(shift: shiftp6, employee: marie, job: 'padder')
+UserShift.create!(shift: shiftp6, employee: simon, job: 'barman')
+
+UserShift.create!(shift: shiftp7, employee: nathan, job: 'runner')
+UserShift.create!(shift: shiftp7, employee: marie, job: 'runner')
+UserShift.create!(shift: shiftp7, employee: leo, job: 'padder')
+UserShift.create!(shift: shiftp7, employee: martine, job: 'padder')
+UserShift.create!(shift: shiftp7, employee: nicolas, job: 'barman')
+
+UserShift.create!(shift: shiftp8, employee: nathan, job: 'runner')
+UserShift.create!(shift: shiftp8, employee: marie, job: 'runner')
+UserShift.create!(shift: shiftp8, employee: leo, job: 'padder')
+UserShift.create!(shift: shiftp8, employee: elodie, job: 'padder')
+UserShift.create!(shift: shiftp8, employee: nicolas, job: 'barman')
 
 puts 'user_shifts created'
 puts 'Seeds done'
