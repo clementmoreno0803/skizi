@@ -10,7 +10,7 @@
           <% end %>
         </td>
         <td><%= user.contract_hours_per_week %> Heures</td>
-        <td><%= user.work_time %> / <span style="color:green"><%= user.contract_hours_per_week%></span></td>
+        <td> <h4> <span style="color:gray"><%= user.work_time %></span> / <span style="color:green"><%= user.contract_hours_per_week%></span></h4></td>
         <td>
         <%= image_tag "alert.png", class:"almost", style: "width: 30px;"%>
         <%= image_tag "DANGER.png", class:"danger", style: "width: 30px;" %>
@@ -19,7 +19,6 @@
         <%= link_to edit_user_path(user) do %>
           <%= image_tag "edit.png", style:'width:25px;' %>
         <% end %>
-
         </td>
       </tr>
     </tbody>

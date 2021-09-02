@@ -37,6 +37,12 @@
     top: 9px;
     left: 9px;
 }
+.icon_search_bar{
+  font-size: 23px;
+  position: relative;
+  top: 5px;
+  left: 9px;
+}
 .search_bar.active .input{
     display: flex;
     align-items: center;
@@ -52,4 +58,12 @@
 }
 .search_bar .input #query{
     opacity: 0;
+}
+.input{
+  form{
+    width: 100%;
+  }
+  input{
+    border: none;
+  }
 }

@@ -1,29 +1,30 @@
 
 
 <div id="calendar"
-    data-user_shifts="<%= @user_shifts.to_json %>"
-    data-shifts="<%= Shift.all.to_json %>" >
+    data-user_shifts="<%= @user_shifts.to_json %>" >
 </div>
 <div class="modif_manuelle">
     <div class="profil_container">
+        <div class="search_bar_container">
             <div class="search_bar_container">
               <div class="search_bar">
             <div class="search_icon">
                 <i class='bx bx-search-alt'></i>
             </div>
                 <div class="input">
-                  <%= form_with(url: search_employee_shifts_path,method: :get, local: false) do |f| %>
+                  <%= form_with(url: search_employee_shifts_path, method: :get, local: false) do |f| %>
                   <%= f.text_field :query, placeholder: "Find an employee",
                               label: false,
-
                               autocomplete: :off,
                               input_html: { name: :query,
+                                            :class => 'user_input',
                               value: params.dig(:query) } %>
                   <% end %>
                 </div>
               </div>
             </div>
           </div>
+        </div>
       <div class="modif_contenu">
         <%= render 'shared/user_cards', users: @users %>
       </div>

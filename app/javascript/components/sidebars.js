@@ -23,6 +23,6 @@ document.addEventListener('turbolinks:load', () => {
   modif.addEventListener("click", (e) => {
     e.preventDefault();
     sidebar_modif.classList.toggle("open")
-    scaling_calendar.classList.toggle("active")
+    // scaling_calendar.classList.toggle("active")
   });
 });

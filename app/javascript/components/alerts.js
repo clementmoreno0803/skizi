@@ -22,6 +22,7 @@ const initAlertOfWorkingTime = () => {
         finish.style.display = "none";
       }
     }
+    alerts(20,25)
 }
 
 export default initAlertOfWorkingTime
