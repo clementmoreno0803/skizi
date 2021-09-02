@@ -16,7 +16,7 @@ const selectInterval = (info) => {
   createShift(info.startStr, info.endStr)
 }
 
-const updateUserShift = (id, start, end) => {
+const updateUserShift = (id, start, end, callback) => {
   fetch(`/user_shifts/${id}`, {
     method: "PATCH",
     headers: {
@@ -24,9 +24,29 @@ const updateUserShift = (id, start, end) => {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({ start: start, end: end})
-  })
+  }).then(response => response.json())
+    .then(callback)
 }
 
+const createUserShift = (userId, start, end, callback) => {
+  console.log(userId);
+  console.log(start),
+    console.log(end);
+  console.log('coucou')
+  fetch(`/user_shifts`, {
+    method: "POST",
+    headers: {
+      "X-CSRF-Token": document.querySelector("[name='csrf-token']").content,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      user_id: userId,
+      start: start,
+      end: end
+    })
+  }).then(response => response.json())
+    .then(callback)
+}
 const createShift = (start, end) => {
   console.log(start),
     console.log(end);
@@ -43,6 +63,7 @@ const createShift = (start, end) => {
     })
     }).then(response => response.json())
       .then(addShiftToCalendar)
+      console.log('ok')
 }
 
 const JobColors = {
@@ -83,16 +104,29 @@ const events = () => {
 }
 
 const eventDrop = (info) => {
-  updateUserShift(info.event.id, info.event.start, info.event.end)
+  const start = info.event.start
+  start.setMinutes(start.getMinutes() + 30)
+  info.event.setEnd(start)
 
-  // alert(info.event.title + " was dropped on " + info.event.start.toISOString());
-
-  // if (!confirm("Are you sure about this change?")) {
-  //   info.revert();
-  // }
+  updateUserShift(info.event.id, info.event.start, info.event.end, (userShift) => {
+    info.event.setStart(userShift.shift.started_at)
+    info.event.setEnd(userShift.shift.ended_at)
+    calendar.render()
+  })
 }
 
+const eventReceive = (addInfo) => {
+  const start   = addInfo.event.start
+  const end     = addInfo.event.end
+  const userId  = addInfo.draggedEl.dataset.userId
 
+  createUserShift(userId, start, end, (userShift) => {
+    addInfo.event.setStart(userShift.shift.started_at)
+    addInfo.event.setEnd(userShift.shift.ended_at)
+    addInfo.event.setProp("id", userShift.id)
+    calendar.render()
+  })
+}
 
 
 const initCalendar = () => {
@@ -111,6 +145,7 @@ const initCalendar = () => {
     eventStartEditable:true,
     eventDurationEditable:true,
     initialView: 'timeGridWeek',
+    eventReceive: eventReceive,
     eventDrop: eventDrop,
     selectable: true,
     select: selectInterval,
@@ -156,11 +191,15 @@ const initCalendar = () => {
   new Draggable(containerEl, {
     itemSelector: '.fc-event',
     eventData: function (eventEl) {
-      // TOTO get an user_shit id by user + shit
+      console.log('hello draggable')
+      console.log(eventEl)
+      console.log(eventEl.dataset.userId)
+      // createUserShift(eventEl.id, eventEl.start,eventEl.end)
+      // TO DO get an user_shift id by user + shift
 
       return {
-        title: eventEl.innerText.toUpperCase()
-        // updateUserShift(eventEl.event.id, eventEl.event.start, eventEl.event.end)
+        title: eventEl.innerText.toUpperCase(),
+        duration: '00:30'
       };
     }
   });
