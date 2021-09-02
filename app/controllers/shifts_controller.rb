@@ -1,7 +1,6 @@
 class ShiftsController < ApplicationController
   before_action :find_shift, only: %i[edit update]
 
-
   def index
     @shifts = Shift.all
     @users = User.where("status = 'Ongoing'")

@@ -1,5 +1,5 @@
 class UserShiftsController < ApplicationController
-  before_action :set_user_shift, only: [:update, :destroy]
+  before_action :set_user_shift, only: %i[update destroy]
   def create
     @shift = Shift.where('started_at <= ? AND ended_at >= ?', params[:start],  params[:end]).first
 

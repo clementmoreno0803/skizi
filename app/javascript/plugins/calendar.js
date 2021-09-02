@@ -28,11 +28,6 @@ const addShiftToCalendar = (shift) => {
   calendar.addEvent(event)
 }
 
-// const removeShiftToCalendar = (shift) => {
-//   const event = shiftToEvent(shift)
-//   calendar.getEventById(id)
-// }
-
 const selectInterval = (info) => {
   createShift(info.startStr, info.endStr)
 }
@@ -46,7 +41,7 @@ const updateUserShift = (id, start, end, callback) => {
     },
     body: JSON.stringify({ start: start, end: end, })
   }).then(response => response.json())
-    .then(callback)
+  .then(callback)
 }
 
 const createUserShift = (userId, start, end, callback) => {
@@ -62,7 +57,7 @@ const createUserShift = (userId, start, end, callback) => {
       end: end
     })
   }).then(response => response.json())
-    .then(callback)
+  .then(callback)
 }
 
 const deleteUserShift = (id, start, end, callback) => {
@@ -74,7 +69,7 @@ const deleteUserShift = (id, start, end, callback) => {
     },
     body: JSON.stringify({ start: start, end: end, })
   }).then(response => response.json())
-    .then(callback)
+  .then(callback)
 }
 const createShift = (start, end) => {
 
@@ -89,7 +84,7 @@ const createShift = (start, end) => {
       end: end
     })
   }).then(response => response.json())
-    .then(addShiftToCalendar)
+  .then(addShiftToCalendar)
 }
 
 const JobColors = {
@@ -122,7 +117,6 @@ const events = () => {
   const call = document.getElementById("calendar")
   const user_shifts = JSON.parse(call.dataset.user_shifts);
   const shifts = JSON.parse(call.dataset.shifts);
-
   const eventUserShifts = user_shifts.map(userShiftToEvent)
   const eventShifts = shifts.map(shiftToEvent)
 
@@ -160,7 +154,7 @@ const initCalendar = () => {
   const containerEl = document.getElementById('thumbnail_dragdrop');
 
   if (!calendarEl)
-    return
+  return
 
   calendar = new Calendar(calendarEl, {
     plugins: [dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin],
@@ -176,13 +170,6 @@ const initCalendar = () => {
     eventDrop: eventDrop,
     selectable: true,
     select: selectInterval,
-    businessHours: [
-      {
-        daysOfWeek: [1, 2, 3],
-        startTime: '08:00',
-        endTime: '18:00'
-      }],
-
     views: {
       timeGrid: {
         dayMaxEventRows: 6
@@ -208,11 +195,7 @@ const initCalendar = () => {
         alert('Shift:')
       }
     },
-    navLinkDayClick: function (date, jsEvent) {
-      console.log('day', date.toISOString());
-      console.log('coords', jsEvent.pageX, jsEvent.pageY);
-    },
-  });
+     });
 
 
 
