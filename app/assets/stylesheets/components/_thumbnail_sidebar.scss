@@ -11,12 +11,12 @@ h4{
   transition: all ease 0.6s ;
   bottom: 0;
   overflow-y: scroll;
-  h4{
-    display: none;
+
+    ::-webkit-scrollbar {
+      display: none;
   }
 }
-
-.modif_manuelle::-webkit-scrollbar {
+.modif_manuelle h3{
   display: none;
 }
 
@@ -26,19 +26,29 @@ h4{
     transform: translateX(0%);
     transition: all 0.3s ease;
 }
+
 .modif_manuelle.open.active{
     width: 250px;
     z-index : 99;
     transition: all 0.3s ease;
 }
-.modif_contenu{
+
+.modif_contenu {
+    overflow-y: scroll;
     display: flex;
-    background: $yellow;
+    background: #FFC65A;
     padding: 10px 0px;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    height: calc(100% - 70px);
+    box-sizing: border-box;
+    scrollbar-width: none;
+
+      ::-webkit-scrollbar {
+  display: none;
+  }
 }
+
 .modif_manuelle.open .thumbnail_perso  h4{
       display: none;
       transition: all ease 0.6s;
@@ -56,12 +66,13 @@ h4{
 .modif_manuelle.open h4{
 display: none;
 }
+
 .modif_manuelle.open.active h4{
     display: block;
     margin-left: 5px;
     width: 80px;
-
 }
+
 .modif_manuelle.open.active .whole_profil_description{
     display: flex;
     align-items: center;
@@ -69,18 +80,32 @@ display: none;
     transition: all ease 1s;
     justify-content: center;
 }
+
 .modif_contenu .thumbnail_dragdrop .pp{
   width: 60px;
   height: 60px;
   border-radius: 50%;
   -o-object-fit: cover;
   object-fit: cover;
-
   cursor: pointer;
 }
+
 .modif_contenu .thumbnail_dragdrop #username{
   display: none;
 }
+
 .modif_manuelle.open.active .modif_contenu .thumbnail_dragdrop #username{
   display: block;
+}
+
+li{
+  display: flex;
+  align-items: center;
+}
+
+.sidebar_profil_picture{
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
 }

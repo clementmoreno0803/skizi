@@ -44,6 +44,13 @@ background: linear-gradient(223deg, rgba(254,170,11,1) 0%, rgba(255,243,220,1) 1
   font-size : 18px;
 
 }
+.card__face fieldset{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 60%;
+}
 input{
   width: 100%;
   border : 1px solid $dark-blue;

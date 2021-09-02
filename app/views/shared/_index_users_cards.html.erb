@@ -1,7 +1,7 @@
-<% users.each do |user| %>
-  <table class="tableau-style">
+  <table >
     <tbody>
-      <tr>
+<% users.each do |user| %>
+      <tr class="tableau-style">
         <td><%= image_tag "pp.jpg", class:"pp" %></td>
         <td><strong><%= user.username %></strong></td>
         <td class="display-jobs">
@@ -19,9 +19,8 @@
         <%= link_to edit_user_path(user) do %>
           <%= image_tag "edit.png", style:'width:25px;' %>
         <% end %>
-
         </td>
       </tr>
+      <% end %>
     </tbody>
   </table>
-<% end %>

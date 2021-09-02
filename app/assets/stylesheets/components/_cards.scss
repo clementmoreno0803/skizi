@@ -11,7 +11,7 @@ H3{
 }
 .container_cards{
   margin : 30px auto ;
-  width: 60%;
+  width: 70%;
   min-width: 50%;
 
     .search_bar_container{
@@ -30,7 +30,7 @@ H3{
     padding: 10px;
     }
     .search_bar_container .search_bar.active{
-    width: 400px;
+    width: 270px;
     height: 40px;
     border-radius: 25px;
     }
@@ -51,9 +51,8 @@ H3{
     .search_bar.active .input {
     width: 100%;
     height: 100%;
-    padding-left: 20px;
     outline :white;
-    #my_search_index{
+      #my_search_index{
     opacity: 0.2;
     transition: all ease 0.8s;
     border: white;
@@ -93,6 +92,10 @@ H3{
     font-size : 12px;
     margin-bottom: 20px;
     width: 100%;
+  }
+
+    table{
+      width : 100%;
     }
 
     th, td{
@@ -125,14 +128,10 @@ H3{
     }
 
     tr{
-    display: flex;
     align-items: center;
     justify-content: space-between;
     }
 
-    td {
-    display: flex;
-    }
     #almost{
     font-size: 24px;
     color: orange;
