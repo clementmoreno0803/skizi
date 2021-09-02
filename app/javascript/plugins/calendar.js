@@ -7,30 +7,77 @@ import interactionPlugin, { Draggable } from '@fullcalendar/interaction';
 
 let calendar;
 
+const initDragAndDrop = () => {
+  const containerEl = document.getElementById('thumbnail_dragdrop');
+
+  new Draggable(containerEl, {
+    itemSelector: '.fc-event',
+    eventData: function (eventEl) {
+      return {
+        title: eventEl.innerText.toUpperCase(),
+        duration: '00:30'
+      };
+    }
+  });
+}
+window.initDragAndDrop = initDragAndDrop;
+
+
 const addShiftToCalendar = (shift) => {
   const event = shiftToEvent(shift)
   calendar.addEvent(event)
 }
 
+// const removeShiftToCalendar = (shift) => {
+//   const event = shiftToEvent(shift)
+//   calendar.getEventById(id)
+// }
+
 const selectInterval = (info) => {
   createShift(info.startStr, info.endStr)
 }
 
-const updateUserShift = (id, start, end) => {
+const updateUserShift = (id, start, end, callback) => {
   fetch(`/user_shifts/${id}`, {
     method: "PATCH",
     headers: {
       "X-CSRF-Token": document.querySelector("[name='csrf-token']").content,
       "Content-Type": "application/json"
     },
-    body: JSON.stringify({ start: start, end: end})
-  })
+    body: JSON.stringify({ start: start, end: end, })
+  }).then(response => response.json())
+    .then(callback)
 }
 
+const createUserShift = (userId, start, end, callback) => {
+  fetch(`/user_shifts`, {
+    method: "POST",
+    headers: {
+      "X-CSRF-Token": document.querySelector("[name='csrf-token']").content,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      user_id: userId,
+      start: start,
+      end: end
+    })
+  }).then(response => response.json())
+    .then(callback)
+}
+
+const deleteUserShift = (id, start, end, callback) => {
+  fetch(`/user_shifts/${id}`, {
+    method: "DELETE",
+    headers: {
+      "X-CSRF-Token": document.querySelector("[name='csrf-token']").content,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ start: start, end: end, })
+  }).then(response => response.json())
+    .then(callback)
+}
 const createShift = (start, end) => {
-  console.log(start),
-    console.log(end);
-  console.log('coucou')
+
   fetch(`/shifts`, {
     method: "POST",
     headers: {
@@ -41,8 +88,8 @@ const createShift = (start, end) => {
       start: start,
       end: end
     })
-    }).then(response => response.json())
-      .then(addShiftToCalendar)
+  }).then(response => response.json())
+    .then(addShiftToCalendar)
 }
 
 const JobColors = {
@@ -67,7 +114,7 @@ const shiftToEvent = (shift) => {
     start: `${shift.started_at}`,
     end: `${shift.ended_at}`,
     display: 'background',
-    color: 'red'
+    color: 'pink'
   }
 }
 
@@ -83,51 +130,59 @@ const events = () => {
 }
 
 const eventDrop = (info) => {
-  updateUserShift(info.event.id, info.event.start, info.event.end)
+  const start = info.event.start
+  start.setMinutes(start.getMinutes() + 30)
+  info.event.setEnd(start)
 
-  // alert(info.event.title + " was dropped on " + info.event.start.toISOString());
-
-  // if (!confirm("Are you sure about this change?")) {
-  //   info.revert();
-  // }
+  updateUserShift(info.event.id, info.event.start, info.event.end, (userShift) => {
+    info.event.setStart(userShift.shift.started_at)
+    info.event.setEnd(userShift.shift.ended_at)
+    calendar.render()
+  })
 }
 
+const eventReceive = (addInfo) => {
+  const start = addInfo.event.start
+  const end = addInfo.event.end
+  const userId = addInfo.draggedEl.dataset.userId
 
-const initDragAndDrop = () => {
-  const containerEl = document.getElementById('thumbnail_dragdrop');
-
-  new Draggable(containerEl, {
-    itemSelector: '.fc-event',
-    eventData: (eventEl) => {
-      return {
-        title: eventEl.innerText,
-      };
-    }
-  });
-
-  calendar.render()
+  createUserShift(userId, start, end, (userShift) => {
+    addInfo.event.setStart(userShift.shift.started_at)
+    addInfo.event.setEnd(userShift.shift.ended_at)
+    addInfo.event.setProp("id", userShift.id)
+    calendar.render()
+  })
 }
 
-window.initDragAndDrop = initDragAndDrop;
 
 const initCalendar = () => {
   let calendarEl = document.getElementById('calendar');
+  const containerEl = document.getElementById('thumbnail_dragdrop');
 
   if (!calendarEl)
     return
 
   calendar = new Calendar(calendarEl, {
     plugins: [dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin],
+    hiddenDays: [0],
     droppable: true,
     editable: true,
     dayMaxEventRows: true,
     navLinks: true,
-    eventStartEditable:true,
-    eventDurationEditable:true,
+    eventStartEditable: true,
+    eventDurationEditable: true,
     initialView: 'dayGridMonth',
+    eventReceive: eventReceive,
     eventDrop: eventDrop,
     selectable: true,
     select: selectInterval,
+    businessHours: [
+      {
+        daysOfWeek: [1, 2, 3],
+        startTime: '08:00',
+        endTime: '18:00'
+      }],
+
     views: {
       timeGrid: {
         dayMaxEventRows: 6
@@ -136,41 +191,35 @@ const initCalendar = () => {
     headerToolbar: {
       left: 'prev,next today',
       center: 'title',
-      right: 'addEventButton dayGridMonth,timeGridWeek,listWeek'
-    },
-    customButtons: {
-      addEventButton: {
-        text: 'add shift',
-        click: function () {
-          const dateStr = prompt('Enter a date in YYYY-MM-DD format');
-          const starthour = prompt('Enter a start hour HH:MM:SS format');
-          const start = new Date(dateStr + `T${starthour}`);
-          const endhour = prompt('Enter a end hour HH: MM: SS format');
-          const end = new Date(dateStr + `T${endhour}`);
-
-          console.log(`${start}`)
-          console.log(`${end}`)
-          if (!isNaN(start.valueOf())) {
-            createShift(
-              start,
-              end,
-            );
-            alert('Great. Now, update your database...');
-          } else {
-            alert('Invalid date.');
-          }
-        }
-      }
+      right: 'dayGridMonth,timeGridWeek,listWeek'
     },
     events: events(),
+    eventClick: function (info) {
+        info.jsEvent.preventDefault();
+        console.log(info)
+        if (info.event.id) {
+          const event = calendar.getEventById(info.event.id);
+          event.remove();
+          alert('Remove Shift:')
+          deleteUserShift(info.event.id)
+
+      }
+      if (info.shift) {
+        alert('Shift:')
+      }
+    },
     navLinkDayClick: function (date, jsEvent) {
       console.log('day', date.toISOString());
       console.log('coords', jsEvent.pageX, jsEvent.pageY);
     },
   });
 
+
+
   initDragAndDrop();
+
+  calendar.render()
+
 }
 ;
-
 export default initCalendar;
