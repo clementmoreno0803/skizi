@@ -134,8 +134,6 @@ const initCalendar = () => {
           const endhour = prompt('Enter a end hour HH: MM: SS format');
           const end = new Date(dateStr + `T${endhour}`);
 
-          console.log(`${start}`)
-          console.log(`${end}`)
           if (!isNaN(start.valueOf())) {
             createShift(
               start,
@@ -158,11 +156,11 @@ const initCalendar = () => {
   new Draggable(containerEl, {
     itemSelector: '.fc-event',
     eventData: function (eventEl) {
-
       // TOTO get an user_shit id by user + shit
 
       return {
-        title: eventEl.innerText,
+        title: eventEl.innerText.toUpperCase()
+        // updateUserShift(eventEl.event.id, eventEl.event.start, eventEl.event.end)
       };
     }
   });
