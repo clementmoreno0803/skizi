@@ -1,0 +1,37 @@
+<div id="calendar"
+    data-user_shifts="<%= @user_shifts.to_json %>" >
+</div>
+<div class="modif_manuelle">
+    <div class="profil_container">
+        <div class="search_bar_container">
+          <div class="search_bar">
+            <div class="search_icon">
+                <i class='bx bx-search-alt'></i>
+            </div>
+            <div class="search_bar_container">
+              <div class="search_bar">
+                <div class="input">
+                  <%= form_with(url: search_employee_shifts_path, method: :get, local: false) do |f| %>
+                  <%= f.text_field :query, placeholder: "Find an employee",
+                              label: false,
+                              autocomplete: :off,
+                              input_html: { name: :query,
+                              value: params.dig(:query) } %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <div class="modif_contenu">
+        <%= render 'shared/user_cards', users: @users %>
+      </div>
+    </div>
+    <ul id="test" style='background: red; padding: 50px'>
+    </ul>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous">
+</script>
