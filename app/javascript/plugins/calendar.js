@@ -13,12 +13,6 @@ const initDragAndDrop = () => {
   new Draggable(containerEl, {
     itemSelector: '.fc-event',
     eventData: function (eventEl) {
-      console.log('hello draggable')
-      console.log(eventEl)
-      console.log(eventEl.dataset.userId)
-      // createUserShift(eventEl.id, eventEl.start,eventEl.end)
-      // TO DO get an user_shift id by user + shift
-
       return {
         title: eventEl.innerText.toUpperCase(),
         duration: '00:30'
@@ -46,7 +40,7 @@ const updateUserShift = (id, start, end, callback) => {
       "X-CSRF-Token": document.querySelector("[name='csrf-token']").content,
       "Content-Type": "application/json"
     },
-    body: JSON.stringify({ start: start, end: end })
+    body: JSON.stringify({ start: start, end: end, })
   }).then(response => response.json())
     .then(callback)
 }
@@ -111,7 +105,7 @@ const shiftToEvent = (shift) => {
     start: `${shift.started_at}`,
     end: `${shift.ended_at}`,
     display: 'background',
-    color: 'red'
+    color: 'pink'
   }
 }
 
@@ -127,6 +121,7 @@ const events = () => {
 }
 
 const eventDrop = (info) => {
+  console.log(info)
   const start = info.event.start
   start.setMinutes(start.getMinutes() + 30)
   info.event.setEnd(start)
@@ -161,13 +156,14 @@ const initCalendar = () => {
 
   calendar = new Calendar(calendarEl, {
     plugins: [dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin],
+    hiddenDays: [0],
     droppable: true,
     editable: true,
     dayMaxEventRows: true,
     navLinks: true,
     eventStartEditable: true,
     eventDurationEditable: true,
-    initialView: 'timeGridWeek',
+    initialView: 'dayGridMonth',
     eventReceive: eventReceive,
     eventDrop: eventDrop,
     selectable: true,
