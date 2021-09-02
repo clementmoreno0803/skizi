@@ -34,10 +34,10 @@ clement = User.create!(email: 'clement@gmail.com', password: 'clement', password
                        'clement', username: 'Clement Moreno', contract_hours_per_week: 35, work_time: 35)
 nicolas = User.create!(email: 'nicolas@gmail.com', password: 'nicolas', password_confirmation:
                        'nicolas', username: 'Nicolas Feuerstein', contract_hours_per_week: 26, work_time: 22)
-leo = User.create!(email: 'leo@gmail.com', password: 'leo', password_confirmation:
-                   'leo', username: 'Leo Genuit', contract_hours_per_week: 31, work_time: 19)
-simon = User.create!(email: 'simon@gmail.com', password: 'simon', password_confirmation:
-                     'simon', username: 'Simon Granger', contract_hours_per_week: 17, work_time: 11)
+leo = User.create!(email: 'leo@gmail.com', password: 'leoleo', password_confirmation:
+                   'leoleo', username: 'Leo Genuit', contract_hours_per_week: 31, work_time: 19)
+simon = User.create!(email: 'simon@gmail.com', password: 'simon1', password_confirmation:
+                     'simon1', username: 'Simon Granger', contract_hours_per_week: 17, work_time: 11)
 
 puts 'users created'
 puts 'creating user_jobs'
@@ -186,82 +186,82 @@ shift17 = Shift.create!(
   manager_id: charlie.id
 )
 shift18 = Shift.create!(
-  started_at: "22/09/2021 09:00",
+  started_at: "22/09/2021 18:00",
   ended_at: "22/09/2021 21:00",
   manager_id: charlie.id
 )
 shift19 = Shift.create!(
-  started_at: "23/09/2021 09:00",
+  started_at: "23/09/2021 18:00",
   ended_at: "23/09/2021 21:00",
   manager_id: charlie.id
 )
 shift20 = Shift.create!(
-  started_at: "24/09/2021 09:00",
+  started_at: "24/09/2021 18:00",
   ended_at: "24/09/2021 21:00",
   manager_id: charlie.id
 )
 shift21 = Shift.create!(
-  started_at: "25/09/2021 09:00",
+  started_at: "25/09/2021 18:00",
   ended_at: "25/09/2021 21:00",
   manager_id: clement.id
 )
 shift22 = Shift.create!(
-  started_at: "27/09/2021 09:00",
+  started_at: "27/09/2021 18:00",
   ended_at: "27/09/2021 21:00",
   manager_id: clement.id
 )
 shift23 = Shift.create!(
-  started_at: "28/09/2021 09:00",
+  started_at: "28/09/2021 18:00",
   ended_at: "28/09/2021 21:00",
   manager_id: clement.id
 )
 shift24 = Shift.create!(
-  started_at: "29/09/2021 09:00",
+  started_at: "29/09/2021 18:00",
   ended_at: "29/09/2021 21:00",
   manager_id: clement.id
 )
 shift25 = Shift.create!(
-  started_at: "30/09/2021 09:00",
+  started_at: "30/09/2021 18:00",
   ended_at: "30/09/2021 21:00",
   manager_id: clement.id
 )
 shiftp1 = Shift.create!(
-  started_at: "01/10/2021 09:00",
+  started_at: "01/10/2021 18:00",
   ended_at: "01/10/2021 21:00",
   manager_id: clement.id
 )
 shiftp2 = Shift.create!(
-  started_at: "02/10/2021 09:00",
+  started_at: "02/10/2021 18:00",
   ended_at: "02/10/2021 21:00",
   manager_id: clement.id
 )
 shiftp3 = Shift.create!(
-  started_at: "04/10/2021 09:00",
+  started_at: "04/10/2021 18:00",
   ended_at: "04/10/2021 21:00",
   manager_id: clement.id
 )
 shiftp4 = Shift.create!(
-  started_at: "05/10/2021 09:00",
+  started_at: "05/10/2021 18:00",
   ended_at: "05/10/2021 21:00",
   manager_id: clement.id
 )
 shiftp5 = Shift.create!(
-  started_at: "06/10/2021 09:00",
+  started_at: "06/10/2021 18:00",
   ended_at: "06/10/2021 21:00",
   manager_id: clement.id
 )
 shiftp6 = Shift.create!(
-  started_at: "07/10/2021 09:00",
+  started_at: "07/10/2021 18:00",
   ended_at: "07/10/2021 21:00",
   manager_id: clement.id
 )
 shiftp7 = Shift.create!(
-  started_at: "08/10/2021 09:00",
+  started_at: "08/10/2021 18:00",
   ended_at: "08/10/2021 21:00",
   manager_id: clement.id
 )
 shiftp8 = Shift.create!(
-  started_at: "09/10/2021 09:00",
+  started_at: "09/10/2021 18:00",
   ended_at: "09/10/2021 21:00",
   manager_id: clement.id
 )
@@ -344,17 +344,33 @@ UserShift.create!(shift: shift11, employee: nathan, job: 'barman')
 UserShift.create!(shift: shift12, employee: michael, job: 'runner')
 UserShift.create!(shift: shift12, employee: nathan, job: 'padder')
 UserShift.create!(shift: shift12, employee: leo, job: 'padder')
-UserShift.create!(shift: shift12, employee: elodie, job: 'barman')
+UserShift.create!(shift: shift12, employee: nicolas, job: 'barman')
 
 UserShift.create!(shift: shift13, employee: leo, job: 'runner')
 UserShift.create!(shift: shift13, employee: martine, job: 'padder')
 UserShift.create!(shift: shift13, employee: julien, job: 'padder')
 UserShift.create!(shift: shift13, employee: simon, job: 'barman')
 
-UserShift.create!(shift: shift13, employee: leo, job: 'runner')
-UserShift.create!(shift: shift13, employee: martine, job: 'padder')
-UserShift.create!(shift: shift13, employee: julien, job: 'padder')
-UserShift.create!(shift: shift13, employee: simon, job: 'barman')
+UserShift.create!(shift: shift14, employee: simon, job: 'runner')
+UserShift.create!(shift: shift14, employee: martine, job: 'padder')
+UserShift.create!(shift: shift14, employee: marie, job: 'padder')
+UserShift.create!(shift: shift14, employee: elodie, job: 'barman')
+
+UserShift.create!(shift: shift15, employee: leo, job: 'runner')
+UserShift.create!(shift: shift15, employee: simon, job: 'runner')
+UserShift.create!(shift: shift15, employee: nathan, job: 'padder')
+UserShift.create!(shift: shift15, employee: marie, job: 'padder')
+UserShift.create!(shift: shift15, employee: nicolas, job: 'barman')
+
+UserShift.create!(shift: shift16, employee: leo, job: 'runner')
+UserShift.create!(shift: shift16, employee: julien, job: 'padder')
+UserShift.create!(shift: shift16, employee: marie, job: 'padder')
+UserShift.create!(shift: shift16, employee: nathan, job: 'barman')
+
+UserShift.create!(shift: shift17, employee: leo, job: 'runner')
+UserShift.create!(shift: shift17, employee: julien, job: 'padder')
+UserShift.create!(shift: shift17, employee: marie, job: 'padder')
+UserShift.create!(shift: shift17, employee: nathan, job: 'barman')
 
 puts 'user_shifts created'
 puts 'Seeds done'
