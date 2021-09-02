@@ -156,13 +156,14 @@ const initCalendar = () => {
 
   calendar = new Calendar(calendarEl, {
     plugins: [dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin],
+    hiddenDays: [0],
     droppable: true,
     editable: true,
     dayMaxEventRows: true,
     navLinks: true,
     eventStartEditable: true,
     eventDurationEditable: true,
-    initialView: 'timeGridWeek',
+    initialView: 'dayGridMonth',
     eventReceive: eventReceive,
     eventDrop: eventDrop,
     selectable: true,
