@@ -1,7 +1,7 @@
-<% users.each do |user| %>
-  <table class="tableau-style">
+  <table >
     <tbody>
-      <tr>
+<% users.each do |user| %>
+      <tr class="tableau-style">
         <td><%= image_tag "pp.jpg", class:"pp" %></td>
         <td><strong><%= user.username %></strong></td>
         <td class="display-jobs">
@@ -10,7 +10,8 @@
           <% end %>
         </td>
         <td><%= user.contract_hours_per_week %> Heures</td>
-        <td><%= user.work_time %> / <span style="color:green"><%= user.contract_hours_per_week%></span></td>
+        <td><%= user.work_time_current_week %> / <span style="color:green"><%= user.contract_hours_per_week%></span></td>
+        <td><%= user.work_time_next_week    %> / <span style="color:green"><%= user.contract_hours_per_week%></span></td>
         <td>
         <%= image_tag "alert.png", class:"almost", style: "width: 30px;"%>
         <%= image_tag "DANGER.png", class:"danger", style: "width: 30px;" %>
@@ -19,9 +20,8 @@
         <%= link_to edit_user_path(user) do %>
           <%= image_tag "edit.png", style:'width:25px;' %>
         <% end %>
-
         </td>
       </tr>
+      <% end %>
     </tbody>
   </table>
-<% end %>

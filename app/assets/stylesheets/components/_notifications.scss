@@ -3,6 +3,10 @@ p{
   font-size:    12px;
   text-align:   center;
 }
+.bx-message-alt{
+  display : none;
+}
+
 .asking_modifications{
 position: absolute;
 top:      50px;
@@ -22,14 +26,21 @@ opacity:  0;
   }
 
 .asking_profil{
-    display: flex;
-    flex-direction: column;
+display: flex;
+    flex-direction: row;
     height: 150px;
     justify-content: space-between;
     margin: 20px 0px;
+    align-items: flex-start;
+    flex-wrap: wrap;
 }
 .profil{
-  display: flex;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.bx-transfer{
+  font-size: 30px;
 }
 .asking_profil h3{
   font-size:    14px;
@@ -49,4 +60,9 @@ opacity:  0;
     border-radius: 5px;
     text-align: center;
     margin-right: 15px;
+    transition: all ease 0.4s;
+    cursor: pointer;
+}
+.bouton_validation h4:hover{
+  background: $smooth-apricot;
 }
