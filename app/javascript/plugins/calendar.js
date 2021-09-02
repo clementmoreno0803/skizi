@@ -93,11 +93,25 @@ const eventDrop = (info) => {
 }
 
 
+const initDragAndDrop = () => {
+  const containerEl = document.getElementById('thumbnail_dragdrop');
 
+  new Draggable(containerEl, {
+    itemSelector: '.fc-event',
+    eventData: (eventEl) => {
+      return {
+        title: eventEl.innerText,
+      };
+    }
+  });
+
+  calendar.render()
+}
+
+window.initDragAndDrop = initDragAndDrop;
 
 const initCalendar = () => {
   let calendarEl = document.getElementById('calendar');
-  const containerEl = document.getElementById('thumbnail_dragdrop');
 
   if (!calendarEl)
     return
@@ -155,20 +169,7 @@ const initCalendar = () => {
     },
   });
 
-  new Draggable(containerEl, {
-    itemSelector: '.fc-event',
-    eventData: function (eventEl) {
-
-      // TOTO get an user_shit id by user + shit
-
-      return {
-        title: eventEl.innerText,
-      };
-    }
-  });
-
-  calendar.render()
-
+  initDragAndDrop();
 }
 ;
 
