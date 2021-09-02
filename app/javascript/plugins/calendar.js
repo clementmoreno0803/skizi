@@ -7,6 +7,29 @@ import interactionPlugin, { Draggable } from '@fullcalendar/interaction';
 
 let calendar;
 
+const initDragAndDrop = () => {
+  const containerEl = document.getElementById('thumbnail_dragdrop');
+
+  new Draggable(containerEl, {
+    itemSelector: '.fc-event',
+    eventData: function (eventEl) {
+      console.log('hello draggable')
+      console.log(eventEl)
+      console.log(eventEl.dataset.userId)
+      // createUserShift(eventEl.id, eventEl.start,eventEl.end)
+      // TO DO get an user_shift id by user + shift
+
+      return {
+        title: eventEl.innerText.toUpperCase(),
+        duration: '00:30'
+      };
+    }
+  });
+}
+
+window.initDragAndDrop = initDragAndDrop;
+
+
 const addShiftToCalendar = (shift) => {
   const event = shiftToEvent(shift)
   calendar.addEvent(event)
@@ -23,7 +46,7 @@ const updateUserShift = (id, start, end, callback) => {
       "X-CSRF-Token": document.querySelector("[name='csrf-token']").content,
       "Content-Type": "application/json"
     },
-    body: JSON.stringify({ start: start, end: end})
+    body: JSON.stringify({ start: start, end: end })
   }).then(response => response.json())
     .then(callback)
 }
@@ -61,9 +84,9 @@ const createShift = (start, end) => {
       start: start,
       end: end
     })
-    }).then(response => response.json())
-      .then(addShiftToCalendar)
-      console.log('ok')
+  }).then(response => response.json())
+    .then(addShiftToCalendar)
+  console.log('ok')
 }
 
 const JobColors = {
@@ -116,9 +139,9 @@ const eventDrop = (info) => {
 }
 
 const eventReceive = (addInfo) => {
-  const start   = addInfo.event.start
-  const end     = addInfo.event.end
-  const userId  = addInfo.draggedEl.dataset.userId
+  const start = addInfo.event.start
+  const end = addInfo.event.end
+  const userId = addInfo.draggedEl.dataset.userId
 
   createUserShift(userId, start, end, (userShift) => {
     addInfo.event.setStart(userShift.shift.started_at)
@@ -142,8 +165,8 @@ const initCalendar = () => {
     editable: true,
     dayMaxEventRows: true,
     navLinks: true,
-    eventStartEditable:true,
-    eventDurationEditable:true,
+    eventStartEditable: true,
+    eventDurationEditable: true,
     initialView: 'timeGridWeek',
     eventReceive: eventReceive,
     eventDrop: eventDrop,
@@ -188,25 +211,13 @@ const initCalendar = () => {
     },
   });
 
-  new Draggable(containerEl, {
-    itemSelector: '.fc-event',
-    eventData: function (eventEl) {
-      console.log('hello draggable')
-      console.log(eventEl)
-      console.log(eventEl.dataset.userId)
-      // createUserShift(eventEl.id, eventEl.start,eventEl.end)
-      // TO DO get an user_shift id by user + shift
 
-      return {
-        title: eventEl.innerText.toUpperCase(),
-        duration: '00:30'
-      };
-    }
-  });
+
+  initDragAndDrop();
 
   calendar.render()
 
 }
-;
+  ;
 
 export default initCalendar;
