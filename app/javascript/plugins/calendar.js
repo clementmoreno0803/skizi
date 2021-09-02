@@ -20,7 +20,6 @@ const initDragAndDrop = () => {
     }
   });
 }
-
 window.initDragAndDrop = initDragAndDrop;
 
 
@@ -28,6 +27,11 @@ const addShiftToCalendar = (shift) => {
   const event = shiftToEvent(shift)
   calendar.addEvent(event)
 }
+
+// const removeShiftToCalendar = (shift) => {
+//   const event = shiftToEvent(shift)
+//   calendar.getEventById(id)
+// }
 
 const selectInterval = (info) => {
   createShift(info.startStr, info.endStr)
@@ -46,10 +50,6 @@ const updateUserShift = (id, start, end, callback) => {
 }
 
 const createUserShift = (userId, start, end, callback) => {
-  console.log(userId);
-  console.log(start),
-    console.log(end);
-  console.log('coucou')
   fetch(`/user_shifts`, {
     method: "POST",
     headers: {
@@ -64,10 +64,20 @@ const createUserShift = (userId, start, end, callback) => {
   }).then(response => response.json())
     .then(callback)
 }
+
+const deleteUserShift = (id, start, end, callback) => {
+  fetch(`/user_shifts/${id}`, {
+    method: "DELETE",
+    headers: {
+      "X-CSRF-Token": document.querySelector("[name='csrf-token']").content,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ start: start, end: end, })
+  }).then(response => response.json())
+    .then(callback)
+}
 const createShift = (start, end) => {
-  console.log(start),
-    console.log(end);
-  console.log('coucou')
+
   fetch(`/shifts`, {
     method: "POST",
     headers: {
@@ -80,7 +90,6 @@ const createShift = (start, end) => {
     })
   }).then(response => response.json())
     .then(addShiftToCalendar)
-  console.log('ok')
 }
 
 const JobColors = {
@@ -121,7 +130,6 @@ const events = () => {
 }
 
 const eventDrop = (info) => {
-  console.log(info)
   const start = info.event.start
   start.setMinutes(start.getMinutes() + 30)
   info.event.setEnd(start)
@@ -168,6 +176,13 @@ const initCalendar = () => {
     eventDrop: eventDrop,
     selectable: true,
     select: selectInterval,
+    businessHours: [
+      {
+        daysOfWeek: [1, 2, 3],
+        startTime: '08:00',
+        endTime: '18:00'
+      }],
+
     views: {
       timeGrid: {
         dayMaxEventRows: 6
@@ -176,31 +191,23 @@ const initCalendar = () => {
     headerToolbar: {
       left: 'prev,next today',
       center: 'title',
-      right: 'addEventButton dayGridMonth,timeGridWeek,listWeek'
-    },
-    customButtons: {
-      addEventButton: {
-        text: 'add shift',
-        click: function () {
-          const dateStr = prompt('Enter a date in YYYY-MM-DD format');
-          const starthour = prompt('Enter a start hour HH:MM:SS format');
-          const start = new Date(dateStr + `T${starthour}`);
-          const endhour = prompt('Enter a end hour HH: MM: SS format');
-          const end = new Date(dateStr + `T${endhour}`);
-
-          if (!isNaN(start.valueOf())) {
-            createShift(
-              start,
-              end,
-            );
-            alert('Great. Now, update your database...');
-          } else {
-            alert('Invalid date.');
-          }
-        }
-      }
+      right: 'dayGridMonth,timeGridWeek,listWeek'
     },
     events: events(),
+    eventClick: function (info) {
+        info.jsEvent.preventDefault();
+        console.log(info)
+        if (info.event.id) {
+          const event = calendar.getEventById(info.event.id);
+          event.remove();
+          alert('Remove Shift:')
+          deleteUserShift(info.event.id)
+
+      }
+      if (info.shift) {
+        alert('Shift:')
+      }
+    },
     navLinkDayClick: function (date, jsEvent) {
       console.log('day', date.toISOString());
       console.log('coords', jsEvent.pageX, jsEvent.pageY);
@@ -214,6 +221,5 @@ const initCalendar = () => {
   calendar.render()
 
 }
-  ;
-
+;
 export default initCalendar;
