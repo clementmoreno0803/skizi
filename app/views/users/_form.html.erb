@@ -1,6 +1,6 @@
 <%= simple_form_for(@user,
                     html: { class: 'form-flex' } ) do |f| %>
-    <div class="card__face back_card">
+    <div class="card__face front_card">
       <%= f.input :username, as: :string %>
       <%= f.input :email, as: :email %>
       <%= f.input :photo, as: :file %>
@@ -13,7 +13,7 @@
         Finissez le formulaire
       </div>
     </div>
-    <div class="card__face front_card">
+    <div class="card__face back_card">
       <i class='bx bx-left-arrow-alt'></i>
         <h2>Contrat</h2>
         <%= f.association :user_jobs, as: :check_boxes,
