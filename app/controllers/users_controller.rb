@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :find_user, only: %i[edit update]
 
+
   def index
     select_sql = <<~SQL
       users.*,
@@ -71,7 +72,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:username, :email, :contract_hours_per_week,
-                                 :password, :password_confirmation)
+                                 :password, :password_confirmation, :photo)
   end
 
   def find_user

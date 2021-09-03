@@ -3,7 +3,7 @@
     <div class="card__face front_card">
       <%= f.input :username, as: :string %>
       <%= f.input :email, as: :email %>
-
+      <%= f.input :photo, as: :file %>
       <% unless @user.persisted? %>
         <%= f.input :password %>
         <%= f.input :password_confirmation %>
