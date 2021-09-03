@@ -16,28 +16,41 @@ puts 'creating users'
 
 bruno = User.create!(email: 'bruno@gmail.com', password: 'bruno1', password_confirmation: 'bruno1',
                      username: 'Bruno Latourelle', contract_hours_per_week: 10)
+bruno.photo.attach(io:File.open("db/photoseed/bruno.jpg"), filename: 'bruno.jpg')
 martine = User.create!(email: 'martine@gmail.com', password: 'martine', password_confirmation: 'martine',
                        username: 'Martine Charbonneau', contract_hours_per_week: 15)
+martine.photo.attach(io:File.open("db/photoseed/martine.jpg"), filename: 'martine.jpg')
 elodie = User.create!(email: 'elodie@gmail.com', password: 'elodie', password_confirmation: 'elodie',
                       username: 'Elodie Therriault', contract_hours_per_week: 7)
+elodie.photo.attach(io:File.open("db/photoseed/elodie.jpg"), filename: 'elodie.jpg')
 julien = User.create!(email: 'julien@gmail.com', password: 'julien', password_confirmation: 'julien',
                       username: 'Julien Blanc', contract_hours_per_week: 12)
+julien.photo.attach(io:File.open("db/photoseed/julien.jpg"), filename: 'julien.jpg')
 marie = User.create!(email: 'marie@gmail.com', password: 'marie1', password_confirmation: 'marie1',
                      username: 'Marie Etoile', contract_hours_per_week: 10)
+marie.photo.attach(io:File.open("db/photoseed/marie.jpg"), filename: 'marie.jpg')
 michael = User.create!(email: "michael@gmail.com", password: 'michael', password_confirmation:
                       'michael', username: 'Michael Grosheny', contract_hours_per_week: 0, status: "Off")
+michael.photo.attach(io:File.open("db/photoseed/michael.jpg"), filename: 'michael.jpg')
 nathan = User.create!(email: "nathan@gmail.com", password: 'nathan', password_confirmation:
                       'nathan', username: 'Nathan Berthier', contract_hours_per_week: 800)
+nathan.photo.attach(io:File.open("db/photoseed/nathan.jpg"), filename: 'nathan.jpg')
 charlie = User.create!(email: 'charlie@gmail.com', password: 'charlie', password_confirmation:
                        'charlie', username: 'Charlie Morizot', contract_hours_per_week: 0, status: 'Off')
+charlie.photo.attach(io:File.open("db/photoseed/charlie.jpg"), filename: 'charlie.jpg')
 clement = User.create!(email: 'clement@gmail.com', password: 'clement', password_confirmation:
                        'clement', username: 'Clement Moreno', contract_hours_per_week: 0)
+clement.photo.attach(io:File.open("db/photoseed/clem.jpg"), filename: 'clem.jpg')
 nicolas = User.create!(email: 'nicolas@gmail.com', password: 'nicolas', password_confirmation:
                        'nicolas', username: 'Nicolas Feuerstein', contract_hours_per_week: 10)
+nicolas.photo.attach(io:File.open("db/photoseed/nico.jpg"), filename: 'nico.jpg')
 leo = User.create!(email: 'leo@gmail.com', password: 'leoleo', password_confirmation:
                    'leoleo', username: 'Leo Genuit', contract_hours_per_week: 20)
+leo.photo.attach(io:File.open("db/photoseed/leo.jpg"), filename: 'leo.jpg')
+
 simon = User.create!(email: 'simon@gmail.com', password: 'simon1', password_confirmation:
                      'simon1', username: 'Simon Granger', contract_hours_per_week: 8)
+simon.photo.attach(io:File.open("db/photoseed/simon.jpg"), filename: 'simon.jpg')
 
 puts 'users created'
 puts 'creating user_jobs'
