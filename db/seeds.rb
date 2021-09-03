@@ -15,29 +15,29 @@ puts 'jobs created'
 puts 'creating users'
 
 bruno = User.create!(email: 'bruno@gmail.com', password: 'bruno1', password_confirmation: 'bruno1',
-                     username: 'Bruno Latourelle', contract_hours_per_week: 15, work_time: 14)
+                     username: 'Bruno Latourelle', contract_hours_per_week: 10)
 martine = User.create!(email: 'martine@gmail.com', password: 'martine', password_confirmation: 'martine',
-                       username: 'Martine Charbonneau', contract_hours_per_week: 20, work_time: 18)
+                       username: 'Martine Charbonneau', contract_hours_per_week: 15)
 elodie = User.create!(email: 'elodie@gmail.com', password: 'elodie', password_confirmation: 'elodie',
-                      username: 'Elodie Therriault', contract_hours_per_week: 21, work_time: 17)
+                      username: 'Elodie Therriault', contract_hours_per_week: 7)
 julien = User.create!(email: 'julien@gmail.com', password: 'julien', password_confirmation: 'julien',
-                      username: 'Julien Blanc', contract_hours_per_week: 12, work_time: 7)
+                      username: 'Julien Blanc', contract_hours_per_week: 12)
 marie = User.create!(email: 'marie@gmail.com', password: 'marie1', password_confirmation: 'marie1',
-                     username: 'Marie Etoile', contract_hours_per_week: 15, work_time: 15)
+                     username: 'Marie Etoile', contract_hours_per_week: 10)
 michael = User.create!(email: "michael@gmail.com", password: 'michael', password_confirmation:
-                      'michael', username: 'Michael Grosheny', contract_hours_per_week: 78, status: "Off", work_time: 0)
+                      'michael', username: 'Michael Grosheny', contract_hours_per_week: 0, status: "Off")
 nathan = User.create!(email: "nathan@gmail.com", password: 'nathan', password_confirmation:
-                      'nathan', username: 'Nathan Berthier', contract_hours_per_week: 800, work_time: 724)
+                      'nathan', username: 'Nathan Berthier', contract_hours_per_week: 800)
 charlie = User.create!(email: 'charlie@gmail.com', password: 'charlie', password_confirmation:
-                       'charlie', username: 'Charlie Morizot', contract_hours_per_week: 90, work_time: 78)
+                       'charlie', username: 'Charlie Morizot', contract_hours_per_week: 0, status: 'Off')
 clement = User.create!(email: 'clement@gmail.com', password: 'clement', password_confirmation:
-                       'clement', username: 'Clement Moreno', contract_hours_per_week: 35, work_time: 35)
+                       'clement', username: 'Clement Moreno', contract_hours_per_week: 0)
 nicolas = User.create!(email: 'nicolas@gmail.com', password: 'nicolas', password_confirmation:
-                       'nicolas', username: 'Nicolas Feuerstein', contract_hours_per_week: 26, work_time: 22)
+                       'nicolas', username: 'Nicolas Feuerstein', contract_hours_per_week: 10)
 leo = User.create!(email: 'leo@gmail.com', password: 'leoleo', password_confirmation:
-                   'leoleo', username: 'Leo Genuit', contract_hours_per_week: 31, work_time: 19)
+                   'leoleo', username: 'Leo Genuit', contract_hours_per_week: 20)
 simon = User.create!(email: 'simon@gmail.com', password: 'simon1', password_confirmation:
-                     'simon1', username: 'Simon Granger', contract_hours_per_week: 17, work_time: 11)
+                     'simon1', username: 'Simon Granger', contract_hours_per_week: 8)
 
 puts 'users created'
 puts 'creating user_jobs'
@@ -260,6 +260,11 @@ shiftp8 = Shift.create!(
   ended_at: "09/10/2021 21:00",
   manager_id: clement.id
 )
+shiftdemo = Shift.create!(
+  started_at: "03/09/2021 18:00",
+  ended_at: "03/09/2021 21:00",
+  manager_id: clement.id
+)
 
 puts 'shifts created'
 puts 'creating user_shifts'
@@ -311,6 +316,7 @@ UserShift.create!(shift: shift7, employee: nathan, job: 'padder')
 UserShift.create!(shift: shift7, employee: nicolas, job: 'barman')
 
 UserShift.create!(shift: shift8, employee: julien, job: 'runner')
+UserShift.create!(shift: shift8, employee: leo, job: 'runner')
 UserShift.create!(shift: shift8, employee: martine, job: 'padder')
 UserShift.create!(shift: shift8, employee: nathan, job: 'padder')
 UserShift.create!(shift: shift8, employee: elodie, job: 'barman')
@@ -342,6 +348,7 @@ UserShift.create!(shift: shift13, employee: julien, job: 'padder')
 UserShift.create!(shift: shift13, employee: simon, job: 'barman')
 
 UserShift.create!(shift: shift14, employee: simon, job: 'runner')
+UserShift.create!(shift: shift14, employee: leo, job: 'runner')
 UserShift.create!(shift: shift14, employee: martine, job: 'padder')
 UserShift.create!(shift: shift14, employee: marie, job: 'padder')
 UserShift.create!(shift: shift14, employee: elodie, job: 'barman')
