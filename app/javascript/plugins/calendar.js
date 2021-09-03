@@ -178,11 +178,13 @@ const initCalendar = () => {
     },
     events: events(),
     eventClick: onclick = (info) => {
-        info.jsEvent.preventDefault();
+      if (info && info.event) {
         const event = calendar.getEventById(info.event.id);
-      if (confirm("Are you sure to remove " + info.event.title + " ?" )){
+        console.log(info.event);
+        if (confirm("Are you sure to remove " + info.event.title + " ?")) {
           event.remove();
           deleteUserShift(info.event.id)
+        }
       }
     },
   });
