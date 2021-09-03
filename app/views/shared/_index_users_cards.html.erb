@@ -2,7 +2,7 @@
     <tbody>
 <% users.each do |user| %>
       <tr class="tableau-style">
-        <td><%= cl_image_tag user.photo.key, height: 300, width: 400, crop: :fill, class:"pp" %></td>
+        <td><%= cl_image_tag user.photo.key, height: 300, width: 400, crop: :fill, gravity: :face, class:"pp" %></td>
         <td><strong><%= user.username %></strong></td>
         <td class="display-jobs">
           <% user.jobs.each do |job| %>

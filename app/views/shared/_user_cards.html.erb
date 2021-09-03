@@ -3,7 +3,7 @@
   <% users.each do |user|  %>
     <div class=fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event data-user-id="<%= user.id %>">
       <li class="modif_contenu thumbnail_dragdrop">
-       <%= cl_image_tag user.photo.key, height: 300, width: 400, crop: :fill, class:"sidebar_profil_picture" %>
+       <%= cl_image_tag user.photo.key, height: 300, width: 400, crop: :fill, gravity: :face, class:"sidebar_profil_picture" %>
         <h3 id="username"><%= user.username%></h3>
       </li>
     </div>
