@@ -269,6 +269,11 @@ shiftdemo = Shift.create!(
 puts 'shifts created'
 puts 'creating user_shifts'
 
+UserShift.create!(shift: shiftdemo, employee: leo, job: 'runner')
+UserShift.create!(shift: shiftdemo, employee: nathan, job: 'runner')
+UserShift.create!(shift: shiftdemo, employee: marie, job: 'padder')
+UserShift.create!(shift: shiftdemo, employee: nicolas, job: 'barman')
+
 UserShift.create!(shift: shiftm2, employee: bruno, job: 'runner')
 UserShift.create!(shift: shiftm2, employee: julien, job: 'runner')
 UserShift.create!(shift: shiftm2, employee: martine, job: 'padder')
