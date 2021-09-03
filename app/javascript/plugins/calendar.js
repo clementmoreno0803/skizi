@@ -9,13 +9,13 @@ let calendar;
 
 const initDragAndDrop = () => {
   const containerEl = document.getElementById('thumbnail_dragdrop');
-
   new Draggable(containerEl, {
     itemSelector: '.fc-event',
     eventData: function (eventEl) {
       return {
         title: eventEl.innerText.toUpperCase(),
-        duration: '00:30'
+        duration: '00:30',
+        color: '#f59369d3'
       };
     }
   });
@@ -45,6 +45,7 @@ const updateUserShift = (id, start, end, callback) => {
 }
 
 const createUserShift = (userId, start, end, callback) => {
+
   fetch(`/user_shifts`, {
     method: "POST",
     headers: {
@@ -54,7 +55,7 @@ const createUserShift = (userId, start, end, callback) => {
     body: JSON.stringify({
       user_id: userId,
       start: start,
-      end: end
+      end: end,
     })
   }).then(response => response.json())
   .then(callback)
@@ -144,6 +145,7 @@ const eventReceive = (addInfo) => {
     addInfo.event.setStart(userShift.shift.started_at)
     addInfo.event.setEnd(userShift.shift.ended_at)
     addInfo.event.setProp("id", userShift.id)
+    addInfo.event.setColor("color", "#f59369d3"),
     calendar.render()
   })
 }
@@ -151,7 +153,6 @@ const eventReceive = (addInfo) => {
 
 const initCalendar = () => {
   let calendarEl = document.getElementById('calendar');
-  const containerEl = document.getElementById('thumbnail_dragdrop');
 
   if (!calendarEl)
   return
@@ -191,4 +192,5 @@ const initCalendar = () => {
 
 }
 ;
+
 export default initCalendar;

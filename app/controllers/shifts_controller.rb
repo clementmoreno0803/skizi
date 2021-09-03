@@ -5,6 +5,12 @@ class ShiftsController < ApplicationController
     @shifts = Shift.all
     @users = User.where("status = 'Ongoing'")
     @usershifts = UserShift.all
+    @users = User.all
+    @user= @users.map do |user|
+      {
+        job: user.jobs,
+      }
+    end
     @user_shifts = @usershifts.map do |usershift|
       {
         id: usershift.id,
