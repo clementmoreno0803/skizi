@@ -47,9 +47,14 @@ background: linear-gradient(223deg, rgba(254,170,11,1) 0%, rgba(255,243,220,1) 1
 .card__face fieldset{
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
   justify-content: space-around;
-  width: 60%;
+  width: 100%;
+  border: none;
+  padding: 20px 0;
+
+  legend {
+    font-weight: bold;
+  }
 }
 input{
   width: 100%;
@@ -127,3 +132,72 @@ input{
   transition: all ease 0.7s;
   color: $dark-blue;
 }
+
+form .user_user_jobs {
+  input[type="checkbox"] {
+    display: none;
+  }
+
+  input + label {
+    background: white;
+    padding: 2px 4px;
+    border: 1px solid #ffc659;
+    color: #ffc659;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  input:checked + label {
+    background: #ffc659;
+    color: white;
+  }
+}
+
+
+form .user_status {
+
+  .form-check {width: 40%;}
+
+
+  input[type="radio"] {
+    display: none;
+  }
+
+  input + label {
+    padding: 2px 4px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    display: block;
+    text-align: center;
+  }
+
+  input[value="Ongoing"] + label {
+    background: white;
+    border: 1px solid #ffc659;
+    color: #ffc659;
+  }
+
+  input[value="Off"] + label {
+    background: #CCCCCC;
+    border: 1px solid #444444;
+    color: #444444;
+  }
+
+  input[value="Ongoing"]:checked + label {
+    background: #ffc659;
+    color: white;
+  }
+
+  input[value="Off"]:checked + label {
+    background: #444444;
+    color: #CCCCCC;
+  }
+}
+
+
+label {
+  font-weight: bold;
+}
+
+

@@ -1,6 +1,6 @@
 <%= simple_form_for(@user,
                     html: { class: 'form-flex' } ) do |f| %>
-    <div class="card__face front_card">
+    <div class="card__face back_card">
       <%= f.input :username, as: :string %>
       <%= f.input :email, as: :email %>
       <%= f.input :photo, as: :file %>
@@ -13,19 +13,19 @@
         Finissez le formulaire
       </div>
     </div>
-    <div class="card__face back_card ">
+    <div class="card__face front_card">
       <i class='bx bx-left-arrow-alt'></i>
-        <h2>Modifiez votre collaborateur</h2>
-        <h3>Ici vous pouvez modifier l'ensemble des critères de votre employé(e)</h3>
+        <h2>Contrat</h2>
         <%= f.association :user_jobs, as: :check_boxes,
+                          label: 'Poste(s)',
                           label_method: :job,
                           collection: Job.all,
                           class: 'michel',
                           checked: @user.jobs.ids %>
         <%= f.input :contract_hours_per_week, as: :string,
-                    label: "Number of hours work per week" %>
-        <%= f.input :status,
-                    collection: User::STATUS%>
+                    label: "Nombre d'heures / semaine" %>
+        <%= f.input :status, as: :radio_buttons,
+                    collection: [['En cours', 'Ongoing'], ['Parti', "Off"]]%>
         <%= f.button :submit, class: "submit_button"  %>
     </div>
 <% end %>
