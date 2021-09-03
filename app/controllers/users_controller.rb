@@ -23,6 +23,7 @@ class UsersController < ApplicationController
     SQL
 
     @users = User.select(select_sql)
+                 .distinct
                  .joins("LEFT JOIN user_shifts ON user_shifts.employee_id = users.id")
                  .joins("LEFT JOIN shifts as current_shifts ON user_shifts.shift_id = current_shifts.id AND EXTRACT('week' FROM current_shifts.started_at) = EXTRACT('week' FROM current_date)")
                  .joins("LEFT JOIN shifts as next_shifts ON user_shifts.shift_id = next_shifts.id AND EXTRACT('week' FROM next_shifts.started_at) = EXTRACT('week' FROM current_date) + 1")
@@ -30,7 +31,10 @@ class UsersController < ApplicationController
 
     if params[:name].present?
       sql_query = "users.username iLIKE :name \ OR jobs.job iLIKE :name"
-      @users = @users.joins(:jobs).where(sql_query, name: "%#{params[:name]}%").distinct
+
+      users_ids = User.joins(:jobs).where(sql_query, name: "%#{params[:name]}%").ids
+
+      @users = @users.where(id: users_ids)
     end
   end
 
