@@ -25,6 +25,7 @@ H3{
     background-color: #ffffff;
     margin:             0 auto;
     display:            flex;
+    align-items: center;
     box-shadow:         0px 0px 5px rgba(0,0,0,0.2);
     justify-content:    space-between;
     padding:             10px;
@@ -40,7 +41,7 @@ H3{
     top:        9px;
     right:      69px;
     }
-    .search_bar .input #my_search_index{
+    .search_bar .input{
     width :     100%;
     height:     100%;
     opacity:    1;
@@ -52,11 +53,13 @@ H3{
     width:    100%;
     height:   100%;
     outline :white;
-      #my_search_index{
-    opacity:    0.2;
     transition: all ease 0.8s;
     border:   white;
     outline:    none;
+    justify-content: flex-start;
+    input::-webkit-input-placeholder {
+      transition: all ease 0.8s;
+      opacity:    0.4;
     }
   }
   .titre_presentation{
@@ -74,12 +77,6 @@ H3{
       margin-left: 15px;
     }
   }
-
-  .input {
-    display: flex;
-    align-items: center;
-  }
-
   .search_bar > form{
     height: 100%;
   }
@@ -92,6 +89,8 @@ H3{
     font-size : 12px;
     margin-bottom: 20px;
     width: 100%;
+    box-shadow: 0px 5px 10px #efefef;
+    border-radius: 1em;
   }
 
     table{
@@ -110,12 +109,6 @@ H3{
     list-style: none;
     }
 
-    .tableau-style{
-    background: white;
-    box-shadow: 0px 5px 10px #efefef;
-    border-radius: 1em;
-    }
-
     .span-job{
     display: flex;
     align-items: center;
@@ -125,6 +118,7 @@ H3{
     tr{
     align-items: center;
     justify-content: space-between;
+          border-spacing: 15px 0px;
     }
 
     #almost{
